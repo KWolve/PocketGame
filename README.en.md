@@ -4,7 +4,7 @@
 
 [![Hardware / Solution inquiry](https://img.shields.io/badge/Hardware%20%2F%20Solution-inquiry-0A7AFF?style=flat-square)](https://www.zkswe.com) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
 
-> **Repository**: <https://github.com/KWolve/PocketGame>
+> **GitHub (primary)** <https://github.com/KWolve/PocketGame> ｜ **Gitee mirror** <https://gitee.com/Kwolve/PocketGame>
 
 ---
 

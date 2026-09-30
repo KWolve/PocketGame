@@ -4,7 +4,7 @@
 
 [![整机 / 方案咨询](https://img.shields.io/badge/%E6%95%B4%E6%9C%BA%20%2F%20%E6%96%B9%E6%A1%88-%E5%92%A8%E8%AF%A2-0A7AFF?style=flat-square)](https://www.zkswe.com) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
 
-> **仓库**：<https://github.com/KWolve/PocketGame>
+> **GitHub 主仓** <https://github.com/KWolve/PocketGame> ｜ **Gitee 镜像** <https://gitee.com/Kwolve/PocketGame>
 
 ---
 
