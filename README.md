@@ -11,7 +11,7 @@
 ![智能家居](docs/screenshots/10-ha-home.png)
 ![消消乐](docs/screenshots/70-game-match3.png)
 
-> 更多截图见 [`docs/screenshots/`](docs/screenshots/)（45 张，全部是真机抓屏）。
+> 更多截图见 [`docs/screenshots/`](docs/screenshots/)（20 张，每个应用一张主界面，全部是真机抓屏）。
 
 ---
 
@@ -167,7 +167,7 @@ Git Bash 路径转换、固化后设备会自己重启导致分区挂不上）�
 | [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md) | 依赖获取 |
 | [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) | 二次开发指南 |
 | [`docs/README.md`](docs/README.md) | **全部 79 篇文档的索引** |
-| [`docs/screenshots/`](docs/screenshots/) | 45 张真机截图 |
+| [`docs/screenshots/`](docs/screenshots/) | 20 张真机截图（每个应用一张主界面） |
 | [`CHANGELOG.md`](CHANGELOG.md) | 逐版本开发日志（每个版本都带实测数据与结论） |
 
 ---
