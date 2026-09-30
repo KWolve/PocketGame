@@ -2,7 +2,7 @@
 
 [中文](README.md) ｜ **English**
 
-[![Hardware / Solution inquiry](https://img.shields.io/badge/Hardware%20%2F%20Solution-inquiry-0A7AFF?style=flat-square)](https://www.zkswe.com) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
 
 > **GitHub (primary)** <https://github.com/KWolve/PocketGame> ｜ **Gitee mirror** <https://gitee.com/Kwolve/PocketGame>
 
@@ -26,7 +26,7 @@ Playable out of the box, source fully open.**
 
 ---
 
-## 1. Why buy it
+## 1. Why choose it
 
 | # | Selling point | What it means for you |
 |---|---|---|
@@ -123,7 +123,7 @@ ITER=1 tools/upgrade_device.sh    # fast iteration: push to a temp dir only, no 
 
 ---
 
-## 5. Buy & contact
+## 5. Contact
 
 | Channel | Where |
 |---|---|
@@ -132,8 +132,8 @@ ITER=1 tools/upgrade_device.sh    # fast iteration: push to a temp dir only, no 
 | 📞 Phone | +86 755-23019045 |
 | 📍 Address | Room 1407, Tower A, Fenghuang Zhigu, Gongle Community, Xixiang Street, Bao'an District, Shenzhen, Guangdong, China |
 
-> **For hardware, solutions or customisation (rebrand, extra games, feature changes) please contact
-> the company directly.** This repository covers software and documentation only.
+> For solutions or customisation (rebrand, extra games, feature changes), please contact the company directly.
+> This repository covers software and documentation only.
 
 ---
 

@@ -2,7 +2,7 @@
 
 **中文** ｜ [English](README.en.md)
 
-[![整机 / 方案咨询](https://img.shields.io/badge/%E6%95%B4%E6%9C%BA%20%2F%20%E6%96%B9%E6%A1%88-%E5%92%A8%E8%AF%A2-0A7AFF?style=flat-square)](https://www.zkswe.com) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE) [![Built with FlyThings MCP](https://img.shields.io/badge/Built%20with-FlyThings%20MCP-0A7AFF?style=flat-square)](https://github.com/KWolve/FlyThingsMCP)
 
 > **GitHub 主仓** <https://github.com/KWolve/PocketGame> ｜ **Gitee 镜像** <https://gitee.com/Kwolve/PocketGame>
 
@@ -120,7 +120,7 @@ ITER=1 tools/upgrade_device.sh    # 快速迭代：只推临时目录，不刷�
 
 ---
 
-## 5. 购买与联系
+## 5. 联系我们
 
 | 渠道 | 入口 |
 |---|---|
@@ -129,7 +129,7 @@ ITER=1 tools/upgrade_device.sh    # 快速迭代：只推临时目录，不刷�
 | 📞 电话 | 0755-23019045 |
 | 📍 地址 | 广东省深圳市宝安区西乡街道共乐社区凤凰智谷 A 座 1407 室 |
 
-> **整机 / 方案 / 定制（换皮、加游戏、改功能）请走公司与电话联系人。**
+> 方案 / 定制（换皮、加游戏、改功能）等咨询，请走公司与电话联系人。
 > 本仓库只提供软件与文档。
 
 ---
