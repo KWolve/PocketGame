@@ -17,6 +17,10 @@ Game console, internet radio, network TV, LAN camera viewer, smart-home remote, 
 pomodoro timer, calculator, learnable Bluetooth/IR remote… **all in a single firmware image.
 Playable out of the box, source fully open.**
 
+> 🤖 **This firmware was built by AI**: the UIs, game logic and art for all 34 apps were produced by an
+> **AI assistant + FlyThings MCP**. Building on it is just as easy — **adding a game, adding an app page
+> or changing the UI is a "just ask" job** (see §6).
+
 ![Launcher · Games](docs/screenshots/01-launcher-games.png)
 ![Match-3](docs/screenshots/18-game-match3.png)
 ![Internet radio](docs/screenshots/20-radio.png)
@@ -36,6 +40,7 @@ Playable out of the box, source fully open.**
 | 4 | **Font library slimmed on purpose** | The font is subset from a system font down to "the characters the UI actually uses" — **a 10 MB-class font becomes a few hundred KB**, saving Flash cost directly |
 | 5 | **Actually playable, not a demo collage** | All 34 apps are verified on real hardware every release via a **touch-free automated QA channel** (push commands over a device file channel → capture screen → per-pixel compare), not "tap it once and eyeball it" |
 | 6 | **Built to be extended** | Pure source + **79 measured-on-hardware docs** (including a framework pitfalls list) + the official **FlyThings MCP**: adding games, adding app pages and changing UI all have documented paths and check tools |
+| 6 | **AI-developed — low effort, short cycle** | All 34 apps (including 21 games) were written by an **AI assistant + FlyThings MCP**. Add a game = **write one subclass + one row in the table**; add a page = **one html + one Logic.cc**; change the look = **edit html → run a script**. **No game-dev team to hire, no framework docs to digest first** |
 | 7 | **MIT licensed** | This project's code is MIT — modify, sell and redistribute without licensing talks (third-party components keep their own licenses, see below) |
 
 ---
@@ -137,11 +142,32 @@ ITER=1 tools/upgrade_device.sh    # fast iteration: push to a temp dir only, no 
 
 ---
 
-## 6. Secondary development: you'll want FlyThings MCP
+## 6. Secondary development: let the AI do it (FlyThings MCP)
 
-Development on this project (UI changes / new apps / build / debug / packaging / real-device screen
-capture / knowledge-base search) is powered by **FlyThings MCP** — plug it into your AI client
-(Trae / Cursor / Claude Desktop / Kimi…) and **one sentence drives the whole toolchain**.
+**This is the project's biggest hidden selling point: low effort, short cycle** — all 34 apps were built
+this way, and app #35 is just as easy.
+
+### One development round = 3 steps
+
+| Step | Who | What happens |
+|---|---|---|
+| ① **Describe** | you | "Add a Breakout variant where clearing three rows drops a speed power-up" |
+| ② **Do it** | AI | searches the built-in knowledge base + reads `docs/` (79 measured docs) → writes a `pg::Game` subclass and registers it → edits `ui/*.html` → runs `gen_ui.py` / `gen_font.py` |
+| ③ **Verify** | AI | `fun build` → package → flash the device → **capture the real screen + per-pixel compare** (`tools/grab.py` / `pginj` / `audit_resources.py`) → reports back |
+
+### What you get (the AI does all of it)
+
+| You say | The AI can |
+|---|---|
+| "add a game / a page" | generate the code + register it in `kAppTable` / sync the 6 registration points (listed in the docs) |
+| "how do I configure this control?" | **fully offline knowledge-base search** (local vectors + BM25, **no API key needed**), answers carry source and confidence |
+| "redo the icons / art" | run the generator scripts (`gen_icons.py` / `gen_game_art.py` / `pet3d`) to regenerate the whole art set |
+| "build it and push to the device" | `fun install` → `fun build` → `fun pack` → `tools/upgrade_device.sh` |
+| "is the change correct?" | real-device screen capture + per-pixel compare (zero-token verification) |
+
+### Onboarding takes one step
+
+Plug **FlyThings MCP** into your AI client (Trae / Cursor / Claude Desktop / Kimi…).
 Its **release build is maintained and published separately**; this repo only references it, never vendors it.
 
 | Purpose | Path |
