@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE flythings>
+
+<manifest platform="V85X">
+<dependencies enableOnPlatforms="V85X"><package id="easyui" version="^2.3.0"></package><package id="log" version="0.0.0"></package><package id="zkhardware" version="0.0.0"></package><package id="zknet" version="0.0.0"></package>        <package id="base-utility" version="^10.12.0"/>
+    <package id="civetweb" version="^1.16.1"/><package id="btstack" version="1.7.2"/>
+    <!-- ntp：本板没有 RTC，开机时间恒为 1970-01-01 —— 不校时的话 https 证书一律"尚未生效"
+         而握手失败。ntp 包负责联网后把系统时间拉正（见 PgNtp / ensureTimeSync）。 -->
+    <package id="ntp" version="^2.1.0"/>
+    <!-- zlib：ffmpeg 的 http(gzip)/mov 解封装依赖 uncompress/inflate* -->
+    <!-- ⚠️ ffmpeg 不进 Manifest：它的静态库带 4.5MB DWARF 调试信息，
+         已用 strip -g 剥过并按官方“本地库”约定放进 src/dependencies/lib/
+         （头文件在 src/dependencies/include/），工程自包含、可复现。 -->
+    <package id="z" version="^1.2.11"/></dependencies></manifest>

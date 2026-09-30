@@ -1,0 +1,54 @@
+# ============================================================
+#  PocketGame
+# ============================================================
+
+# ---- 构建产物（可由源码重新生成）----
+/.fun/
+/out/
+/Release/
+/build/
+*.o
+*.d
+*.a.d
+*.elf
+*.map
+
+# ---- 厂商 SDK 与第三方库：本仓库不附带，见 src/dependencies/README.md ----
+/src/dependencies/include/
+/src/dependencies/lib/
+/src/dependencies/lib-no-link/
+/src/dependencies/bin/
+/libawh264player.so
+libzkgui.so
+
+# ---- 工具链本体（专有，不含在本仓库）----
+/ui/fui.exe
+/fun.exe
+/tools/pginj
+/tools/pgkey
+/tools/nlprobe
+
+# ---- Python 缓存 ----
+__pycache__/
+*.py[cod]
+.pytype/
+
+# ---- 临时 / 调试产物 ----
+.shots/
+/tmp_*
+*.bak
+*.orig
+*.rej
+_*.log
+*.log
+
+# ---- 编辑器 ----
+.idea/
+*.swp
+*~
+.vscode/settings.json
+
+# ---- 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini

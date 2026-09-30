@@ -1,0 +1,177 @@
+<!--
+  PocketGame - WiFi 独立应用（wifi.ftu / 480x800 竖屏）
+  源稿: html2json.py -> ui/wifi.json -> fui pack -> ui/wifi.ftu
+  一个 Activity = 一个 ftu：wifiActivity（EventApp<Activity>("wifi")）加载 wifi.ftu。
+
+  页面组成（★ 2026-09-15 第二版：参考手机「设置 > 无线局域网」重排）：
+    1) WiFi 主页（根层控件，默认可见）
+       ① 顶栏：返回 + 居中标题 + 右上刷新图标
+       ② 总开关行卡：「无线局域网」+ 副标题（连接状态）+ 右侧 **滑轨开关**
+       ③ 小节标题「可用网络」
+       ④ 扫描列表：iOS 分组卡（首行上圆角/中间直角/末行下圆角 + 1px 分隔线）
+          每行 = SSID / 信道·加密 / 右侧锁图标 + 信号档位词
+       ⑤ 底部跳转行「信号探针 ›」（点整行进独立探针应用）
+    2) WinWifiPwd 密码弹窗（整屏普通 window，初始隐藏，点加密网络弹出）
+       —— 输入框是**原生 ZKEditText**，点它由框架拉起**自定义 IME**
+       ⚠️ 弹窗控件必须落在 y < 424：下半屏是键盘的地盘。
+
+  ★ 开关为什么是"图"而不是文字按钮（本版核心改动）：
+    老版是一个 108x36 的方块，选中变绿、文字写「开/关」—— 那是"按钮"不是"开关"。
+    新版给原生 ZKCheckBox 挂两态图（data-pic 未选中 / data-pic2 选中，见 html2json 的
+    checkbox 分支），造型是 iOS 的 UISwitch 滑轨，框架自己按 checked 切图，
+    点按判定与回调逻辑一行都不用改。图由 tools/ios_theme.py 的 gen_switch() 生成，
+    **图尺寸 == 控件盒（72x44）**，不拉伸。
+
+  ★ 列表为什么是四张行底图：iOS 分组列表是"一整张卡 + 行分隔线"，而 listview 的
+    item 模板只有一份。所以出 ios_row_top/mid/bot/solo 四张角图，由 wifiLogic 在
+    obtainListItemData 里按 index 切 visible（首/中/末/独）。分隔线画在底图里
+    （subItem 不认 data-bg，只认 data-bgpic）。见 tools/ios_theme.py 的 gen_row_cards()。
+
+  ★ 2026-09-15：原「信号探针页(WinProbe)」已**提升为独立应用**（ui/probe.html ->
+     probe.ftu -> probeActivity，逻辑 probeLogic.cc）。本页底部那个入口行改成
+     openActivity 跳过去，本页不再自带探针窗口。
+
+  ★ 2026-09-14 UI 改版：iOS 深色令牌（tools/ios_theme.py 为唯一真值）。
+     CardWifiSwitch 标了 data-round="panel" → gen_ui 会给它挂圆角背景图。
+  ⚠️ 本文件只给工具读：看效果请开 wifi.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== ① 顶栏 ==================== -->
+  <div class="text" data-caption="BarWifiTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+  <div class="btn" data-caption="BtnWifiBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+  <!-- ⚠️⚠️ 标题的盒**不能是整屏宽**（2026-09-16 实测血案）：
+       原来写 data-x="0" data-w="480"，横跨整个顶栏。按"后声明 = 更上层"的规则，
+       它盖在**先声明**的 BtnWifiBack 之上 —— 于是**返回按钮点不动**，
+       而同容器的 BtnRescan（声明在标题之后、在标题之上）却正常。
+       ★ `touchable=false` 只让它"不响应触摸"，**并不让它把命中区让出去**
+         （与"整屏 SysApp 浮层不吃穿透"是同一机制）⇒ **纯装饰控件也必须把盒缩到不压别人**。
+       现在 x=60 w=360（中心仍是 240，居中效果不变），两侧给两个按钮各留出空间。 -->
+  <div class="text" data-caption="TextWifiTitle" data-x="60" data-y="4" data-w="360" data-h="36"
+       data-fs="22" data-color="#F2F2F7" data-align="center">无线局域网</div>
+  <!-- 右上刷新（原底部大按钮搬上来，符合"手机设置右上角才有动作"的观感） -->
+  <div class="btn" data-caption="BtnRescan" data-icon="refresh" data-x="428" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+
+  <!-- ==================== ② 总开关行卡 ==================== -->
+  <div class="text" data-caption="CardWifiSwitch" data-round="panel" data-x="16" data-y="98" data-w="448" data-h="88"></div>
+  <!-- ★ 2026-09-16 第二版：开关卡改成**三行**排版（标题 / 状态+SSID / IP）。
+       为什么：原来 IP 和状态行**并列**在 y=122 —— IP 盒是 x=280..432，而滑轨开关在
+       x=376..448 ⇒ **右侧 56px 被开关压住**（用户原话"被开关按键覆盖到了"）。
+       现在 IP 单独占第三行、左对齐，和上面两行同一个左边距（x=32）。
+       ⚠️ 三行的宽度统一 328（= x 32..360）：**必须在 x<376 结束**，否则又会被开关盖住。
+       垂直：三行 84..156，卡片 76..164 ⇒ 上下各留 8，视觉居中。 -->
+  <div class="text" data-caption="TextWifiSwitchLabel" data-x="32" data-y="106" data-w="328" data-h="28"
+       data-fs="22" data-color="#F2F2F7" data-align="left">无线局域网</div>
+  <div class="text" data-caption="TextWifiState" data-x="32" data-y="114" data-w="328" data-h="20"
+       data-fs="13" data-color="#9A9AA0" data-align="left">已关闭</div>
+  <div class="text" data-caption="TextWifiIp" data-x="32" data-y="136" data-w="328" data-h="20"
+       data-fs="13" data-color="#30D158" data-align="left"></div>
+  <!-- 滑轨开关：两态位图（未选中=灰轨+钮靠左 / 选中=绿轨+钮靠右），图标区 == 整个控件盒 -->
+  <div class="checkbox" data-caption="CbWifiOn" data-x="376" data-y="98" data-w="72" data-h="44"
+       data-icon-w="72" data-icon-h="44"
+       data-pic="switch_off.png" data-pic2="switch_on.png"></div>
+
+  <!-- ==================== ③ 列表小节标题 ==================== -->
+  <div class="text" data-caption="TextWifiListLabel" data-x="32" data-y="178" data-w="240" data-h="24"
+       data-fs="14" data-color="#9A9AA0" data-align="left">可用网络</div>
+
+  <!-- ==================== ④ 扫描列表（iOS 分组卡） ====================
+       ⚠️ 行高 **88** 不是随便写的：listview 的 item 高 = (控件高 440 - 行距 0×(rows-1)) / rows(5)
+          = 88，而四张行底图（ios_row_*.png）的高也必须是 88 —— 对不上每行底部会漏黑缝。
+       ⚠️ 四张行底图叠在同一位置，逻辑层按 index 只显示一张（首/中/末/独）；
+          首帧由 gen_ui.py 只留 RowCardMid 可见（见 HIDDEN_CONTROLS）。
+       ⚠️ rowSpacing=0：相邻行紧贴，才连成"一整组卡"。 -->
+  <div class="list" data-caption="ListWifiAp" data-x="16" data-y="232" data-w="448" data-h="418"
+       data-cols="1" data-rows="5" data-row-spacing="0" data-scrollbar="1"
+       data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+    <div class="item">
+      <div class="btn" data-caption="RowCardTop" data-x="0" data-y="0" data-w="448" data-h="88" data-bgpic="ios_row_top.png"></div>
+      <div class="btn" data-caption="RowCardMid" data-x="0" data-y="0" data-w="448" data-h="88" data-bgpic="ios_row_mid.png"></div>
+      <div class="btn" data-caption="RowCardBot" data-x="0" data-y="0" data-w="448" data-h="88" data-bgpic="ios_row_bot.png"></div>
+      <div class="btn" data-caption="RowCardSolo" data-x="0" data-y="0" data-w="448" data-h="88" data-bgpic="ios_row_solo.png"></div>
+      <div class="text" data-caption="SubApSsid" data-x="16" data-y="2" data-w="300" data-h="32" data-fs="20" data-color="#F2F2F7" data-align="left"></div>
+      <div class="text" data-caption="SubApInfo" data-x="16" data-y="50" data-w="300" data-h="22" data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+      <!-- 行右侧「状态簇」：加密锁 + 信号强度弧线（2026-09-15：从文字/细线框改成图形）
+           ⚠️ 四档信号图**叠在同一位置**，逻辑层按 rssi 只显示一张；首帧由 gen_ui.py 只留
+              SubApSig3 可见（见 HIDDEN_CONTROLS）——与行底图同一手法。
+           ⚠️ 图尺寸 28x28 == 控件尺寸（非九宫格，check_stretch.py 会查）。
+           ⚠️⚠️ **x 坐标写的是"设计位置 - 16"**：真机实测（标定法，2026-09-15）——
+              listview 的 subItem 在渲染 backgroundPic 时会**水平多加 16px 左缩进**
+              （竖直方向不加，尺寸 1:1）。所以锁写 350 → 实际落在 366；信号写 388 →
+              实际落在 404。改这两个数字前先读这段，否则会整体右移 16px 压到行边缘。 -->
+      <div class="icon" data-caption="SubApLock" data-bgpic="lock.png" data-x="350" data-y="30" data-w="28" data-h="28"></div>
+      <div class="icon" data-caption="SubApSig3" data-bgpic="sig_3.png" data-x="388" data-y="30" data-w="28" data-h="28"></div>
+      <div class="icon" data-caption="SubApSig2" data-bgpic="sig_2.png" data-x="388" data-y="30" data-w="28" data-h="28"></div>
+      <div class="icon" data-caption="SubApSig1" data-bgpic="sig_1.png" data-x="388" data-y="30" data-w="28" data-h="28"></div>
+      <div class="icon" data-caption="SubApSig0" data-bgpic="sig_0.png" data-x="388" data-y="30" data-w="28" data-h="28"></div>
+    </div>
+  </div>
+
+  <!-- ==================== ⑤ 底部跳转行：信号探针 ====================
+       iOS 的"分组列表尾部入口行"观感：整行可点，左图标 + 文案 + 右箭头。
+       ⚠️⚠️ **必须拆成三层，声明顺序不能动**（2026-09-16 与「返回图标不可用」一并查出的血案）：
+         框架按「**后声明 = 更上层**」做命中测试，而后声明的控件**即使 touchable=false
+         也照样占住命中区**（只让自己不响应、不让给下层）—— 与"整屏 SysApp 浮层不吃穿透"
+         是同一机制。本行原来是「有底图的 BtnProbe + 3 个声明在它之后的装饰」⇒ **整行点不动**
+         （BtnProbe 的回调带了 LOGD，实测点行中心**零日志**，而刷新按钮正常）。
+       ★ 三层：
+           ① BtnProbeBg  带 ios_panel.9.png 底图（纯装饰 → data-untouchable="1"），声明第 1
+           ② 三个装饰     图标 / 文案 / 箭头，声明第 2~4（icon/text 默认 touchable=false）
+           ③ BtnProbe    **无图、无文字、无 data-bg** ⇒ html2json 不设 bgColorTab（透明），
+                         声明**最后** ⇒ 在最上层，吃到点击
+         ⚠️ ③ 不能给它 data-bgpic / 文字，否则会被填底色盖住下面两层。
+         ⚠️ 加/挪本行任何子控件前，先数清它落在第几层、会不会压住 BtnProbe。 -->
+  <div class="btn" data-caption="BtnProbeBg" data-bgpic="ios_panel.9.png"
+       data-x="16" data-y="690" data-w="448" data-h="72" data-untouchable="1"></div>
+  <div class="icon" data-caption="ImgProbeIcon" data-icon="search" data-x="32" data-y="704" data-w="44" data-h="44" data-color="#FF9F0A"></div>
+  <div class="text" data-caption="TextProbeLabel" data-x="92" data-y="704" data-w="240" data-h="44"
+       data-fs="18" data-color="#F2F2F7" data-align="left">信号探针</div>
+  <div class="icon" data-caption="ImgProbeArrow" data-icon="forward" data-x="404" data-y="710" data-w="32" data-h="32" data-color="#636366"></div>
+  <div class="btn" data-caption="BtnProbe" data-x="16" data-y="690" data-w="448" data-h="72"></div>
+
+
+  <!-- ==================== 密码弹窗（全屏 window，最后书写 = 最上层）====================
+       布局约束：**键盘在屏幕下半部（y ≥ 424）**，由自定义 IME 应用
+       （src/logic/imeApp.cc + ui/ime.html）绘制。所以这个弹窗的所有可交互控件
+       都必须落在 y < 424 的上半屏，否则会被键盘盖住点不到。
+
+       ⚠️ 为什么是普通 window 而不是 modal：**modal 是输入黑洞**（历史坑）。
+       ⚠️ 输入框是**原生 ZKEditText**（div.input）：点它 → 系统调起 IME →
+          我们注册的 imeApp（APP_TYPE_SYS_IME）接管 —— 不需要任何代码去 showIME。
+       ⚠️ 弹窗的四块可交互区域（EditPwd / 取消 / 连接）的坐标同时写在
+          wifiLogic.cc 的 onwifiActivityTouchEvent 里当"放行白名单"：窗口
+          touchable=false，触摸会穿透到下层列表（可能误连别的网络），所以空白处要吞掉。
+  -->
+  <div class="window" data-caption="WinWifiPwd" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- ★ 2026-09-15 第二版：从"散在全黑底上的控件"改成**一张居中弹窗卡片**
+         （手机连 WiFi 的弹窗就是长这样）。所有内容都收在卡片里、靠内边距对齐。
+         ⚠️ 卡片底 410 < 424：下半屏是键盘（IME SysApp）的地盘，压过去就点不到了。 -->
+    <div class="text" data-caption="CardPwd" data-round="panel" data-x="40" data-y="150" data-w="400" data-h="260"></div>
+    <div class="text" data-caption="TextPwdTitle" data-x="60" data-y="170" data-w="360" data-h="32"
+         data-fs="20" data-color="#F2F2F7" data-align="center">输入密码</div>
+    <div class="text" data-caption="TextPwdSsid" data-x="60" data-y="204" data-w="360" data-h="24"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+    <!-- 密码输入框（原生 ZKEditText，掩码 + 提示文案；点它拉起我们的 IME）
+         ⚠️ 圆角用 data-round="panel2c"（#2C2C2E **烘卡片底**的那张）—— 它是"坐在弹窗卡片里的
+            次级面板"，用普通的 panel2（烘黑底）四角会露出一圈黑。
+         ★★ 这里的 data-bg 必须写 **#1C1C1E**（= 那张图烘的 SURFACE 底），**不能省**：
+            框架画 .9.png 时会把图的 1px marker 边整圈跳过不画，图内容被安置在
+            "控件内缩 1px"的位置 ⇒ **控件最外那 1px 露的是控件自己的底色**。
+            所以规则是「最外 1px 露出的颜色 == 图烘的底色」，纹理才接得上：
+              · 其它圆角卡片坐在**纯黑页面**上、图烘的也是黑 ⇒ 不写 data-bg 正好（露出黑，无缝）；
+              · 而 div.input 有**引擎默认白底**（bgColorTab=0xFFFFFF）⇒ 不写就会露一圈**白框**。
+            实测（2026-09-16 标定图法）确认了这个 1px 映射。 -->
+    <div class="input" data-caption="EditPwd" data-round="panel2c" data-bg="#1C1C1E" data-x="60" data-y="238" data-w="360" data-h="60"
+         data-password="1" data-hint="WiFi 密码" data-fs="20" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextPwdMsg" data-x="60" data-y="302" data-w="360" data-h="24"
+         data-fs="13" data-color="#FF453A" data-align="center"></div>
+    <div class="btn" data-caption="BtnPwdCancel" data-x="60" data-y="336" data-w="170" data-h="56"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">取消</div>
+    <div class="btn" data-caption="BtnPwdOk" data-x="250" data-y="336" data-w="170" data-h="56"
+         data-bg="#30D158" data-fs="17" data-color="#000000">连接</div>
+  </div>
+
+  <!-- ==================== 音量 OSD（本 ftu 的悬浮面板：wifi 页在前台时音量键也要有反馈） ==================== -->
+  <!-- ★ 音量 OSD 已收归全局状态栏（见 ui/statusbar.html）——本页不再自带一份，
+       否则会在 WiFi 页同时弹出两个面板。 -->
+</div>

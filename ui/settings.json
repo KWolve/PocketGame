@@ -1,0 +1,272 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "BarSet",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 8,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 689407
+    }
+  },
+  "textview__2": {
+    "alignment": 37,
+    "caption": "TextSetTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50002,
+    "position": {
+      "height": 44,
+      "left": 0,
+      "top": 8,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "系统设置"
+  },
+  "button__3": {
+    "alignment": 37,
+    "caption": "BtnSetBack",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20001,
+    "position": {
+      "height": 36,
+      "left": 424,
+      "top": 54,
+      "width": 48
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 20,
+    "text": "返回",
+    "picTab": {}
+  },
+  "button__4": {
+    "alignment": 36,
+    "caption": "BtnSetSound",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20002,
+    "position": {
+      "height": 72,
+      "left": 16,
+      "top": 98,
+      "width": 448
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "fontSize": 19,
+    "text": "静音",
+    "picTab": {}
+  },
+  "textview__5": {
+    "alignment": 38,
+    "caption": "TextSetSoundVal",
+    "colorTab": {
+      "color0": 6607615
+    },
+    "fontSize": 18,
+    "id": 50003,
+    "position": {
+      "height": 32,
+      "left": 300,
+      "top": 118,
+      "width": 148
+    },
+    "touchable": false,
+    "text": "关"
+  },
+  "button__6": {
+    "alignment": 36,
+    "caption": "BtnSetWifi",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20003,
+    "position": {
+      "height": 72,
+      "left": 16,
+      "top": 182,
+      "width": 320
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "fontSize": 19,
+    "text": "WiFi",
+    "picTab": {}
+  },
+  "textview__7": {
+    "alignment": 38,
+    "caption": "TextSetWifiVal",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50004,
+    "position": {
+      "height": 32,
+      "left": 176,
+      "top": 202,
+      "width": 148
+    },
+    "touchable": false,
+    "text": "未连接"
+  },
+  "button__8": {
+    "alignment": 37,
+    "caption": "BtnSetWifiPage",
+    "colorTab": {
+      "color0": 16777215
+    },
+    "id": 20004,
+    "position": {
+      "height": 72,
+      "left": 348,
+      "top": 182,
+      "width": 116
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 689407
+    },
+    "fontSize": 16,
+    "text": "选网",
+    "picTab": {}
+  },
+  "textview__9": {
+    "alignment": 36,
+    "caption": "TextSetVolVal",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50005,
+    "position": {
+      "height": 28,
+      "left": 16,
+      "top": 268,
+      "width": 448
+    },
+    "touchable": false,
+    "text": "音量 50%"
+  },
+  "seekbar__10": {
+    "backgroundColor": -1,
+    "caption": "BarSetVol",
+    "defProgress": 50,
+    "id": 91001,
+    "max": 100,
+    "orientation": 0,
+    "position": {
+      "height": 34,
+      "left": 16,
+      "top": 296,
+      "width": 448
+    },
+    "touchable": true,
+    "visible": true,
+    "backgroundPic": "images/vol_track_448.png",
+    "progressPic": "images/vol_fill_448.png",
+    "thumb": {
+      "size": {
+        "width": 0,
+        "height": 0
+      }
+    }
+  },
+  "textview__11": {
+    "alignment": 36,
+    "caption": "TextSetBrightVal",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50006,
+    "position": {
+      "height": 28,
+      "left": 16,
+      "top": 376,
+      "width": 448
+    },
+    "touchable": false,
+    "text": "背光 100%"
+  },
+  "seekbar__12": {
+    "backgroundColor": -1,
+    "caption": "BarSetBright",
+    "defProgress": 100,
+    "id": 91002,
+    "max": 100,
+    "orientation": 0,
+    "position": {
+      "height": 34,
+      "left": 16,
+      "top": 404,
+      "width": 448
+    },
+    "touchable": true,
+    "visible": true,
+    "backgroundPic": "images/vol_track_448.png",
+    "progressPic": "images/vol_fill_448.png",
+    "thumb": {
+      "size": {
+        "width": 0,
+        "height": 0
+      }
+    }
+  },
+  "textview__13": {
+    "alignment": 37,
+    "caption": "TextSetHint",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50007,
+    "position": {
+      "height": 60,
+      "left": 16,
+      "top": 680,
+      "width": 448
+    },
+    "touchable": false,
+    "text": "音量/背光 拖动进度条调节 · 自动保存 · 长按暂停键返回列表"
+  }
+}

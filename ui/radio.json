@@ -1,0 +1,1363 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": -1,
+    "caption": "WinRadio",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "textview__2": {
+      "alignment": 36,
+      "caption": "BarRadioTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50001,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__3": {
+      "alignment": 37,
+      "caption": "BtnRadioBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20001,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__4": {
+      "alignment": 37,
+      "caption": "TextRadioTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50002,
+      "position": {
+        "height": 36,
+        "left": 60,
+        "top": 4,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "网络收音机"
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnRadioReloadTop",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 36,
+        "left": 428,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_44x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__6": {
+      "alignment": 36,
+      "caption": "TextRadioStatus",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50003,
+      "position": {
+        "height": 24,
+        "left": 16,
+        "top": 94,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "正在加载电台表..."
+    },
+    "listview__7": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListRadio",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 7,
+      "position": {
+        "height": 576,
+        "left": 12,
+        "top": 122,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 82,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubStaName",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 20,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 34,
+              "left": 14,
+              "top": 6,
+              "width": 316
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubStaInfo",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 14,
+              "top": 42,
+              "width": 420
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubStaNote",
+            "colorTab": {
+              "color0": 3199320
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 334,
+              "top": 8,
+              "width": 100
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 76
+        }
+      }
+    },
+    "button__8": {
+      "alignment": 37,
+      "caption": "BtnRadioReload",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20003,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 706,
+        "width": 220
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "重新加载电台表",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__9": {
+      "alignment": 37,
+      "caption": "BtnRadioEdit",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20004,
+      "position": {
+        "height": 48,
+        "left": 248,
+        "top": 706,
+        "width": 220
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "电台表路径",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__10": {
+      "alignment": 37,
+      "caption": "TextRadioKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50004,
+      "position": {
+        "height": 42,
+        "left": 0,
+        "top": 758,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "点电台即播放 · 长按 B 返回"
+    }
+  },
+  "window__11": {
+    "backgroundColor": -1,
+    "caption": "WinRadioPlay",
+    "hideTimeOut": -1,
+    "id": 110002,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "button__12": {
+      "alignment": 37,
+      "caption": "BtnRadioPlayBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20005,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 56,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__13": {
+      "alignment": 36,
+      "caption": "TextRadioPlayState",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50005,
+      "position": {
+        "height": 36,
+        "left": 64,
+        "top": 56,
+        "width": 228
+      },
+      "touchable": false
+    },
+    "button__14": {
+      "alignment": 37,
+      "caption": "TabVuOn",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20006,
+      "position": {
+        "height": 36,
+        "left": 300,
+        "top": 58,
+        "width": 84
+      },
+      "touchable": true,
+      "backgroundPic": "images/vu_tab_meter_on_84x36.png",
+      "picTab": {},
+      "text": ""
+    },
+    "button__15": {
+      "alignment": 37,
+      "caption": "TabVuOff",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20007,
+      "position": {
+        "height": 36,
+        "left": 300,
+        "top": 58,
+        "width": 84
+      },
+      "touchable": true,
+      "backgroundPic": "images/vu_tab_meter_off_84x36.png",
+      "picTab": {},
+      "text": "",
+      "visible": false
+    },
+    "button__16": {
+      "alignment": 37,
+      "caption": "TabSpecOn",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20008,
+      "position": {
+        "height": 36,
+        "left": 388,
+        "top": 58,
+        "width": 84
+      },
+      "touchable": true,
+      "backgroundPic": "images/vu_tab_spec_on_84x36.png",
+      "picTab": {},
+      "text": "",
+      "visible": false
+    },
+    "button__17": {
+      "alignment": 37,
+      "caption": "TabSpecOff",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20009,
+      "position": {
+        "height": 36,
+        "left": 388,
+        "top": 58,
+        "width": 84
+      },
+      "touchable": true,
+      "backgroundPic": "images/vu_tab_spec_off_84x36.png",
+      "picTab": {},
+      "text": ""
+    },
+    "textview__18": {
+      "alignment": 36,
+      "caption": "RpDisc",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50006,
+      "position": {
+        "height": 240,
+        "left": 120,
+        "top": 100,
+        "width": 240
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_disc_240.png"
+    },
+    "textview__19": {
+      "alignment": 37,
+      "caption": "TextRadioPlayName",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 30,
+      "id": 50007,
+      "position": {
+        "height": 52,
+        "left": 16,
+        "top": 348,
+        "width": 448
+      },
+      "touchable": false
+    },
+    "textview__20": {
+      "alignment": 37,
+      "caption": "TextRadioPlayInfo",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50008,
+      "position": {
+        "height": 24,
+        "left": 16,
+        "top": 400,
+        "width": 448
+      },
+      "touchable": false
+    },
+    "textview__21": {
+      "alignment": 37,
+      "caption": "TextRadioPlayTime",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 22,
+      "id": 50009,
+      "position": {
+        "height": 30,
+        "left": 16,
+        "top": 424,
+        "width": 448
+      },
+      "touchable": false
+    },
+    "textview__22": {
+      "alignment": 36,
+      "caption": "RpLevelBg",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50010,
+      "position": {
+        "height": 8,
+        "left": 80,
+        "top": 454,
+        "width": 320
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "visible": false
+    },
+    "textview__23": {
+      "alignment": 36,
+      "caption": "RpLevel",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50011,
+      "position": {
+        "height": 8,
+        "left": 80,
+        "top": 454,
+        "width": 320
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_level_320x8.png",
+      "visible": false
+    },
+    "textview__24": {
+      "alignment": 36,
+      "caption": "EqB00",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50012,
+      "position": {
+        "height": 132,
+        "left": 2,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__25": {
+      "alignment": 36,
+      "caption": "EqB01",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50013,
+      "position": {
+        "height": 132,
+        "left": 18,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__26": {
+      "alignment": 36,
+      "caption": "EqB02",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50014,
+      "position": {
+        "height": 132,
+        "left": 34,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__27": {
+      "alignment": 36,
+      "caption": "EqB03",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50015,
+      "position": {
+        "height": 132,
+        "left": 50,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__28": {
+      "alignment": 36,
+      "caption": "EqB04",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50016,
+      "position": {
+        "height": 132,
+        "left": 66,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__29": {
+      "alignment": 36,
+      "caption": "EqB05",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50017,
+      "position": {
+        "height": 132,
+        "left": 82,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__30": {
+      "alignment": 36,
+      "caption": "EqB06",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50018,
+      "position": {
+        "height": 132,
+        "left": 98,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__31": {
+      "alignment": 36,
+      "caption": "EqB07",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50019,
+      "position": {
+        "height": 132,
+        "left": 114,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__32": {
+      "alignment": 36,
+      "caption": "EqB08",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50020,
+      "position": {
+        "height": 132,
+        "left": 130,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__33": {
+      "alignment": 36,
+      "caption": "EqB09",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50021,
+      "position": {
+        "height": 132,
+        "left": 146,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__34": {
+      "alignment": 36,
+      "caption": "EqB10",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50022,
+      "position": {
+        "height": 132,
+        "left": 162,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__35": {
+      "alignment": 36,
+      "caption": "EqB11",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50023,
+      "position": {
+        "height": 132,
+        "left": 178,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__36": {
+      "alignment": 36,
+      "caption": "EqB12",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50024,
+      "position": {
+        "height": 132,
+        "left": 194,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__37": {
+      "alignment": 36,
+      "caption": "EqB13",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50025,
+      "position": {
+        "height": 132,
+        "left": 210,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__38": {
+      "alignment": 36,
+      "caption": "EqB14",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50026,
+      "position": {
+        "height": 132,
+        "left": 226,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__39": {
+      "alignment": 36,
+      "caption": "EqB15",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50027,
+      "position": {
+        "height": 132,
+        "left": 242,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__40": {
+      "alignment": 36,
+      "caption": "EqB16",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50028,
+      "position": {
+        "height": 132,
+        "left": 258,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__41": {
+      "alignment": 36,
+      "caption": "EqB17",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50029,
+      "position": {
+        "height": 132,
+        "left": 274,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__42": {
+      "alignment": 36,
+      "caption": "EqB18",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50030,
+      "position": {
+        "height": 132,
+        "left": 290,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__43": {
+      "alignment": 36,
+      "caption": "EqB19",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50031,
+      "position": {
+        "height": 132,
+        "left": 306,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__44": {
+      "alignment": 36,
+      "caption": "EqB20",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50032,
+      "position": {
+        "height": 132,
+        "left": 322,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__45": {
+      "alignment": 36,
+      "caption": "EqB21",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50033,
+      "position": {
+        "height": 132,
+        "left": 338,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__46": {
+      "alignment": 36,
+      "caption": "EqB22",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50034,
+      "position": {
+        "height": 132,
+        "left": 354,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__47": {
+      "alignment": 36,
+      "caption": "EqB23",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50035,
+      "position": {
+        "height": 132,
+        "left": 370,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__48": {
+      "alignment": 36,
+      "caption": "EqB24",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50036,
+      "position": {
+        "height": 132,
+        "left": 386,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__49": {
+      "alignment": 36,
+      "caption": "EqB25",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50037,
+      "position": {
+        "height": 132,
+        "left": 402,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__50": {
+      "alignment": 36,
+      "caption": "EqB26",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50038,
+      "position": {
+        "height": 132,
+        "left": 418,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__51": {
+      "alignment": 36,
+      "caption": "EqB27",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50039,
+      "position": {
+        "height": 132,
+        "left": 434,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__52": {
+      "alignment": 36,
+      "caption": "EqB28",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50040,
+      "position": {
+        "height": 132,
+        "left": 450,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__53": {
+      "alignment": 36,
+      "caption": "EqB29",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50041,
+      "position": {
+        "height": 132,
+        "left": 466,
+        "top": 464,
+        "width": 12
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_bar_12x132.png",
+      "visible": false
+    },
+    "textview__54": {
+      "alignment": 36,
+      "caption": "RpFloor",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50042,
+      "position": {
+        "height": 12,
+        "left": 12,
+        "top": 596,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/rp_floor_456x12.png",
+      "visible": false
+    },
+    "textview__55": {
+      "alignment": 36,
+      "caption": "VuFaceL",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50043,
+      "position": {
+        "height": 128,
+        "left": 8,
+        "top": 468,
+        "width": 226
+      },
+      "touchable": false,
+      "backgroundPic": "images/vu_face_l_226x128.png"
+    },
+    "textview__56": {
+      "alignment": 36,
+      "caption": "VuFaceR",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50044,
+      "position": {
+        "height": 128,
+        "left": 246,
+        "top": 468,
+        "width": 226
+      },
+      "touchable": false,
+      "backgroundPic": "images/vu_face_r_226x128.png"
+    },
+    "pointer__57": {
+      "backgroundColor": -1,
+      "caption": "VuNeedleL",
+      "id": 90001,
+      "rotateSpeed": 0,
+      "startAngle": 0,
+      "position": {
+        "height": 234,
+        "left": 8,
+        "top": 493,
+        "width": 234
+      },
+      "touchable": false,
+      "visible": true,
+      "pointerPic": "images/vu_needle_234.png",
+      "pointerSize": {
+        "width": 234,
+        "height": 234
+      },
+      "clockwise": true,
+      "animatable": false,
+      "fixedPoint": {
+        "x": 117,
+        "y": 117
+      },
+      "rotationPoint": {
+        "x": 117,
+        "y": 117
+      }
+    },
+    "pointer__58": {
+      "backgroundColor": -1,
+      "caption": "VuNeedleR",
+      "id": 90002,
+      "rotateSpeed": 0,
+      "startAngle": 0,
+      "position": {
+        "height": 234,
+        "left": 246,
+        "top": 493,
+        "width": 234
+      },
+      "touchable": false,
+      "visible": true,
+      "pointerPic": "images/vu_needle_234.png",
+      "pointerSize": {
+        "width": 234,
+        "height": 234
+      },
+      "clockwise": true,
+      "animatable": false,
+      "fixedPoint": {
+        "x": 117,
+        "y": 117
+      },
+      "rotationPoint": {
+        "x": 117,
+        "y": 117
+      }
+    },
+    "textview__59": {
+      "alignment": 37,
+      "caption": "TextVuDbL",
+      "colorTab": {
+        "color0": 16766584
+      },
+      "fontSize": 14,
+      "id": 50045,
+      "position": {
+        "height": 21,
+        "left": 76,
+        "top": 597,
+        "width": 90
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 920844
+      }
+    },
+    "textview__60": {
+      "alignment": 37,
+      "caption": "TextVuDbR",
+      "colorTab": {
+        "color0": 16766584
+      },
+      "fontSize": 14,
+      "id": 50046,
+      "position": {
+        "height": 21,
+        "left": 314,
+        "top": 597,
+        "width": 90
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 920844
+      }
+    },
+    "button__61": {
+      "alignment": 37,
+      "caption": "BtnRadioPrev",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20010,
+      "position": {
+        "height": 104,
+        "left": 48,
+        "top": 620,
+        "width": 104
+      },
+      "touchable": true,
+      "backgroundPic": "images/rp_btn_prev_104.png",
+      "picTab": {},
+      "text": ""
+    },
+    "button__62": {
+      "alignment": 37,
+      "caption": "BtnRadioStop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20011,
+      "position": {
+        "height": 104,
+        "left": 188,
+        "top": 620,
+        "width": 104
+      },
+      "touchable": true,
+      "backgroundPic": "images/rp_btn_stop_104.png",
+      "picTab": {},
+      "text": ""
+    },
+    "button__63": {
+      "alignment": 37,
+      "caption": "BtnRadioNext",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20012,
+      "position": {
+        "height": 104,
+        "left": 328,
+        "top": 620,
+        "width": 104
+      },
+      "touchable": true,
+      "backgroundPic": "images/rp_btn_next_104.png",
+      "picTab": {},
+      "text": ""
+    },
+    "textview__64": {
+      "alignment": 37,
+      "caption": "TextRadioVolHint",
+      "colorTab": {
+        "color0": 6513510
+      },
+      "fontSize": 12,
+      "id": 50047,
+      "position": {
+        "height": 24,
+        "left": 12,
+        "top": 728,
+        "width": 456
+      },
+      "touchable": false,
+      "text": "音量键调音量 · 长按 B 返回列表"
+    },
+    "textview__65": {
+      "alignment": 37,
+      "caption": "TextRadioPlayKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50048,
+      "position": {
+        "height": 42,
+        "left": 0,
+        "top": 758,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      }
+    }
+  }
+}

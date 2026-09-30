@@ -1,0 +1,376 @@
+<!--
+  PocketGame - 掌上游戏机 UI 原型 (V851s / 480x800 竖屏 · iOS 深色风格)
+  本文件是 UI 布局的源稿：html2json.py -> ui/main.json -> fui pack -> ui/main.ftu
+
+  ★ 2026-09-14 UI 改版：整体换成「iOS 深色」视觉语言（圆角 + squircle 图标 + 分段控件）。
+    设计令牌的**唯一真值**在 tools/ios_theme.py（色值 / 圆角 / 字号）；本文件只引用，不发明。
+    圆角怎么来的：**HTML 里不写 data-pic**，靠"按钮底色 → 九宫格资源"的自动映射（tools/gen_ui.py 的 inject_rounded）。
+
+  ⚠️ 两个标记（gen_ui.py 靠它们决定"谁上圆角"）：
+     data-noround="1"  —— 该按钮**运行时会被逻辑改底色**（tab 选中态 / 工具页按键 /
+                          开关 / 电池），不能挂静态两态图（setBackgroundColor 会把
+                          backgroundPic 清掉）。它们的圆角由 src/platform/PgSkin.h 在
+                          "设底色"的那一刻顺手挂上。
+     data-round="panel" —— 该窗口/面板要挂圆角背景图（**只有小面板/弹窗**，
+                          整屏页面窗口是页面底，不能圆角，否则屏幕四角被切掉）。
+
+  ⚠️ 请不要把这个文件当网页预览：布局靠 data-x/data-y/data-w/data-h/data-bg/data-fs
+     这类**自定义属性**描述，浏览器不认识这些属性。
+     看效果    ->  ui/main.preview.html      （由 main.json 生成，与设备同源）
+     拖控件微调 ->  ui/_edit/main.edit.html
+     改布局    ->  改本文件后跑 tools/gen_ui.py（不要直接改 main.json，会被覆盖）
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== 主界面：应用列表 ==================== -->
+  <!-- ⚠️ y 从 8 下移到 20：屏幕最上面 26px 被全局导航栏（navibar.ftu）常显占据，
+       标题墨迹原本在 y≈12..43 会被压掉上半 ⇒ 整体下移，现在墨迹 ≈24..55（完整可见），
+       与下面的分段控件（y=58 起）也不重叠。 -->
+  <!-- ★★ 2026-09-16：原来的「标题（TextTitle）」与「电池（BattShell/BattFill/BattBolt）」
+       **全部搬到全局导航栏**（ui/navibar.html / navibar.cc 的 refreshTitle/refreshBatt）——
+       用户需求：『状态栏显示不完整，直接把电池，页面 title 都放到状态栏这样子改动最小』。
+       ⚠️ 别再在这里加回来：导航栏是常显浮层，会把它盖成半截（这正是本次要解决的问题）。
+       ⚠️ logic 侧对应的 syncBatteryIcon()/tickBattery() 也已删除（控件指针不存在）。 -->
+  <!-- 电量条：初始图是"满格蓝"（40x20）。★ 运行时**按电量宽度换成对应宽度的图**
+       （batt_fill_<色>_<宽>.png，3 色 × 40 宽，由 tools/ios_theme.py 烘）——
+       不能只给一张满格图然后在运行时把控件改窄：那样框架会**缩放**图片，
+       圆角端被横向压扁 = 拉伸（用户 2026-09-15 明确要求不能有）。
+       ⚠️ 图尺寸必须 == 控件尺寸（40x20），tools/check_stretch.py 会检查。 -->
+
+  <!-- ★ 2026-09-16：原来的「音效 开/关」按钮**已删除** —— 用户要求把音效开关收进
+       系统设置（系统分类里的 slot 32，见 ui/settings.html）。主界面这一行现在只有
+       标题 + 电量；WiFi 连接状态由全局导航栏（ui/navibar.html）常显。 -->
+
+  <!-- ==================== 分段控件 tab（iOS segmented control） ====================
+       结构 = 一个容器 + 三个等宽分段：
+         BarSegTab  容器（圆角 14 的 #1C1C1E 底，**不可触摸**，纯装饰）
+         BtnTab0..2 三个分段；选中的那个由 logic 给底色（SURFACE3 胶囊），未选中透明
+       ⚠️ 三段是**动态底色**（选中态会变）⇒ 全部 data-noround，圆角由 setCtrlBg 挂。
+       几何：容器 16..464（448 宽），内缩 4 → 分段 141 宽、间隙 8，正好 3 段。 -->
+  <div class="btn" data-caption="BarSegTab" data-x="16" data-y="58" data-w="448" data-h="64"
+       data-untouchable="1" data-pic0="images/ios_seg.9.png" data-pic1="images/ios_seg.9.png"></div>
+  <div class="btn" data-caption="BtnTab0" data-x="20"  data-y="62" data-w="141" data-h="56"
+       data-noround="1" data-fs="16" data-color="#F2F2F7">游戏</div>
+  <div class="btn" data-caption="BtnTab1" data-x="169" data-y="62" data-w="141" data-h="56"
+       data-noround="1" data-fs="16" data-color="#9A9AA0">工具</div>
+  <div class="btn" data-caption="BtnTab2" data-x="318" data-y="62" data-w="141" data-h="56"
+       data-noround="1" data-fs="16" data-color="#9A9AA0">系统</div>
+
+  <!-- ==================== 应用列表 ====================
+       行高 104 =（列表高 560 - 4 个行距 10）/ 5 行。
+       （历史）第一版是"设置式列表"：每行一张圆角卡片（静态子控件 RowCard，九宫格图）
+      + 图标 + 标题 + 副标题 + 最高分。第二版改成桌面网格后**卡片层已删除**，
+      图标直接坐在纯黑页面底上。RowCard 这张图仍被 wifi / iptv 等列表页使用，别删。
+      -->
+  <div class="list" data-caption="ListGames" data-x="16" data-y="136" data-w="448" data-h="559"
+       data-cols="4" data-rows="5" data-row-spacing="6" data-scrollbar="0"
+       data-drag-max="0" data-edge-effect="1">
+    <div class="item">
+      <!-- ══ 整格点击区（**必须有**，2026-09-15 补） ══
+           网格里图标只有 72x72，格是 112x107 —— 名称和留白上**没有任何可点控件**。
+           列表版每行有一张 RowCard 盖满整行（点哪儿都响应），改网格时删掉了它，
+           于是"点名称/留白"完全没反应，用户会以为**主界面没有触摸**。
+           这里铺一张与格同尺寸的**纯黑按钮**：黑底上不可见、不做圆角图、不参与视觉，
+           只负责命中 —— 任何位置的点击都会走 onListItemClick_ListGames()。
+           ⚠️ 必须放在 item 子控件的**第一个**（DOM 顺序 = 从下往上画），
+              后画的图标/文字才盖在它上面；点图标命中的是图标按钮，同样走 item 点击。
+           ⚠️ 尺寸必须 == 格尺寸（112x107），否则点边缘会漏（tools/check_stretch.py 会查）。 -->
+      <div class="btn" data-caption="GridCard" data-x="0" data-y="0" data-w="112" data-h="107"
+           data-bgpic="grid_cell.png" data-noround="1"></div>
+      <!-- ══ 手机桌面式图标网格（4 列 x 5 行，格 112x107） ══
+           ★ 2026-09-14 第二版：原来是"设置式列表"（行卡片 + 图标 + 标题 + 副标题 + 最高分），
+             信息全但不像手机。改成桌面网格后，squircle 图标成为主角，页面只剩图标 + 名称。
+
+           3 条纪律（改动前先读）：
+             ① **不要行卡片底** —— 图标直接坐在纯黑页面底上才干净（列表时那层 RowCard 已去掉）。
+             ② 图标**必须 72x72**（= gen_icons.SIZE）。图尺寸 != 控件尺寸时框架自己缩放，
+                边缘立刻出锯齿（这是"图标发糊"的头号原因）。
+             ③ 24 个图标是**同位置重叠**的，运行时由 syncRowIcon() 按 slot 只显示一个
+                —— 坐标/doc 值必须完全一致，否则会出现"两个图标叠在一起"。
+               首帧全部隐藏，见 gen_ui.py 的 HIDDEN_CONTROLS。 -->
+      <div class="btn" data-caption="Icon0"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_0.png"></div>
+      <div class="btn" data-caption="Icon1"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_1.png"></div>
+      <div class="btn" data-caption="Icon2"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_2.png"></div>
+      <div class="btn" data-caption="Icon3"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_3.png"></div>
+      <div class="btn" data-caption="Icon4"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_4.png"></div>
+      <div class="btn" data-caption="Icon5"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_5.png"></div>
+      <div class="btn" data-caption="Icon6"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_6.png"></div>
+      <div class="btn" data-caption="Icon7"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_7.png"></div>
+      <div class="btn" data-caption="Icon8"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_8.png"></div>
+      <div class="btn" data-caption="Icon9"  data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_9.png"></div>
+      <div class="btn" data-caption="Icon10" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_10.png"></div>
+      <div class="btn" data-caption="Icon11" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_11.png"></div>
+      <div class="btn" data-caption="Icon12" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_12.png"></div>
+      <div class="btn" data-caption="Icon13" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_13.png"></div>
+      <div class="btn" data-caption="Icon14" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_14.png"></div>
+      <div class="btn" data-caption="Icon15" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_15.png"></div>
+      <div class="btn" data-caption="Icon16" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_16.png"></div>
+      <div class="btn" data-caption="Icon17" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_17.png"></div>
+      <div class="btn" data-caption="Icon18" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_18.png"></div>
+      <div class="btn" data-caption="Icon19" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_19.png"></div>
+      <div class="btn" data-caption="Icon20" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_20.png"></div>
+      <div class="btn" data-caption="Icon21" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_21.png"></div>
+      <!-- 2026-09-15 新增消消乐（slot 22）。⚠️ 坐标/doc 值必须与其他 Icon 完全一致
+           （同位置重叠、运行时只显示一个），图标尺寸仍须 72x72。 -->
+      <div class="btn" data-caption="Icon22" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_22.png"></div>
+      <!-- 2026-09-15 新增摇骰子（slot 23）。⚠️ 同上：坐标/doc 值必须与其他 Icon 完全一致。 -->
+      <div class="btn" data-caption="Icon23" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_23.png"></div>
+      <!-- 2026-09-16 儿童益智三件套（slot 24~26）。⚠️ 坐标/doc 值必须与其他 Icon 完全一致；
+           同时 kIconCount / gen_icons.py / gen_ui.py 的 HIDDEN_CONTROLS 都要跟着加（共四处）。 -->
+      <div class="btn" data-caption="Icon24" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_24.png"></div>
+      <div class="btn" data-caption="Icon25" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_25.png"></div>
+      <div class="btn" data-caption="Icon26" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_26.png"></div>
+      <!-- 2026-09-16 数独 / 节奏钢琴 / 打鼓（slot 27~29）+ 网络收音机 / 摄像头（slot 30~31）。
+           ⚠️ 坐标/doc 值必须与其他 Icon 完全一致；kIconCount / gen_icons.py /
+           gen_ui.py 的 HIDDEN_CONTROLS 三处同步（共四处）。 -->
+      <div class="btn" data-caption="Icon27" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_27.png"></div>
+      <div class="btn" data-caption="Icon28" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_28.png"></div>
+      <div class="btn" data-caption="Icon29" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_29.png"></div>
+      <div class="btn" data-caption="Icon30" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_30.png"></div>
+      <div class="btn" data-caption="Icon31" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_31.png"></div>
+      <div class="btn" data-caption="Icon32" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_32.png"></div>
+      <!-- 2026-09-17 新增电子宠物（slot 33）。⚠️ 坐标/doc 值必须与其他 Icon 完全一致
+           （同位置重叠、运行时只显示一个），图标尺寸仍须 72x72。 -->
+      <div class="btn" data-caption="Icon33" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_33.png"></div>
+      <!-- 2026-09-18 新增小精灵（slot 34）。⚠️ 坐标/doc 值必须与其他 Icon 完全一致
+           （同位置重叠、运行时只显示一个），图标尺寸仍须 72x72。 -->
+      <div class="btn" data-caption="Icon34" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_34.png"></div>
+      <!-- 2026-09-20 新增两部"动画短片"应用（slot 35 飞天仙女 / 36 可爱小猫）。
+           ⚠️ 坐标/doc 值必须与其他 Icon 完全一致（同位置重叠、运行时只显示一个）；
+           图标尺寸仍须 72x72；kIconCount / gen_icons.py / gen_ui.py 的
+           HIDDEN_CONTROLS 四处要同步（共四处），见 kIconCount 的说明。 -->
+      <div class="btn" data-caption="Icon35" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_35.png"></div>
+      <div class="btn" data-caption="Icon36" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_36.png"></div>
+      <!-- 2026-09-23 智能家居（slot 37）。★ 加应用必须同步四处：
+           main.html 的 Icon37 / tools/gen_icons.py 的 ICONS /
+           mainLogic.cc 的 kIconCount / tools/gen_ui.py 的 HIDDEN_CONTROLS。 -->
+      <div class="btn" data-caption="Icon37" data-x="20" data-y="2" data-w="72" data-h="72" data-bgpic="app_icon_37.png"></div>
+      <!-- 名称：一格一行，居中，14px T1。不要副标题 —— 桌面只看名字。 -->
+      <div class="text" data-caption="SubGameName" data-x="0" data-y="76" data-w="112" data-h="16"
+           data-fs="14" data-color="#F2F2F7" data-align="center"></div>
+      <!-- 最高分：只有游戏显示（工具/系统页整块隐藏），11px 灰 T2，不抢视觉 -->
+      <div class="text" data-caption="SubGameBest" data-x="0" data-y="92" data-w="112" data-h="15"
+           data-fs="11" data-color="#9A9AA0" data-align="center"></div>
+    </div>
+  </div>
+
+  <div class="text" data-caption="TextKeyHint" data-x="0" data-y="708" data-w="480" data-h="28"
+       data-fs="14" data-color="#9A9AA0" data-align="center">点卡片进入 · 音量键调音量</div>
+  <div class="text" data-caption="TextTip" data-x="0" data-y="736" data-w="480" data-h="24"
+       data-fs="12" data-color="#636366" data-align="center">点卡片进入应用 · 列表可上下滑动</div>
+  <div class="text" data-caption="TextVersion" data-x="0" data-y="762" data-w="480" data-h="26"
+       data-fs="11" data-color="#48484A" data-align="center">PocketGame v1.32.3</div>
+
+  <!-- ==================== 游戏页（整屏模态窗口，初始隐藏，代码 showWnd） ==================== -->
+  <div class="modal" data-caption="WinGame" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+
+    <div class="text" data-caption="TextGameTitle" data-x="0" data-y="0" data-w="480" data-h="52"
+         data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">游戏</div>
+
+    <div class="text" data-caption="TextScoreLabel" data-x="20" data-y="60" data-w="120" data-h="24"
+         data-fs="13" data-color="#9A9AA0" data-align="left">得分</div>
+    <div class="text" data-caption="TextScoreValue" data-x="20" data-y="82" data-w="200" data-h="42"
+         data-fs="32" data-color="#FF9F0A" data-align="left">0</div>
+
+    <div class="text" data-caption="TextBestLabel" data-x="244" data-y="60" data-w="216" data-h="24"
+         data-fs="13" data-color="#9A9AA0" data-align="right">最高分</div>
+    <div class="text" data-caption="TextBestValue" data-x="244" data-y="86" data-w="216" data-h="36"
+         data-fs="24" data-color="#64D2FF" data-align="right">0</div>
+
+    <div class="text" data-caption="TextInfo1Label" data-x="20" data-y="130" data-w="80" data-h="22"
+         data-fs="12" data-color="#636366" data-align="left">等级</div>
+    <div class="text" data-caption="TextInfo1Value" data-x="100" data-y="126" data-w="120" data-h="28"
+         data-fs="18" data-color="#F2F2F7" data-align="left">1</div>
+    <div class="text" data-caption="TextInfo2Label" data-x="228" data-y="130" data-w="80" data-h="22"
+         data-fs="12" data-color="#636366" data-align="left">状态</div>
+    <div class="text" data-caption="TextInfo2Value" data-x="308" data-y="126" data-w="152" data-h="28"
+         data-fs="18" data-color="#F2F2F7" data-align="left">-</div>
+
+    <!-- 游戏画布：逻辑层用 setBackgroundBmp 挂软渲染帧缓冲 -->
+    <div class="text" data-caption="GameCanvas" data-x="0" data-y="160" data-w="480" data-h="540"></div>
+
+    <div class="text" data-caption="TextGameHint" data-x="0" data-y="704" data-w="480" data-h="30"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+    <div class="text" data-caption="TextGameKeyBar" data-x="0" data-y="740" data-w="480" data-h="60"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">暂停键 暂停/继续 · 长按 返回列表 · 音量键 调音量</div>
+
+    <!-- 暂停/结束弹窗（嵌套在 WinGame 内，最后书写=最上层）
+         ⚠️ 面板要挂圆角图 ⇒ data-round="panel"，gen_ui.py 会挂 ios_panel.9.png
+            并把底色清成透明（否则图的四角被底色填成方的）。 -->
+    <div class="modal" data-caption="WinPause" data-x="72" data-y="250" data-w="336" data-h="300"
+         data-round="panel">
+      <div class="text" data-caption="TextPauseTitle" data-x="0" data-y="22" data-w="336" data-h="40"
+           data-fs="22" data-color="#F2F2F7" data-align="center">已暂停</div>
+      <div class="text" data-caption="TextPauseInfo" data-x="0" data-y="66" data-w="336" data-h="26"
+           data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+      <div class="btn"  data-caption="BtnResume"   data-x="28" data-y="106" data-w="280" data-h="56" data-bg="#30D158" data-fs="18" data-color="#000000">继续游戏</div>
+      <div class="btn"  data-caption="BtnRestart"  data-x="28" data-y="174" data-w="280" data-h="56" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7">重新开始</div>
+      <div class="btn"  data-caption="BtnBackList" data-x="28" data-y="242" data-w="280" data-h="48" data-bg="#3A1F1F" data-fs="17" data-color="#FF453A">返回游戏列表</div>
+    </div>
+  </div>
+
+  <!-- ==================== 工具页 A：时钟类（番茄钟 / 定时器 / 秒表共用，原生控件渲染） ====================
+       为什么用原生控件而不是画布：这三个工具的核心是"大字时间"，画布用的是 16x16 点阵字体，
+       放大后锯齿明显；原生 ZKTextView 走设备矢量字库，任意字号都清晰。
+       文本与按钮标签全部由 logic 层（syncToolUi）按当前应用同步。
+       ⚠️ 8 个按键的底色由 logic 按应用/状态改（toolBtnBg）⇒ 全部 data-noround。 -->
+  <div class="modal" data-caption="WinClock" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- 阶段强调色条：logic 层按应用/阶段改底色（专注红 / 休息绿 / 运行蓝…） -->
+    <div class="text" data-caption="BarClock" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#FF453A"></div>
+
+    <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+    <div class="text" data-caption="TextClockTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+         data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">番茄时钟</div>
+    <div class="text" data-caption="TextClockPhase" data-x="0" data-y="76" data-w="480" data-h="38"
+         data-fs="20" data-color="#9A9AA0" data-align="center">状态</div>
+    <!-- 大钟：一屏的"主角"，字号 88（设计基线：显示级一屏只能有一个） -->
+    <div class="text" data-caption="TextClockMain" data-x="0" data-y="122" data-w="480" data-h="152"
+         data-fs="88" data-color="#F2F2F7" data-align="center">00:00</div>
+    <div class="text" data-caption="TextClockSub" data-x="0" data-y="280" data-w="480" data-h="32"
+         data-fs="16" data-color="#9A9AA0" data-align="center">说明</div>
+
+    <div class="text" data-caption="TextClockHint" data-x="16" data-y="440" data-w="448" data-h="32"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+
+    <!-- 按钮区：2 行 x 4 列，沉底贴住键位条。行距 16、列距 8，键 108x80（热区 ≥38 的 2 倍） -->
+    <div class="btn" data-caption="BtnU0" data-x="12"  data-y="512" data-w="108" data-h="80" data-noround="1" data-bg="#30D158" data-fs="18" data-color="#000000"></div>
+    <div class="btn" data-caption="BtnU1" data-x="128" data-y="512" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU2" data-x="244" data-y="512" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU3" data-x="360" data-y="512" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU4" data-x="12"  data-y="608" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU5" data-x="128" data-y="608" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU6" data-x="244" data-y="608" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnU7" data-x="360" data-y="608" data-w="108" data-h="80" data-noround="1" data-bg="#2C2C2E" data-fs="18" data-color="#F2F2F7"></div>
+
+    <div class="text" data-caption="TextClockKeyBar" data-x="0" data-y="700" data-w="480" data-h="100"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">暂停键 开始/暂停 · 长按 返回列表</div>
+  </div>
+
+  <!-- ==================== 工具页 B：计算器（原生 20 键键盘） ==================== -->
+  <div class="modal" data-caption="WinCalc" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarCalc" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#64D2FF"></div>
+
+    <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+    <div class="text" data-caption="TextCalcTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+         data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">计算器</div>
+    <div class="text" data-caption="TextCalcStatus" data-x="16" data-y="78" data-w="448" data-h="34"
+         data-fs="17" data-color="#9A9AA0" data-align="right"></div>
+    <div class="text" data-caption="TextCalcMain" data-x="16" data-y="118" data-w="448" data-h="112"
+         data-fs="64" data-color="#F2F2F7" data-align="right">0</div>
+
+    <!-- 5 行 x 4 列 = 20 键，顺序与 PgTools.cpp 的 kCalcKeys[] 一一对应 -->
+    <div class="btn" data-caption="BtnK0"  data-x="12"  data-y="250" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK1"  data-x="126" data-y="250" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK2"  data-x="240" data-y="250" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK3"  data-x="354" data-y="250" data-w="106" data-h="68" data-bg="#1C1C1E" data-fs="20" data-color="#FF9F0A" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK4"  data-x="12"  data-y="330" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK5"  data-x="126" data-y="330" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK6"  data-x="240" data-y="330" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK7"  data-x="354" data-y="330" data-w="106" data-h="68" data-bg="#1C1C1E" data-fs="20" data-color="#FF9F0A" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK8"  data-x="12"  data-y="410" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK9"  data-x="126" data-y="410" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK10" data-x="240" data-y="410" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK11" data-x="354" data-y="410" data-w="106" data-h="68" data-bg="#1C1C1E" data-fs="20" data-color="#FF9F0A" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK12" data-x="12"  data-y="490" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK13" data-x="126" data-y="490" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK14" data-x="240" data-y="490" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK15" data-x="354" data-y="490" data-w="106" data-h="68" data-bg="#1C1C1E" data-fs="20" data-color="#FF9F0A" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK16" data-x="12"  data-y="570" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK17" data-x="126" data-y="570" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK18" data-x="240" data-y="570" data-w="106" data-h="68" data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7" data-noround="1"></div>
+    <div class="btn" data-caption="BtnK19" data-x="354" data-y="570" data-w="106" data-h="68" data-bg="#0A84FF" data-fs="20" data-color="#FFFFFF" data-noround="1"></div>
+
+    <div class="text" data-caption="TextCalcHint" data-x="0" data-y="656" data-w="480" data-h="30"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+    <div class="text" data-caption="TextCalcKeyBar" data-x="0" data-y="744" data-w="480" data-h="56"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">点键盘输入 · 长按 返回列表</div>
+  </div>
+
+  <!-- ==================== 工具页 C：反应计时（原生控件，nativePage = 2） ====================
+       为什么走原生控件而不是画布：这个游戏的全部内容就是那个"毫秒数"。
+       画布只有 8x12 点阵 ASCII，放大到 96px 是 8 倍放大、数字会糊成一团；
+       原生 ZKTextView 走设备矢量字库，任何字号都清晰。
+       交互全靠一个**占满下方的大按钮**（432x308）：既要好点，又要能一眼看出颜色变化
+       （等待=蓝 → 就是现在=绿），所以它比普通按钮大得多，字号也放到 40。
+       ⚠️ 该按钮底色随阶段变（等待蓝/就是现在绿/出成绩琥珀/抢跑红）⇒ data-noround，
+          圆角由 setCtrlBg 挂（否则会是全屏唯一的大直角块，非常扎眼）。
+       ⚠️ 注意：原生控件应用收不到全屏触摸（见 mainLogic 的 onmainActivityTouchEvent），
+          所以"点屏幕任意处"不可用，反应区必须做成按钮。 -->
+  <div class="modal" data-caption="WinReact" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- 顶部色条：随阶段变色（等待蓝 / 就是现在绿 / 出成绩琥珀 / 抢跑红） -->
+    <div class="text" data-caption="BarReact" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#64D2FF"></div>
+
+    <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+    <div class="text" data-caption="TextReactTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+         data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">反应计时</div>
+    <div class="text" data-caption="TextReactPhase" data-x="0" data-y="86" data-w="480" data-h="40"
+         data-fs="22" data-color="#9A9AA0" data-align="center">点击下方按钮开始</div>
+    <!-- 主大字：毫秒数 / "点！" / "--" -->
+    <div class="text" data-caption="TextReactMain" data-x="0" data-y="146" data-w="480" data-h="160"
+         data-fs="96" data-color="#F2F2F7" data-align="center">--</div>
+    <div class="text" data-caption="TextReactSub" data-x="0" data-y="316" data-w="480" data-h="34"
+         data-fs="16" data-color="#9A9AA0" data-align="center">共测 5 轮，取平均更准</div>
+
+    <!-- 反应区：整个下半屏的大按钮（颜色随阶段变，是唯一的输入入口） -->
+    <div class="btn" data-caption="BtnReact" data-x="24" data-y="376" data-w="432" data-h="308"
+         data-noround="1" data-bg="#30D158" data-fs="40" data-color="#000000">开始</div>
+
+    <div class="text" data-caption="TextReactHint" data-x="0" data-y="700" data-w="480" data-h="32"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+    <div class="text" data-caption="TextReactKeyBar" data-x="0" data-y="744" data-w="480" data-h="56"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">暂停键 开始/下一轮 · 长按 返回列表</div>
+  </div>
+
+  <!-- ==================== 响铃提醒页（跨页面浮层，故意留在主界面） ====================
+       ⚠️ 只剩 WinAlarmRing（响铃提醒）：时钟套件的 WinClockSuite/WinWorld 已搬到
+          clocksuite.ftu（2026-09-14 拆页）。提醒页**故意留在主界面** —— 闹钟是跨页面的，
+          提醒页要能在任何页面上弹出来（见 docs/page-split-plan.md §8.4）。
+       ⚠️ 都用普通 window（**不用 modal**：modal 是输入黑洞）。
+       ⚠️ html2json 对 div.window 实际给 visible:true ⇒ 必须列进 tools/gen_ui.py 的
+          HIDDEN_PAGE_WINDOWS，否则开机就把它们显示出来（踩过 WinWifiPwd 那个坑）。 -->
+  <div class="window" data-caption="WinAlarmRing" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarRing" data-x="0" data-y="0" data-w="480" data-h="10" data-bg="#FF9F0A"></div>
+    <div class="text" data-caption="TextRingLabel" data-x="0" data-y="96" data-w="480" data-h="44"
+         data-fs="22" data-color="#9A9AA0" data-align="center">闹钟</div>
+    <div class="text" data-caption="TextRingTime" data-x="0" data-y="150" data-w="480" data-h="140"
+         data-fs="96" data-color="#F2F2F7" data-align="center">--:--</div>
+    <div class="text" data-caption="TextRingDate" data-x="0" data-y="300" data-w="480" data-h="32"
+         data-fs="16" data-color="#9A9AA0" data-align="center"></div>
+    <div class="btn" data-caption="BtnRingStop"   data-x="40" data-y="420" data-w="400" data-h="110"
+         data-bg="#FF453A" data-fs="28" data-color="#FFFFFF">停止</div>
+    <div class="btn" data-caption="BtnRingSnooze" data-x="40" data-y="560" data-w="400" data-h="110"
+         data-bg="#2C2C2E" data-fs="28" data-color="#F2F2F7">贪睡 5 分钟</div>
+    <div class="text" data-caption="TextRingHint" data-x="0" data-y="700" data-w="480" data-h="32"
+         data-fs="14" data-color="#9A9AA0" data-align="center">按任意键或触摸屏幕也会停止</div>
+  </div>
+
+  <!-- ★ 音量 OSD 已于 2026-09-14 收归**全局状态栏**（ui/statusbar.html + statusbarLogic.cc）。
+       原因此处不再放 WinVolume：它是主界面私有窗口，工具页/套件/IPTV 上按音量键看不到
+       （用户报："音量弹框在其他界面看不到"）。状态栏是 SysApp，悬浮在所有页面之上。
+       数据流：任意页面 → pg::volumeStepGlobal() → PgAudio 广播 → 状态栏弹面板。 -->
+
+  <!-- ==================== 投屏 / 视频播放页（DLNA 渲染端 实验页，初始隐藏） ====================
+       ⚠️ videoview 不是普通控件：它是 **UI 层给下层 disp 视频层开的透明窗口**。
+          - 视频层的画面只在 videoview 的 position 区域内透出（UI 层那块不填充 = 透明）；
+          - **不要在 videoview 区域内画不透明底色/图片**，否则会把视频层盖死（真机上表现为"黑屏/没画面"）；
+          - 视频层在 UI 层**下面**（disp 分层），所以 fb0 截图看不到视频画面 ——
+            验证要看播放器回调日志 + `cat /sys/class/disp/disp/attr/sys` 里视频层的 enable/addr。
+          - play(pathOrUrl, 0) 是 API 模式（loopPlayback 必须 false）。
+  -->
+  <div class="window" data-caption="WinCast" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="videoview" data-caption="Caster" data-x="0" data-y="0" data-w="480" data-h="700" data-volume="8"></div>
+    <!-- ★ 缓冲底图：同 IPTV 播放页（投屏"正在打开…"期间也是黑底 + 发虚的字）。
+         显隐：startCast() 时显示、播放器回报 PLAY_STARTED 后隐藏。 -->
+    <div class="icon" data-caption="ImgCastCover" data-pic="images/video_cover.png"
+         data-x="0" data-y="0" data-w="480" data-h="700"></div>
+    <!-- 状态字（透明底，只画字，不挡视频）
+         ⚠️ y 从 12 改成 52：navibar（480x52 常显）会把它整块盖死 ⇒ 投屏状态字永远看不到。
+            52 = 紧贴状态栏下沿，仍压在视频区上，不与底部黑条(700)/停止键(718)冲突。 -->
+    <div class="text" data-caption="TextCastMsg" data-x="12" data-y="52" data-w="456" data-h="36"
+         data-fs="14" data-color="#F2F2F7" data-align="left"></div>
+    <!-- 底部黑条 + 停止按钮（在黑条里，不在视频区域内） -->
+    <div class="text" data-caption="BarCastBottom" data-x="0" data-y="700" data-w="480" data-h="100" data-bg="#1C1C1E"></div>
+    <div class="btn" data-caption="BtnCastStop" data-x="140" data-y="718" data-w="200" data-h="64"
+         data-bg="#3A1F1F" data-fs="18" data-color="#FF453A">停止播放</div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<!--
+  PocketGame - 秒表（独立 ftu：stopwatch.ftu -> stopwatchActivity）
+
+  为什么独立出来（2026-09-14，见 docs/page-split-plan.md）：
+    主界面 main.ftu 里塞了 11 个整屏窗口（游戏页 / 三种时框架方具 / 计算器 / 反应计时 /
+    时钟套件 / 网络电视 / 投屏 / 音量 OSD），一个 json 4461 行。现在的口径是
+    **游戏不动，其余功能界面全部独立成 ftu** —— 本页就是第一个。
+
+  逻辑全在 src/logic/stopwatchLogic.cc，用的是通用外壳 pg::ToolPage
+  （每帧同步 / 按键 / 长按返回 / 关屏保，见 src/ui/ToolPage.h）。
+
+  版式（按 docs/ui-design-baseline.md，与主界面里的工具页保持同一套规矩）：
+    · 顶栏 0..60（#1C1C1E）+ 阶段色条 0..8（logic 按状态改色）
+    · 大钟是**唯一主角**：88px，y=130..282
+    · 状态行 / 副行（计次信息）紧随其后
+    · **按钮沉底**：2 行 x 4 列，键 108x80，行距 16、列距 8（间距只用 6/8/16）
+      —— 原来这排键浮在屏中间，上下各留一大片空白（"按键都布局中"）
+    · 底部键位条 700..800
+  ⚠️ 看效果开 stopwatch.preview.html；本文件一行 CSS 都没有，只给工具读。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <div class="text" data-caption="BarSw" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#FF453A"></div>
+
+  <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+  <div class="text" data-caption="TextSwTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+       data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">秒表</div>
+
+  <div class="text" data-caption="TextSwMain" data-x="0" data-y="130" data-w="480" data-h="152"
+       data-fs="88" data-color="#F2F2F7" data-align="center">00:00.00</div>
+
+  <div class="text" data-caption="TextSwPhase" data-x="0" data-y="292" data-w="480" data-h="38"
+       data-fs="20" data-color="#9A9AA0" data-align="center">就绪</div>
+
+  <div class="text" data-caption="TextSwSub" data-x="16" data-y="334" data-w="448" data-h="32"
+       data-fs="16" data-color="#9A9AA0" data-align="center"></div>
+
+  <div class="text" data-caption="TextSwHint" data-x="16" data-y="440" data-w="448" data-h="32"
+       data-fs="15" data-color="#9A9AA0" data-align="center"></div>
+
+  <!-- 按钮：标签由 logic 层按状态设，空标签的按钮会被隐藏 -->
+  <div class="btn" data-caption="BtnSw0" data-x="12"  data-y="512" data-w="108" data-h="80" data-bg="#30D158" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw1" data-x="128" data-y="512" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw2" data-x="244" data-y="512" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw3" data-x="360" data-y="512" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw4" data-x="12"  data-y="608" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw5" data-x="128" data-y="608" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw6" data-x="244" data-y="608" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+  <div class="btn" data-caption="BtnSw7" data-x="360" data-y="608" data-w="108" data-h="80" data-bg="#2C2C2E" data-fs="18" data-noround="1"></div>
+
+  <div class="text" data-caption="TextSwKeyBar" data-x="0" data-y="700" data-w="480" data-h="100"
+       data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">暂停键 开始/暂停 · 长按 返回列表</div>
+</div>

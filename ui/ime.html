@@ -1,0 +1,150 @@
+<!--
+  PocketGame - 自定义输入法（ime.ftu / 480x800 竖屏）
+  源稿: html2json.py -> ui/ime.json -> fui pack -> ui/ime.ftu
+
+  为什么需要它：本板系统内置 IME 在 480x800 竖屏下**超出屏幕边界**（用户实测）。
+  官方做法是做一个 `APP_TYPE_SYS_IME` 的 SysApp —— 系统在任何 ZKEditText 聚焦时
+  **自动拉起**它，我们不需要在任何地方手动 showIME()。
+
+  ⚠️ 铁律：**非游戏功能一律用原生控件，禁止自定义绘图**。所以这里全是 `div.btn`
+     （ZKButton），没有任何画布。「按键序号 -> 字符/动作」的对应关系在
+     `src/logic/imeApp.cc` 的 kKeyChar[] 里（按键靠 pBase->getID() 查表）。
+
+  ⚠️ 页面名必须是 `ime`：`src/logic/imeApp.cc` 里手写 `REGISTER_SYSAPP(APP_TYPE_SYS_IME, ...)`，
+     getAppName() 返回 "ime.ftu"。fun 生成器本身**不认 ime 这个 sysapp 类型**
+     （它只认 screensaver/statusbar/navibar），所以它会为这个页面额外生成一个
+     普通 activity（ui_ime.cpp 里的 REGISTER_ACTIVITY）——那个是惰性的、不参与本功能。
+
+  ⚠️ 根节点**故意不写 data-bg**：html2json 对 .screen 不写背景就**不设 backgroundColor**，
+     即键盘上方区域是**透明的**，能透出下面的输入对话框（框架按 Z 序合成）。
+     键盘面板自己带底色（KbPanel）。
+
+  ======================== 2026-09-23 改版：加中文拼音输入 ========================
+  用户要求「改名可以让用户自己输入，FlyThings 支持中文输入」⇒ 给自研 IME 加**全拼**。
+
+  版面（面板 y=372..800，高 428；上方 372px 透明留给对话框）：
+      面板内 y    内容
+      ---------------------------------------------------------------
+        4..48    ① 候选条：**5 格 x 92 宽**（BtnCand0..4），x = 8 + 94*i
+       54..92    ② 回显行：输入回显 / 中文·英文 / 清空 / 收起
+       98..136   ③ 功能行：拼音缓冲回显 / 上页 / 下页
+      142..426   ④ 键区：5 行 x 10 列，键 41x52，行距 58（x = 8 + 47*i）
+
+  ★ 为什么键区选 y=142：面板从 424 抬到 372（**上抬 52px**），键区跟着下移 52px，
+    于是**键的绝对坐标一个都没变**（514/572/630/688/746）—— 既加了新行，
+    又完全不动用户已经习惯的键位。改这里前先算一遍绝对坐标。
+
+  ★ 为什么候选条 5 格（2026-09-24 由 6 格 x 76 改来）：**4 字词装不下**。
+    词组候选里 4 字词是常态（客厅窗帘 / 客厅灯带 / 智能门锁 / 空气净化器 的前 4 字），
+    字号 20 时「客厅窗帘」宽 80px、格宽只有 76px ⇒ 实测**尾巴被裁**（抓屏上亮像素
+    正好铺满 76px，就是顶到格边被切）。92px @ 字号 22 放 4 个汉字（88px）刚好。
+    代价是每页少 1 个候选（6→5），翻页交给「上页/下页」。
+    ⚠️ 别再往下减格数：3 格 = 152px 会让候选条看起来像"只有三个词"。
+
+  ⚠️ 文案黑名单（构建期就会静默丢字符，见 tools/check_textblack.py）：
+     ⌫ ℃ ■ ● ‹ － ＋ – … → ★ ◆ ▶ ▷ ①  —— **本文件里一个都不能出现**。
+     所以翻页写「上页/下页」而不是箭头、退格写「退格」而不是 ⌫。
+
+  控件命名：caption -> m<Caption>Ptr / ID_IME_<Caption>；键位按行列编号 BtnK<序号>。
+  ⚠️ 本文件只给工具读：看效果请开 ime.preview.html。
+-->
+<div class="screen" data-res="480x800">
+
+  <!-- ==================== 键盘面板（整屏下半，固定贴底） ====================
+       面板 y=372..800：上方 372px 留透明，透出上层对话框。
+  -->
+  <div class="card" data-caption="KbPanel" data-x="0" data-y="372" data-w="480" data-h="428" data-bg="#000000">
+
+    <!-- ---------- ① 候选条（中文模式下才有内容；英文模式留空） ----------
+         ★ 2026-09-24 改版：**6 格 x 76 → 5 格 x 92**（字号 20 → 22）。
+         为什么必须改：词组候选里 4 字词是常态（客厅窗帘/客厅灯带/智能门锁），
+         「客厅窗帘」在字号 20 下宽 **80px > 76px 的格宽 ⇒ 实测尾巴被裁**（截图上
+         亮像素正好铺满 76px = 顶到格边）。92px 宽 @ 字号 22 刚好放下 4 个汉字
+         （22*4 = 88px，左右各留 2px）。
+         ⚠️ 为什么不干脆加一行（6x2 = 12 格/页）：面板总高 428px，候选条 44 + 回显 38 +
+         提示 38 + 键区 5 行 288 = 408，**再挤不出 44px**；而且键区绝对坐标一旦下移，
+         用户习惯的键位就全变了（见下面的坐标说明）。所以只能减格数、加格宽。
+         ⚠️ 改格数必须同步改 `src/logic/imeApp.cc` 的 `kCandPerPage` / `kCandIds`，
+         以及「数字键 1..N 选候选」的范围（那边按 kCandPerPage 算，别写字面量）。 -->
+    <div class="btn" data-caption="BtnCand0" data-x="8"   data-y="4" data-w="92" data-h="44" data-bg="#3A3A3C" data-fs="22" data-color="#F2F2F7">　</div>
+    <div class="btn" data-caption="BtnCand1" data-x="102" data-y="4" data-w="92" data-h="44" data-bg="#3A3A3C" data-fs="22" data-color="#F2F2F7">　</div>
+    <div class="btn" data-caption="BtnCand2" data-x="196" data-y="4" data-w="92" data-h="44" data-bg="#3A3A3C" data-fs="22" data-color="#F2F2F7">　</div>
+    <div class="btn" data-caption="BtnCand3" data-x="290" data-y="4" data-w="92" data-h="44" data-bg="#3A3A3C" data-fs="22" data-color="#F2F2F7">　</div>
+    <div class="btn" data-caption="BtnCand4" data-x="384" data-y="4" data-w="92" data-h="44" data-bg="#3A3A3C" data-fs="22" data-color="#F2F2F7">　</div>
+
+    <!-- ---------- ② 回显行：输入内容 + 中/英 切换 + 清空 + 收起 ---------- -->
+    <div class="text" data-caption="TextKbInput" data-x="12" data-y="54" data-w="228" data-h="38"
+         data-fs="22" data-color="#F2F2F7" data-align="left" data-round="panel2" data-padding-left="12">　</div>
+    <div class="btn" data-caption="BtnKbMode" data-x="246" data-y="54" data-w="72" data-h="38"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">英文</div>
+    <div class="btn" data-caption="BtnKbClear" data-x="324" data-y="54" data-w="72" data-h="38"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">清空</div>
+    <div class="btn" data-caption="BtnKbHide" data-x="402" data-y="54" data-w="70" data-h="38"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">收起</div>
+
+    <!-- ---------- ③ 功能行：拼音缓冲回显 + 候选翻页 ---------- -->
+    <div class="text" data-caption="TextKbHint" data-x="12" data-y="98" data-w="240" data-h="38"
+         data-fs="16" data-color="#8E8E93" data-align="left" data-padding-left="6">拼音 　</div>
+    <div class="btn" data-caption="BtnKbPageUp" data-x="258" data-y="98" data-w="104" data-h="38"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">上页</div>
+    <div class="btn" data-caption="BtnKbPageDown" data-x="366" data-y="98" data-w="106" data-h="38"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">下页</div>
+
+    <!-- ---------- ④ 键区（5 行 x 10 列，y = 142 + 58*r） ---------- -->
+
+    <!-- 第 0 行：数字 -->
+    <div class="btn" data-caption="BtnK01" data-x="8"   data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">1</div>
+    <div class="btn" data-caption="BtnK02" data-x="55"  data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">2</div>
+    <div class="btn" data-caption="BtnK03" data-x="102" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">3</div>
+    <div class="btn" data-caption="BtnK04" data-x="149" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">4</div>
+    <div class="btn" data-caption="BtnK05" data-x="196" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">5</div>
+    <div class="btn" data-caption="BtnK06" data-x="243" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">6</div>
+    <div class="btn" data-caption="BtnK07" data-x="290" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">7</div>
+    <div class="btn" data-caption="BtnK08" data-x="337" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">8</div>
+    <div class="btn" data-caption="BtnK09" data-x="384" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">9</div>
+    <div class="btn" data-caption="BtnK10" data-x="431" data-y="142" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">0</div>
+
+    <!-- 第 1 行：qwertyuiop -->
+    <div class="btn" data-caption="BtnK11" data-x="8"   data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">q</div>
+    <div class="btn" data-caption="BtnK12" data-x="55"  data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">w</div>
+    <div class="btn" data-caption="BtnK13" data-x="102" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">e</div>
+    <div class="btn" data-caption="BtnK14" data-x="149" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">r</div>
+    <div class="btn" data-caption="BtnK15" data-x="196" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">t</div>
+    <div class="btn" data-caption="BtnK16" data-x="243" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">y</div>
+    <div class="btn" data-caption="BtnK17" data-x="290" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">u</div>
+    <div class="btn" data-caption="BtnK18" data-x="337" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">i</div>
+    <div class="btn" data-caption="BtnK19" data-x="384" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">o</div>
+    <div class="btn" data-caption="BtnK20" data-x="431" data-y="200" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">p</div>
+
+    <!-- 第 2 行：asdfghjkl - -->
+    <div class="btn" data-caption="BtnK21" data-x="8"   data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">a</div>
+    <div class="btn" data-caption="BtnK22" data-x="55"  data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">s</div>
+    <div class="btn" data-caption="BtnK23" data-x="102" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">d</div>
+    <div class="btn" data-caption="BtnK24" data-x="149" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">f</div>
+    <div class="btn" data-caption="BtnK25" data-x="196" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">g</div>
+    <div class="btn" data-caption="BtnK26" data-x="243" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">h</div>
+    <div class="btn" data-caption="BtnK27" data-x="290" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">j</div>
+    <div class="btn" data-caption="BtnK28" data-x="337" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">k</div>
+    <div class="btn" data-caption="BtnK29" data-x="384" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">l</div>
+    <div class="btn" data-caption="BtnK30" data-x="431" data-y="258" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">-</div>
+
+    <!-- 第 3 行：Shift + zxcvbnm . @ -->
+    <div class="btn" data-caption="BtnK31" data-x="8"   data-y="316" data-w="41" data-h="52" data-bg="#2C2C2E" data-fs="15" data-color="#FF9F0A">大写</div>
+    <div class="btn" data-caption="BtnK32" data-x="55"  data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">z</div>
+    <div class="btn" data-caption="BtnK33" data-x="102" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">x</div>
+    <div class="btn" data-caption="BtnK34" data-x="149" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">c</div>
+    <div class="btn" data-caption="BtnK35" data-x="196" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">v</div>
+    <div class="btn" data-caption="BtnK36" data-x="243" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">b</div>
+    <div class="btn" data-caption="BtnK37" data-x="290" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">n</div>
+    <div class="btn" data-caption="BtnK38" data-x="337" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">m</div>
+    <div class="btn" data-caption="BtnK39" data-x="384" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">.</div>
+    <div class="btn" data-caption="BtnK40" data-x="431" data-y="316" data-w="41" data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">@</div>
+
+    <!-- 第 4 行：_ # 空格 退格 完成（宽度不等，见 x/w） -->
+    <div class="btn" data-caption="BtnK41" data-x="8"   data-y="374" data-w="41"  data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">_</div>
+    <div class="btn" data-caption="BtnK42" data-x="55"  data-y="374" data-w="41"  data-h="52" data-bg="#3A3A3C" data-fs="20" data-color="#F2F2F7">#</div>
+    <div class="btn" data-caption="BtnK43" data-x="102" data-y="374" data-w="229" data-h="52" data-bg="#3A3A3C" data-fs="16" data-color="#F2F2F7">空格</div>
+    <div class="btn" data-caption="BtnK44" data-x="337" data-y="374" data-w="41"  data-h="52" data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">退格</div>
+    <div class="btn" data-caption="BtnK45" data-x="384" data-y="374" data-w="88"  data-h="52" data-bg="#30D158" data-fs="17" data-color="#000000">完成</div>
+  </div>
+</div>

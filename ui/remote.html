@@ -1,0 +1,130 @@
+<!--
+  PocketGame - 蓝牙遥控独立应用（remote.ftu / 480x800 竖屏）
+  源稿: html2json.py -> ui/remote.json -> fui pack -> ui/remote.ftu
+
+  页面组成：
+    1) 遥控主页（根层控件，默认可见）：顶栏 + 状态卡 + 按键网格 + 底部提示
+    2) WinRemoteLearn 学习页（整屏普通 window，初始隐藏）
+       —— 为什么是 window 不是 modal：modal 是输入黑洞（历史坑）
+
+  ★ 2026-09-14 UI 改版：整体换成 iOS 深色令牌（tools/ios_theme.py 为唯一真值）。
+  ⚠️ 本文档只给工具读：看效果请开 remote.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== 遥控主页（根层，默认可见） ==================== -->
+  <div class="text" data-caption="BarRemote" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#30D158"></div>
+  <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+  <div class="text" data-caption="TextRemoteTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+       data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">蓝牙遥控</div>
+  <!-- 右上角：点一下切到学习页（文字表示"当前在哪一页"） -->
+  <div class="btn" data-caption="BtnRemoteModeS" data-x="336" data-y="54" data-w="132" data-h="36"
+       data-bg="#2C2C2E" data-fs="16">遥控中</div>
+
+  <!-- 状态卡：4 行「标签左 + 值右」 -->
+  <div class="text" data-caption="CardRemoteState" data-x="16" data-y="94" data-w="448" data-h="240" data-bg="#1C1C1E"></div>
+  <div class="text" data-caption="TextRemoteStateLabel" data-x="34" data-y="86" data-w="120" data-h="34"
+       data-fs="16" data-color="#9A9AA0" data-align="left">状态</div>
+  <div class="text" data-caption="TextRemoteStateValue" data-x="160" data-y="108" data-w="288" data-h="34"
+       data-fs="18" data-color="#F2F2F7" data-align="right">未启动</div>
+  <div class="text" data-caption="TextRemoteDevLabel" data-x="34" data-y="138" data-w="120" data-h="34"
+       data-fs="16" data-color="#9A9AA0" data-align="left">设备名</div>
+  <div class="text" data-caption="TextRemoteDevValue" data-x="160" data-y="138" data-w="288" data-h="34"
+       data-fs="18" data-color="#F2F2F7" data-align="right">-</div>
+  <div class="text" data-caption="TextRemotePairLabel" data-x="34" data-y="190" data-w="120" data-h="34"
+       data-fs="16" data-color="#9A9AA0" data-align="left">配对</div>
+  <div class="text" data-caption="TextRemotePairValue" data-x="160" data-y="190" data-w="288" data-h="34"
+       data-fs="18" data-color="#F2F2F7" data-align="right">未配对</div>
+  <div class="text" data-caption="TextRemoteScanLabel" data-x="34" data-y="242" data-w="120" data-h="34"
+       data-fs="16" data-color="#9A9AA0" data-align="left">扫描</div>
+  <div class="text" data-caption="TextRemoteScanValue" data-x="160" data-y="242" data-w="288" data-h="34"
+       data-fs="18" data-color="#F2F2F7" data-align="right">0 条广播</div>
+
+  <!-- 状态提示行（初始化中 / 可被发现 / 已连接 / 初始化失败） -->
+  <div class="text" data-caption="TextRemoteTip" data-x="16" data-y="322" data-w="448" data-h="36"
+       data-fs="15" data-color="#9A9AA0" data-align="center">正在初始化蓝牙（约需 20~40 秒）...</div>
+
+  <!-- 3x3 遥控按键：标签由 logic 层设（电源/播放/静音/上一首/主页/下一首/音量+/返回/音量-） -->
+  <div class="btn" data-caption="BtnR0" data-x="16"  data-y="372" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR1" data-x="168" data-y="372" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR2" data-x="320" data-y="372" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR3" data-x="16"  data-y="460" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR4" data-x="168" data-y="460" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR5" data-x="320" data-y="460" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR6" data-x="16"  data-y="548" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR7" data-x="168" data-y="548" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+  <div class="btn" data-caption="BtnR8" data-x="320" data-y="548" data-w="140" data-h="76" data-bg="#2C2C2E" data-fs="19"></div>
+
+  <!-- 最近发送的按键 -->
+  <div class="text" data-caption="TextRemoteSent" data-x="0" data-y="636" data-w="480" data-h="34"
+       data-fs="18" data-color="#30D158" data-align="center"></div>
+
+  <div class="text" data-caption="TextRemoteHint" data-x="0" data-y="676" data-w="480" data-h="32"
+       data-fs="15" data-color="#9A9AA0" data-align="center">手机连上后，按键即遥控</div>
+  <div class="text" data-caption="TextRemoteKeyBar" data-x="0" data-y="744" data-w="480" data-h="56"
+       data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">[A] 播放/暂停 · [B] 音量+ · [C] 音量- · 长按 返回</div>
+
+  <!-- ==================== 学习页（普通 window，初始隐藏，代码 showWnd） ====================
+       主机侧：连真实的 BLE 遥控器/键盘，把对方按键读进来 → 建"对端按键 → 我们的键"映射。
+       设备列表与"学到的报告"都用 ZKListView（可滑动，比固定行数好用）。 -->
+  <div class="window" data-caption="WinRemoteLearn" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarRemoteLearn" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#30D158"></div>
+    <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+    <div class="text" data-caption="TextRemoteLearnTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+         data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">蓝牙遥控 · 学习</div>
+    <!-- 点它回到遥控页 -->
+    <div class="btn" data-caption="BtnRemoteModeL" data-x="336" data-y="54" data-w="132" data-h="36"
+         data-bg="#30D158" data-fs="16">学习中</div>
+
+    <!-- 主机状态卡 -->
+    <div class="text" data-caption="CardRemoteHost" data-x="16" data-y="94" data-w="448" data-h="96" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHostStateLabel" data-x="34" data-y="84" data-w="120" data-h="32"
+         data-fs="16" data-color="#9A9AA0" data-align="left">主机状态</div>
+    <div class="text" data-caption="TextHostStateValue" data-x="160" data-y="106" data-w="288" data-h="32"
+         data-fs="18" data-color="#F2F2F7" data-align="right">空闲</div>
+    <div class="text" data-caption="TextHostPeerLabel" data-x="34" data-y="124" data-w="120" data-h="32"
+         data-fs="16" data-color="#9A9AA0" data-align="left">对端</div>
+    <div class="text" data-caption="TextHostPeerValue" data-x="160" data-y="124" data-w="288" data-h="32"
+         data-fs="16" data-color="#F2F2F7" data-align="right">-</div>
+
+    <!-- 周边设备列表：地址 / 广播名 / 信号，点一行 = 连接它 -->
+    <div class="text" data-caption="TextRemoteDevHdr" data-x="20" data-y="178" data-w="440" data-h="28"
+         data-fs="14" data-color="#9A9AA0" data-align="left">周边设备 0 个（点一行连接）</div>
+    <div class="list" data-caption="ListRemoteDev" data-x="16" data-y="230" data-w="448" data-h="212"
+         data-cols="1" data-rows="6" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+      <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="448" data-h="34" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubDevAddr" data-x="12"  data-y="4" data-w="240" data-h="30"
+             data-fs="15" data-color="#F2F2F7"></div>
+        <div class="text" data-caption="SubDevName" data-x="256" data-y="4" data-w="130" data-h="30"
+             data-fs="13" data-color="#9A9AA0" data-align="right"></div>
+        <div class="text" data-caption="SubDevRssi" data-x="390" data-y="4" data-w="48" data-h="30"
+             data-fs="15" data-color="#64D2FF" data-align="right"></div>
+      </div>
+    </div>
+
+    <!-- 学到的 HID 报告：点一行 = 用它学到的位图重放出去 -->
+    <div class="text" data-caption="TextRemoteLearnHdr" data-x="20" data-y="448" data-w="440" data-h="28"
+         data-fs="14" data-color="#9A9AA0" data-align="left">已学到 0 条（按对方遥控器）</div>
+    <div class="list" data-caption="ListRemoteLearned" data-x="16" data-y="500" data-w="448" data-h="86"
+         data-cols="1" data-rows="3" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="36" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+      <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="448" data-h="32" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubLrnText" data-x="12" data-y="4" data-w="424" data-h="26"
+             data-fs="15" data-color="#F2F2F7"></div>
+      </div>
+    </div>
+
+    <div class="btn" data-caption="BtnRemoteRescan" data-x="16"  data-y="600" data-w="218" data-h="64"
+         data-bg="#0A84FF" data-fs="18">重新扫描</div>
+    <div class="btn" data-caption="BtnRemoteDisc" data-x="246" data-y="600" data-w="218" data-h="64"
+         data-bg="#3A1F1F" data-fs="18" data-color="#FFFFFF">断开</div>
+
+    <div class="text" data-caption="TextRemoteLearnHint" data-x="0" data-y="678" data-w="480" data-h="32"
+         data-fs="13" data-color="#9A9AA0" data-align="center">连上后按对方遥控器按键即可学到</div>
+    <div class="text" data-caption="TextRemoteLearnKeyBar" data-x="0" data-y="744" data-w="480" data-h="56"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">点设备连接 · 长按 返回</div>
+  </div>
+</div>

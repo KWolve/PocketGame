@@ -1,0 +1,365 @@
+<!--
+  PocketGame - 智能家居（独立 ftu：ha.ftu -> haActivity，slot 37，系统分类）
+
+  ★★ 2026-09-23 v2 交互改版：本文件是**实现稿**，设计稿见 ui/ha.preview.html
+     （同源坐标，设计稿里的 data-page / 预览行为只是评审用）。
+     依据 docs/ha-ux-redesign.md（方案 B）+ §2.6（层级）+ §4.5（域块为什么不能用图片）。
+     改动要点（相对 v1）：
+       · 主页 2x3 磁贴 + 翻页  →  **2 列 x 4 行**（一屏 8 台），容器固定高度 + 滚动，无翻页
+       · 页头右侧并排 [+ 44x36][设置 88x36]（IoT App 做法），底部不再放 CTA
+       · 连接失败 = 一张**状态卡**（L1 发生了什么 → L2 上下文 → L3 影响 → L4 动作）
+       · 空态独立成组（无设备时显示，有设备时与卡片网格互斥）
+       · 向导三步：选择（多选+确认条）/ 命名（**原生 EditText，点它自动拉起拼音输入法**）/ 完成
+       · 卡片操作菜单（半屏）+ 移除二次确认
+       · 调试动作（重读配置）收进设置页
+
+  ⚠️ 文案字符纪律（src 侧不再有黑名单字符，字库 4,209 字形实测）：
+     · 不能出现 html2json 黑名单字符：⌫ ℃ ■ ● ‹ － ＋ – … → ★ ◆ ▶ ▷ ①
+       —— 全角"＋"也在黑名单里 ⇒ 加号一律写 ASCII "+"
+     · 不能出现字库没有的字符：⋯ (U+22EF)、✓ (U+2713) 等
+       —— 「卡片右上菜单」用三个间隔号 ···（U+00B7 有字形）；
+          「勾选框」不用图形（listview 的 subItem 图片不按行区分）⇒ 用右侧文字标签表达
+     · 圆点用 •（U+2022，有字形且不在黑名单）
+     · 改完本文件**必须重跑 tools/gen_font.py**（否则新字整字消失）
+
+  ⚠️ 圆角：不用手写 data-pic —— tools/gen_ui.py 的 inject_rounded() 会按按钮**底色**自动挂
+     九宫格两态图，半径档按 height 选（>=80 r20 / >=48 r14 / >=30 r10 / 其余 r8）。
+     所以**按钮底色必须落在色板里**（#1C1C1E dark / #2C2C2E gray / #30D158 green /
+     #FF453A red / #0A84FF blue / #FF9F0A amber / #3A3A3C select），否则不挂图 = 方角。
+
+  ⚠️ 窗口三关（漏一个就是"开机几页叠一起 / 透出桌面 / 点了没反应"）：
+     ① 非默认窗口进 tools/gen_ui.py 的 HIDDEN_PAGE_WINDOWS
+     ② 所有整屏窗口进 OPAQUE_WINDOWS（窗口 data-bg="#000000" 会被写成 -1 透明）
+     ③ 切页走 haLogic.cc 的 showPage()「N 收一放」
+
+  ⚠️ 本文件只给工具读：看效果请开 ui/ha.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================================================================
+       WinHaHome —— 我的设备（默认页；★ 不能进 HIDDEN_PAGE_WINDOWS）
+       页头 52..96 ｜ 状态条 104..128 ｜ 提示行 130..150 ｜ 卡片 158..774
+       ================================================================== -->
+  <div class="window" data-caption="WinHaHome" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+
+    <div class="text" data-caption="TextHaTitle" data-x="16" data-y="52" data-w="280" data-h="44"
+         data-fs="20" data-align="left">我的设备</div>
+    <!-- 页头右侧并排：[+] 主操作 + [设置]。IoT App 做法，底部不再放 CTA。 -->
+    <div class="btn" data-caption="BtnHaAdd" data-x="336" data-y="58" data-w="44" data-h="36"
+         data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7">+</div>
+    <div class="btn" data-caption="BtnHaSet" data-x="388" data-y="58" data-w="88" data-h="36"
+         data-bg="#2C2C2E" data-fs="13" data-color="#F2F2F7">设置</div>
+    <div class="text" data-caption="LineHaHead" data-x="16" data-y="96" data-w="448" data-h="1" data-bg="#2C2C2E"></div>
+
+    <!-- 状态条：一个控件说完整句（• 用 U+2022，字库有、不在黑名单），颜色随连接态变 -->
+    <div class="text" data-caption="TextHaState" data-x="16" data-y="104" data-w="300" data-h="24"
+         data-fs="13" data-color="#30D158" data-align="left">• 正在连接 Home Assistant</div>
+    <div class="text" data-caption="TextHaCount" data-x="304" data-y="104" data-w="160" data-h="24"
+         data-fs="12" data-color="#9A9AA0" data-align="right">—</div>
+    <div class="text" data-caption="TextHaHint" data-x="16" data-y="130" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="left">正在连接 Home Assistant</div>
+
+    <!-- ==================== 我的设备：2 列 listview（行数 = 实际设备数） ====================
+         ★ 2026-09-23 改 listview（用户要求），三条收益：
+           ① 行数 = 实际设备数 ⇒ **没有空卡片 + 空域块**。固定 8 张卡片时设备不满就露出空位。
+           ② ★★ 修掉"图标角落是黑的"：独立控件的圆角块会被 inject_rounded 挂上九宫格，
+              并把 bgColorTab 清成 **-1** ⇒ 四角透出的是**窗口黑底**（不是卡片色），
+              坐在卡片上就是四个黑角（真机实测 (0,0,0) vs 卡片 (28,28,30)）。
+              而 listview 的 **subItem 不挂圆角图、data-bg 还会被 html2json 丢掉**
+              ⇒ 文字/图标直接画在行底上，天生没有黑角。
+           ③ 控件数从 48 个（8 格 × 6）降到 6 个（一行模板）⇒ 省内存、省 json。
+         item 224x148｜cols=2 / col-spacing=8 / row-spacing=8 ⇒ 与卡片网格同版式（一屏 4 行）。
+         行内坐标：域块 16,16 64x64｜名字 92,14 88x24｜状态 92,42 112x22
+                   副行 16,110 192x18｜菜单 176,6 42x34
+         ★ 域块底用 **ha_domchip_64.png**（不透明，四角已烘行底色 #1C1C1E）——
+           不能用圆角九宫格（四角透明 ⇒ 露窗口黑底 = 黑角）；所有行共用同一张，
+           不违反"subItem 图片不按行区分"；每行不同的是**字**与**字色**（setText/setTextColor）。
+         ★ 菜单三点用 •••（U+2022×3）而不是 ···：·(U+00B7)×3 会被 html2json 的最小尺寸公式
+           算成"需要 55px 宽"，把热区撑宽并压到隔壁卡片（实测血案）。
+         ★★ 2026-09-24 第二轮（用户口径：「中间设备列表的上下间隔没有了，看起来更难看了」）：
+            行距从 0 **恢复到 12**（卡片上下分开、留出黑缝当间距）。
+            为什么现在可以恢复（当初改 0 的原因已经消失）：
+              当初"两条横线"是 **① 8px 行缝 + ② `.9.png` 的 1px marker 黑边** 叠加造成的；
+              ② 已经由"卡片底换 1:1 普通 PNG（`ha_card_my.png`）"根治，只剩"缝"本身；
+              而缝本身是**正常的卡片间距**（iOS/米家列表就是卡片之间留空），
+              何况卡片四角是圆的，缝在圆角处收腰 ⇒ 读起来是"两张卡片"，不是"一条线"。
+            ⚠️ 行距 12 时 item 高 = (616 - 3×12) / 4 = **145**（框架按 (h-(rows-1)*rowSpacing)/rows）。
+              ⇒ `ha_card_my.png` 必须同步改成 224x145（1:1 铁律），见 tools/gen_ha_ui_art.py。
+         ⚠️ 离线态由逻辑层 setPosition 把本列表整体下移到 y=212（让开连接状态卡）。 -->
+    <div class="list" data-caption="ListHaMy" data-x="12" data-y="158" data-w="456" data-h="616"
+         data-cols="2" data-rows="4" data-col-spacing="8" data-row-spacing="12"
+         data-scrollbar="1" data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <!-- ★ 1:1 普通 PNG（不是 .9.png！）：`.9.png` 经 data-bgpic 走普通贴图路径、
+             不剥 1px marker，而 ios_btn_dark_r20 的 marker 是**不透明黑**
+             ⇒ 每张卡片四周多一圈 1px 黑边，上下相邻时叠成 2px 黑缝（用户看到的"横线"）。
+             新素材圆角外已经烘了列表黑底，尺寸与 item 完全一致（224x154）。 -->
+        <div class="btn" data-caption="SubMyCard" data-x="0" data-y="0" data-w="224" data-h="145"
+             data-bgpic="ha_card_my.png"></div>
+        <div class="btn" data-caption="SubMyDic" data-x="16" data-y="16" data-w="64" data-h="64"
+             data-bgpic="ha_domchip_64.png" data-fs="30" data-color="#EF9F27"></div>
+        <div class="text" data-caption="SubMyNm" data-x="92" data-y="14" data-w="88" data-h="24"
+             data-fs="17" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubMySt" data-x="92" data-y="42" data-w="112" data-h="22"
+             data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubMySb" data-x="16" data-y="110" data-w="192" data-h="18"
+             data-fs="11" data-color="#8E8E93" data-align="left"></div>
+        <div class="btn" data-caption="SubMyMenu" data-x="176" data-y="6" data-w="42" data-h="34"
+             data-fs="15" data-color="#8E8E93">•••</div>
+      </div>
+    </div>
+
+    <!-- ==================== 连接失败状态卡（默认隐藏） ====================
+         层级：L1 发生了什么(橙 17px) → L2 上下文 → L3 影响 → L4 动作（唯一按钮）
+         底用色板里的 gray(#2C2C2E) —— 不能用设计稿那种自定义深橙，
+         因为 inject_rounded 只认色板色，非色板色 = 不挂圆角（方角）。 -->
+    <div class="btn" data-caption="CardHaOffline" data-x="12" data-y="104" data-w="456" data-h="96" data-bg="#2C2C2E"></div>
+    <div class="text" data-caption="TextHaOffL1" data-x="28" data-y="117" data-w="308" data-h="26"
+         data-fs="17" data-color="#FF9F0A" data-align="left">未连接 Home Assistant</div>
+    <div class="text" data-caption="TextHaOffL2" data-x="28" data-y="148" data-w="320" data-h="20"
+         data-fs="12" data-color="#9A9AA0" data-align="left">—</div>
+    <div class="text" data-caption="TextHaOffL3" data-x="28" data-y="170" data-w="320" data-h="20"
+         data-fs="12" data-color="#9A9AA0" data-align="left">未连接时不会发送控制命令，下面显示最后已知状态</div>
+    <div class="btn" data-caption="BtnHaOffSet" data-x="360" data-y="132" data-w="92" data-h="40"
+         data-bg="#3A3A3C" data-fs="14" data-color="#F2F2F7">去设置</div>
+
+    <!-- ==================== 空态（默认隐藏；与卡片网格互斥） ==================== -->
+    <div class="btn" data-caption="ImgHaEmpty" data-x="180" data-y="186" data-w="120" data-h="120" data-bg="#1C1C1E" data-fs="40" data-color="#30D158">家</div>
+    <div class="text" data-caption="TextHaEmpT" data-x="40" data-y="334" data-w="400" data-h="34"
+         data-fs="22" data-color="#F2F2F7" data-align="center">还没有添加设备</div>
+    <div class="text" data-caption="TextHaEmpL1" data-x="40" data-y="380" data-w="400" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center">这块屏幕只显示你挑出来的设备</div>
+    <div class="text" data-caption="TextHaEmpL2" data-x="40" data-y="404" data-w="400" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center">新买的设备请先在 Home Assistant 里添加</div>
+    <div class="text" data-caption="TextHaEmpL3" data-x="40" data-y="428" data-w="400" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center">它会自动出现在下面的列表里</div>
+    <div class="btn" data-caption="BtnHaEmpAdd" data-x="80" data-y="492" data-w="320" data-h="54"
+         data-bg="#30D158" data-fs="16" data-color="#010101">+ 从 Home Assistant 添加</div>
+    <div class="btn" data-caption="BtnHaEmpOne" data-x="80" data-y="560" data-w="320" data-h="48"
+         data-bg="#2C2C2E" data-fs="15" data-color="#64D2FF">一键添加全部可控设备</div>
+    <div class="text" data-caption="TextHaEmpHint" data-x="40" data-y="628" data-w="400" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="center">只挑能开关的设备，只读传感器不会加进来</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaPick —— 向导 ① 选择设备
+       ⚠️ 行内不做勾选框图形（listview 的 subItem 图片不按行区分）
+          ⇒ 选中态用**文字**表达：名字变蓝 + 右侧标签「已选」
+       ================================================================== -->
+  <div class="window" data-caption="WinHaPick" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="TextHaPickT" data-x="16" data-y="52" data-w="320" data-h="44"
+         data-fs="19" data-color="#F2F2F7" data-align="left">从 Home Assistant 添加</div>
+    <div class="btn" data-caption="BtnHaPickX" data-x="384" data-y="58" data-w="80" data-h="36"
+         data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">取消</div>
+    <div class="text" data-caption="LineHaPick" data-x="16" data-y="96" data-w="448" data-h="1" data-bg="#2C2C2E"></div>
+
+    <div class="text" data-caption="TextHaPickStep" data-x="16" data-y="104" data-w="448" data-h="22"
+         data-fs="11" data-color="#9A9AA0" data-align="center">第 1 步 / 共 3 步 · 选择设备</div>
+    <div class="text" data-caption="TextHaPickNote" data-x="16" data-y="132" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="left">这些是 HA 里已有的设备。新设备请先在 Home Assistant 里添加。</div>
+
+    <!-- ★ 段控用**两个按钮叠一格**表达选中态：运行时 setBackgroundColor 会把
+         inject_rounded 挂上的圆角九宫格图清掉（实机血案）⇒ 不能"一个按钮改底色"。
+         逻辑层用 setVisible 切换"未选中态 / 选中态"两张。 -->
+    <div class="btn" data-caption="SegHaCtrl" data-x="12" data-y="164" data-w="224" data-h="36"
+         data-bg="#2C2C2E" data-fs="14" data-color="#9A9AA0">可控 0</div>
+    <div class="btn" data-caption="SegHaCtrlOn" data-x="12" data-y="164" data-w="224" data-h="36"
+         data-bg="#0A84FF" data-fs="14" data-color="#FFFFFF">可控 0</div>
+    <div class="btn" data-caption="SegHaAll" data-x="244" data-y="164" data-w="224" data-h="36"
+         data-bg="#2C2C2E" data-fs="14" data-color="#9A9AA0">全部 0</div>
+    <div class="btn" data-caption="SegHaAllOn" data-x="244" data-y="164" data-w="224" data-h="36"
+         data-bg="#0A84FF" data-fs="14" data-color="#FFFFFF">全部 0</div>
+
+    <div class="list" data-caption="ListHaPick" data-x="12" data-y="208" data-w="456" data-h="384"
+         data-cols="1" data-rows="5" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <!-- 同 SubMyCard：1:1 普通 PNG（圆角外烘黑底），避免 marker 黑边 -->
+        <div class="btn" data-caption="RowPickCard" data-x="0" data-y="0" data-w="456" data-h="72" data-bgpic="ha_row_pick.png"></div>
+        <div class="btn" data-caption="SubPickDic" data-x="14" data-y="16" data-w="40" data-h="40" data-bgpic="ha_domchip_40.png" data-fs="19" data-color="#EF9F27"></div>
+        <div class="text" data-caption="SubPickName" data-x="66" data-y="12" data-w="272" data-h="24"
+             data-fs="17" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubPickInfo" data-x="66" data-y="38" data-w="272" data-h="20"
+             data-fs="11" data-color="#8E8E93" data-align="left"></div>
+        <div class="text" data-caption="SubPickTag" data-x="344" data-y="24" data-w="100" data-h="24"
+             data-fs="12" data-color="#8E8E93" data-align="right"></div>
+      </div>
+    </div>
+
+    <div class="text" data-caption="TextHaSelSum" data-x="16" data-y="600" data-w="448" data-h="22"
+         data-fs="12" data-color="#9A9AA0" data-align="center">已选 0 台</div>
+    <div class="btn" data-caption="BtnHaPickNext" data-x="12" data-y="628" data-w="456" data-h="54"
+         data-bg="#2C2C2E" data-fs="17" data-color="#8E8E93">请选择要添加的设备</div>
+    <div class="text" data-caption="TextHaPickHint" data-x="16" data-y="692" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="center">点一行勾选 / 取消 · 已添加的设备显示为「已在面板」</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaName —— 向导 ② 命名（★ 可用原生输入法自由输入中文）
+       ★★ 硬约束：自定义 IME 的面板占 y=372..800
+          ⇒ 本页**所有可交互控件必须落在 y<372**，否则一聚焦就被键盘盖住点不到。
+          提交靠键盘自己的「完成」键（doneIMETextUpdate），页面不再放"确定"。
+       ================================================================== -->
+  <div class="window" data-caption="WinHaName" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="TextHaNameT" data-x="16" data-y="52" data-w="264" data-h="44"
+         data-fs="19" data-color="#F2F2F7" data-align="left">命名与排序</div>
+    <!-- ★★ 2026-09-24 用户报"命名与排序中命名后没有确认按键"：
+         自定义 IME 只在键盘自己的「完成」键上把整串**写回输入框**（doneIMETextUpdate），
+         页面原来没有确认键 ⇒ 打完字以后没有下一步可点（只能"跳过"= 全部用原名）。
+         这里补一个页级「完成」：**键盘的完成键负责"上屏"，这个键负责"记下这一台并继续"**。
+         ⚠️ 位置必须在 y<372（键盘面板占 372..800，压到下面会点不到）。 -->
+    <div class="btn" data-caption="BtnHaNameOk" data-x="288" data-y="58" data-w="88" data-h="36"
+         data-bg="#30D158" data-fs="14" data-color="#010101">完成</div>
+    <div class="btn" data-caption="BtnHaSkip" data-x="384" data-y="58" data-w="80" data-h="36"
+         data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">跳过</div>
+    <div class="text" data-caption="LineHaName" data-x="16" data-y="96" data-w="448" data-h="1" data-bg="#2C2C2E"></div>
+
+    <div class="text" data-caption="TextHaNameStep" data-x="16" data-y="104" data-w="448" data-h="22"
+         data-fs="11" data-color="#9A9AA0" data-align="center">第 2 步 / 共 3 步 · 给设备起个名字</div>
+    <div class="text" data-caption="TextHaNameCur" data-x="16" data-y="134" data-w="344" data-h="30"
+         data-fs="15" data-color="#9A9AA0" data-align="left">—</div>
+    <div class="btn" data-caption="BtnHaPrevDev" data-x="372" data-y="134" data-w="92" data-h="30"
+         data-bg="#2C2C2E" data-fs="12" data-color="#F2F2F7">上一台</div>
+
+    <!-- 原生 ZKEditText：点它系统自动拉起自定义 IME（全拼）。
+         ⚠️ data-bg 必须与 data-round 那张图烘的底色一致，否则最外 1px 露异色。
+            panel2 = #2C2C2E 内容、烘黑底 ⇒ data-bg 写黑。 -->
+    <div class="input" data-caption="EditHaName" data-round="panel2" data-bg="#010101" data-x="16" data-y="172" data-w="384" data-h="56"
+         data-hint="给这台设备起个名字" data-fs="20" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="BtnHaClear" data-x="408" data-y="172" data-w="56" data-h="56"
+         data-bg="#2C2C2E" data-fs="12" data-color="#F2F2F7">清空</div>
+
+    <!-- 推荐词片（按域给）：点一下**填入输入框**（不再是"点一下即改名"） -->
+    <div class="btn" data-caption="ChipHaName0" data-x="12" data-y="234" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="ChipHaName1" data-x="168" data-y="234" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="ChipHaName2" data-x="324" data-y="234" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="ChipHaName3" data-x="12" data-y="288" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="ChipHaName4" data-x="168" data-y="288" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+    <div class="btn" data-caption="ChipHaName5" data-x="324" data-y="288" data-w="144" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7"></div>
+
+    <div class="text" data-caption="TextHaNameH1" data-x="16" data-y="338" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="left">打完字先按键盘上的「完成」上屏，再点右上角「完成」</div>
+    <div class="text" data-caption="TextHaNameH2" data-x="16" data-y="358" data-w="448" data-h="18"
+         data-fs="11" data-color="#64D2FF" data-align="left">名字留空 = 用 HA 原名；「跳过」= 后面几台都不改名</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaDone —— 向导 ③ 完成
+       ⚠️ 勾用**图片**（ha_done.png）：字库没有 ✓(U+2713) 这类勾字符，
+          直接写字符会整字消失。
+       ================================================================== -->
+  <div class="window" data-caption="WinHaDone" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="TextHaDoneT" data-x="16" data-y="52" data-w="320" data-h="44"
+         data-fs="19" data-color="#F2F2F7" data-align="left">添加完成</div>
+    <div class="text" data-caption="LineHaDone" data-x="16" data-y="96" data-w="448" data-h="1" data-bg="#2C2C2E"></div>
+
+    <div class="btn" data-caption="ImgHaDone" data-x="192" data-y="196" data-w="96" data-h="96" data-bgpic="ha_done.png"></div>
+    <div class="text" data-caption="TextHaDoneTi" data-x="40" data-y="322" data-w="400" data-h="34"
+         data-fs="22" data-color="#F2F2F7" data-align="center">已添加 0 台设备</div>
+    <div class="text" data-caption="TextHaDoneL1" data-x="40" data-y="366" data-w="400" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center">它们已经出现在「我的设备」里</div>
+    <div class="text" data-caption="TextHaDoneL2" data-x="40" data-y="390" data-w="400" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center">回到面板就能直接开关</div>
+    <div class="text" data-caption="TextHaDoneStep" data-x="16" data-y="436" data-w="448" data-h="22"
+         data-fs="11" data-color="#9A9AA0" data-align="center">第 3 步 / 共 3 步 · 完成</div>
+
+    <div class="btn" data-caption="BtnHaDoneGo" data-x="80" data-y="490" data-w="320" data-h="54"
+         data-bg="#30D158" data-fs="16" data-color="#010101">去我的设备看看</div>
+    <div class="btn" data-caption="BtnHaDoneMore" data-x="80" data-y="558" data-w="320" data-h="48"
+         data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">继续添加</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaMenu —— 卡片操作菜单（半屏；最后书写 = 最上层）
+       ⚠️ 半透明遮罩 = **带 alpha 的 PNG 挂 button.picTab**（见 PgSkin.h 的说明）；
+          底图 button（ImgHaMask）必须在 html 里**第一个定义**。
+         ★★ 2026-09-24 用户要求"弹框的时候背景的列表让它在那里显示"：
+           把弹层从**普通 window** 改成 **modal**。
+             · 普通 window 走 showPage() 的"七收一放" ⇒ 主页被 hideWnd() 收起 ⇒
+               弹层后面只剩自己那层黑底（列表看不见）；
+             · modal 窗口是**画在当前窗口之上**的（`showWnd()` 即可，父窗口保持可见）
+               —— 本工程已有先例：main.html 的 WinPause 就是盖在游戏画布上的 modal。
+           另一个必改：**窗口底不能再铺黑**（否则半透遮罩下面还是黑）。
+             html2json 对 `<div class="modal" data-bg="#000000">` 给的是
+             backgroundColor=-1（透明），所以从 gen_ui.py 的 OPAQUE_WINDOWS 里**移除**，
+             别让 fix_window_bg() 给它兜底铺黑。
+           ⚠️ modal 会拦掉"弹窗之外"的输入（工程里管这叫"输入黑洞"）——
+             对弹框来说正是我们要的（点遮罩只走弹层自己的回调，不会误触底下的列表）。
+       ================================================================== -->
+  <div class="modal" data-caption="WinHaMenu" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="btn" data-caption="ImgHaMask" data-x="0" data-y="52" data-w="480" data-h="748"
+         data-pic0="images/sheet_mask.png" data-pic1="images/sheet_mask.png"></div>
+    <div class="btn" data-caption="CardHaMenu" data-x="16" data-y="396" data-w="448" data-h="360" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHaMenuT" data-x="36" data-y="422" data-w="300" data-h="24"
+         data-fs="15" data-color="#F2F2F7" data-align="left">—</div>
+    <div class="text" data-caption="TextHaMenuS" data-x="36" data-y="446" data-w="400" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">—</div>
+    <div class="btn" data-caption="BtnHaMenuRename" data-x="36" data-y="474" data-w="408" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">改名</div>
+    <div class="btn" data-caption="BtnHaMenuUp" data-x="36" data-y="524" data-w="408" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">移到前面</div>
+    <div class="btn" data-caption="BtnHaMenuDown" data-x="36" data-y="574" data-w="408" data-h="44" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">移到后面</div>
+    <div class="btn" data-caption="BtnHaMenuRemove" data-x="36" data-y="624" data-w="408" data-h="44" data-bg="#FF453A" data-fs="15" data-color="#FFFFFF">移除设备</div>
+    <div class="btn" data-caption="BtnHaMenuCancel" data-x="36" data-y="674" data-w="408" data-h="44" data-bg="#3A3A3C" data-fs="15" data-color="#F2F2F7">取消</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaConfirm —— 移除二次确认
+       ================================================================== -->
+  <div class="modal" data-caption="WinHaConfirm" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="btn" data-caption="ImgHaMask2" data-x="0" data-y="52" data-w="480" data-h="748"
+         data-pic0="images/dialog_mask.png" data-pic1="images/dialog_mask.png"></div>
+    <div class="btn" data-caption="CardHaConfirm" data-x="50" data-y="272" data-w="380" data-h="264" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHaCfT" data-x="74" data-y="300" data-w="332" data-h="26"
+         data-fs="17" data-color="#F2F2F7" data-align="left">—</div>
+    <div class="text" data-caption="TextHaCfL1" data-x="74" data-y="338" data-w="332" data-h="20"
+         data-fs="13" data-color="#9A9AA0" data-align="left">只是从这块屏幕上移除</div>
+    <div class="text" data-caption="TextHaCfL2" data-x="74" data-y="362" data-w="332" data-h="20"
+         data-fs="13" data-color="#9A9AA0" data-align="left">Home Assistant 里的设备不受影响</div>
+    <div class="btn" data-caption="BtnHaCfNo" data-x="74" data-y="460" data-w="156" data-h="48"
+         data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">取消</div>
+    <div class="btn" data-caption="BtnHaCfYes" data-x="250" data-y="460" data-w="156" data-h="48"
+         data-bg="#FF453A" data-fs="15" data-color="#FFFFFF">移除</div>
+  </div>
+
+  <!-- ==================================================================
+       WinHaSet —— 设置（调试动作收在这里，用户主界面不再出现）
+       ================================================================== -->
+  <div class="window" data-caption="WinHaSet" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="TextHaSetT" data-x="16" data-y="52" data-w="300" data-h="44"
+         data-fs="20" data-color="#F2F2F7" data-align="left">设置</div>
+    <div class="btn" data-caption="BtnHaSetBack" data-x="384" data-y="58" data-w="80" data-h="36"
+         data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">返回</div>
+    <div class="text" data-caption="LineHaSet" data-x="16" data-y="96" data-w="448" data-h="1" data-bg="#2C2C2E"></div>
+
+    <div class="btn" data-caption="RowHaSet1" data-x="12" data-y="112" data-w="456" data-h="80" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHaSetK1" data-x="28" data-y="124" data-w="300" data-h="24"
+         data-fs="15" data-color="#F2F2F7" data-align="left">Home Assistant 连接</div>
+    <div class="text" data-caption="TextHaSetV1" data-x="28" data-y="148" data-w="380" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">—</div>
+    <div class="text" data-caption="TextHaSetV2" data-x="28" data-y="168" data-w="380" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">—</div>
+
+    <div class="btn" data-caption="BtnHaSetReload" data-x="12" data-y="200" data-w="456" data-h="64" data-bg="#1C1C1E" data-fs="15" data-color="#F2F2F7" data-align="left"></div>
+    <div class="text" data-caption="TextHaSetK2" data-x="28" data-y="208" data-w="380" data-h="24"
+         data-fs="15" data-color="#F2F2F7" data-align="left">重新读取配置</div>
+    <div class="text" data-caption="TextHaSetV3" data-x="28" data-y="232" data-w="380" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">从 /data/ha.conf 重新加载地址与令牌</div>
+
+    <div class="btn" data-caption="RowHaSet3" data-x="12" data-y="272" data-w="456" data-h="64" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHaSetK3" data-x="28" data-y="280" data-w="380" data-h="24"
+         data-fs="15" data-color="#F2F2F7" data-align="left">设备与实体</div>
+    <div class="text" data-caption="TextHaSetV4" data-x="28" data-y="304" data-w="380" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">—</div>
+
+    <div class="btn" data-caption="RowHaSet4" data-x="12" data-y="344" data-w="456" data-h="64" data-bg="#1C1C1E"></div>
+    <div class="text" data-caption="TextHaSetK4" data-x="28" data-y="352" data-w="380" data-h="24"
+         data-fs="15" data-color="#F2F2F7" data-align="left">关于</div>
+    <div class="text" data-caption="TextHaSetV5" data-x="28" data-y="376" data-w="380" data-h="20"
+         data-fs="11" data-color="#8E8E93" data-align="left">智能家居 v2 · 交互改版</div>
+
+    <div class="text" data-caption="TextHaSetMsg" data-x="16" data-y="428" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="left">—</div>
+    <div class="text" data-caption="TextHaSetFoot" data-x="16" data-y="740" data-w="448" data-h="20"
+         data-fs="11" data-color="#9A9AA0" data-align="center">长按音量键可随时返回应用列表</div>
+  </div>
+
+</div>

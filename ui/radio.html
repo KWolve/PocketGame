@@ -1,0 +1,211 @@
+<!--
+  PocketGame - 网络收音机（独立 ftu：radio.ftu -> radioActivity）
+  源稿: html2json.py -> ui/radio.json -> fui pack -> ui/radio.ftu
+
+  两个窗口：
+    WinRadio     —— 电台列表页（默认显示）
+    WinRadioPlay —— 播放页（初始隐藏；2026-09-18 改版：大圆盘 + 30 段真 FFT 频谱 + 圆形控制键）
+
+  ⚠️ WinRadioPlay 必须留在 gen_ui.py 的 HIDDEN_PAGE_WINDOWS（进页先看到列表页）；
+     WinRadio **不能**列在那里（列了进页就是一片空白）。
+  ⚠️ 本文档只给工具读：看效果请开 radio.preview.html。
+
+  ★ 电台表（见 radioLogic.cc 的 radioLoadStations）：
+     ① `/data/radio.txt` 优先 —— 每行 `名称|地址`（也接受只写地址，名称自动取域名）；
+        以 # 开头的行是注释。用 QA 通道 `radiosave <名称>|<地址>` 也能往文件里追加。
+     ② 没有文件时用内置示例台（radioLogic.cc 的 kBuiltinSta）。
+  ★ 播放链路：**直接用 pg::StreamPlayer::startDecodeTest(url, 0)** ——
+     PgStream 已经实现"纯音频源跳过 MPP/硬解/显示，只解音频"（PgStream.cpp 的
+     `if (!hasVideo)` 分支），音频走 ffmpeg 软解 → 重采样 22050/单声道/S16 →
+     那条常开 PCM 流（PgAudio）。**不需要 videoview**，本页也没有视频层。
+  ★ 本页全部是 FlyThings 原生控件（底色 data-bg + 文字），不引自定义绘图。
+  ★ **频谱是真的**：PgAudio::streamWrite（喇叭里真正要放的那块 PCM）→ `pg::Viz`
+     做 512 点 FFT → 30 段对数分频 → 播放页每拍把第 b 段映射成第 b 根柱子的高度。
+     所以"静音/没出声 ⇒ 频谱不动"，不存在"假动画"。素材 tools/gen_radio_art.py。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== ① 电台列表页（默认显示） ==================== -->
+  <div class="window" data-caption="WinRadio" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarRadioTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnRadioBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <!-- ⚠️ 标题盒**不能是整屏宽**（x=0/w=480）：按"后声明 = 更上层"的规则它会把
+         先声明的 BtnRadioBack 的命中区盖住 ⇒ 返回键点不动（见 ui/wifi.html 的实测注释）。
+         这里 x=60 w=300，中心仍是 210 偏左，居中观感不变。 -->
+    <div class="text" data-caption="TextRadioTitle" data-x="60" data-y="4" data-w="300" data-h="36"
+         data-fs="22" data-color="#F2F2F7" data-align="center">网络收音机</div>
+    <div class="btn" data-caption="BtnRadioReloadTop" data-icon="refresh" data-x="428" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+
+    <div class="text" data-caption="TextRadioStatus" data-x="16" data-y="94" data-w="448" data-h="24"
+         data-fs="13" data-color="#9A9AA0" data-align="left">正在加载电台表...</div>
+
+    <!-- 电台列表（可滚动）。行数由 getListItemCount_ListRadio 决定，
+         内容由 obtainListItemData_ListRadio 填，点击走 onListItemClick_ListRadio。 -->
+    <div class="list" data-caption="ListRadio" data-x="12" data-y="122" data-w="456" data-h="576"
+         data-cols="1" data-rows="7" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="82" data-bgpic="ios_card_row.9.png"></div>
+        <!-- ⚠️ data-align="left" 必须显式写（不写框架按居中排，看起来像"缩进乱"）。 -->
+        <div class="text" data-caption="SubStaName" data-x="14" data-y="6" data-w="316" data-h="34"
+             data-fs="20" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubStaInfo" data-x="14" data-y="42" data-w="420" data-h="24"
+             data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubStaNote" data-x="334" data-y="8" data-w="100" data-h="26"
+             data-fs="12" data-color="#30D158" data-align="right"></div>
+      </div>
+    </div>
+
+    <div class="btn" data-caption="BtnRadioReload" data-x="12" data-y="706" data-w="220" data-h="48"
+         data-bg="#30D158" data-fs="16" data-color="#000000">重新加载电台表</div>
+    <div class="btn" data-caption="BtnRadioEdit" data-x="248" data-y="706" data-w="220" data-h="48"
+         data-bg="#2C2C2E" data-fs="16" data-color="#F2F2F7">电台表路径</div>
+
+    <div class="text" data-caption="TextRadioKeyBar" data-x="0" data-y="758" data-w="480" data-h="42"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">点电台即播放 · 长按 B 返回</div>
+  </div>
+
+  <!-- ==================== ② 播放页（初始隐藏） ====================
+       ★ 2026-09-18 改版：用户要求「改成大气一些，参考手机 app，有指针摆动/FFT 波形展示播放状态」。
+       做法（**真数据、不是装饰动画**）：
+         · 上半屏 = 大圆盘（240x240 黑胶 + 暖橙标签）；
+         · 中部   = 台名(30px) / 分组·域名 / 已播时长 / **总电平条**；
+         · 下半屏 = **30 段频谱**：数据来自 `pg::Viz`（在 PgAudio 真正灌喇叭的那条路上做 512 点 FFT，
+                    见 src/platform/PgViz.h）⇒ 频谱与耳朵听到的必然一致，静止时柱子就不动。
+         · 三个**圆形控制键**（图 = 整个按钮面）。
+       ⚠️ 频谱柱（EqB00..EqB29）的**初始盒 == 素材尺寸 12x132**（所以 check_stretch 过），
+          运行时**只改高度**（`LayoutPosition(x, 596-h, 12, h)`）⇒ 素材按盒缩放，这是"运行时改尺寸"那一类。
+       ⚠️ 顶部 0..52 是常显 navibar（页面标题由它显示），本页**不要再画标题**。 -->
+  <div class="window" data-caption="WinRadioPlay" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="btn" data-caption="BtnRadioPlayBack" data-icon="back" data-x="8" data-y="56" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextRadioPlayState" data-x="64" data-y="56" data-w="228" data-h="36"
+         data-fs="16" data-color="#9A9AA0" data-align="left"></div>
+
+    <!-- ★ 视图切换（2026-09-19 用户需求：「老的方式不要去掉，做个按键切换」）：
+         两枚页签 =「表盘 / 频谱」，当前那枚是亮橙。
+         ⚠️ 每枚页签都是**两态叠同一格 + 按状态显隐**（工程既有手法）：亮点的那枚
+            `touchable=false`（它只是"当前状态"的指示），暗点的那枚才是可点的。
+         文字烘在图里（`tools/gen_vu_art.py`），省一层 text 控件、也不会挡住点击。 -->
+    <div class="btn" data-caption="TabVuOn" data-x="300" data-y="58" data-w="84" data-h="36" data-bgpic="vu_tab_meter_on_84x36.png"></div>
+    <div class="btn" data-caption="TabVuOff" data-x="300" data-y="58" data-w="84" data-h="36" data-bgpic="vu_tab_meter_off_84x36.png"></div>
+    <div class="btn" data-caption="TabSpecOn" data-x="388" data-y="58" data-w="84" data-h="36" data-bgpic="vu_tab_spec_on_84x36.png"></div>
+    <div class="btn" data-caption="TabSpecOff" data-x="388" data-y="58" data-w="84" data-h="36" data-bgpic="vu_tab_spec_off_84x36.png"></div>
+
+    <!-- 大圆盘 -->
+    <div class="icon" data-caption="RpDisc" data-x="120" data-y="100" data-w="240" data-h="240"
+         data-pic="images/rp_disc_240.png"></div>
+
+    <!-- 台名 / 分组·域名 / 已播时长 -->
+    <div class="text" data-caption="TextRadioPlayName" data-x="16" data-y="348" data-w="448" data-h="52"
+         data-fs="30" data-color="#F2F2F7" data-align="center"></div>
+    <div class="text" data-caption="TextRadioPlayInfo" data-x="16" data-y="400" data-w="448" data-h="24"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+    <div class="text" data-caption="TextRadioPlayTime" data-x="16" data-y="424" data-w="448" data-h="30"
+         data-fs="22" data-color="#64D2FF" data-align="center"></div>
+
+    <!-- 总电平：底轨（纯底色，8px 薄条不参与圆角）+ 按电平改宽度的暖色条 -->
+    <div class="text" data-caption="RpLevelBg" data-x="80" data-y="454" data-w="320" data-h="8" data-bg="#2C2C2E"></div>
+    <div class="icon" data-caption="RpLevel" data-x="80" data-y="454" data-w="320" data-h="8"
+         data-pic="images/rp_level_320x8.png"></div>
+
+    <!-- 30 段频谱柱（底边 y=596；初始盒 == 素材 12x132，运行时按每段能量改高度） -->
+    <div class="icon" data-caption="EqB00" data-x="2" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB01" data-x="18" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB02" data-x="34" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB03" data-x="50" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB04" data-x="66" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB05" data-x="82" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB06" data-x="98" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB07" data-x="114" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB08" data-x="130" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB09" data-x="146" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB10" data-x="162" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB11" data-x="178" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB12" data-x="194" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB13" data-x="210" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB14" data-x="226" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB15" data-x="242" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB16" data-x="258" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB17" data-x="274" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB18" data-x="290" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB19" data-x="306" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB20" data-x="322" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB21" data-x="338" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB22" data-x="354" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB23" data-x="370" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB24" data-x="386" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB25" data-x="402" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB26" data-x="418" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB27" data-x="434" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB28" data-x="450" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="EqB29" data-x="466" data-y="464" data-w="12" data-h="132" data-pic="images/rp_bar_12x132.png"></div>
+    <div class="icon" data-caption="RpFloor" data-x="12" data-y="596" data-w="456" data-h="12"
+         data-pic="images/rp_floor_456x12.png"></div>
+
+    <!-- ==================== ★ 双指针 VU 表（2026-09-19，同日"压扁"改版） ====================
+         用户第一版反馈：「频谱和 db 值部分做成两个左右声道的指针仪表效果，浅黄色模拟真实仪表」。
+         用户第二版反馈（本版）：「**表盘盖住了其他控件：控制按键、电台时间都被盖住了**」。
+
+         ⇒ 布局预算（本页从上到下的硬边界）：
+             已播时长 424..454 ┊ 总电平条 454..462 ┊ **仪表区 464..620** ┊ 控制键 620..724
+           上一版是 226x226 方盘 @y=408..634 ⇒ 把"已播时长"和"总电平条"**整条压住**，
+           下沿还伸进控制键那一排。本版压成 **226x128 @y=468**，读数窗挪到面盘下方 597..618。
+           （判据是 `tools/gen_vu_art.py --check`：它会把布局预算写成断言，越界就报错。
+             `tools/check_overlap.py` 也能查出来 —— 上一版漏掉正是因为那个脚本有 bug，已修。）
+
+         ⚠️ **"压扁"不能把圆压成椭圆**：指针是整张图绕铰点转，**刻度弧必须是正圆**，
+            否则弧上各点到铰点的距离随角度变、针尖会离开刻度。
+            真表"扁"的做法是**大半径浅弧** —— 铰点挪到面盘**下边缘之外**（局部 y=142 > 128），
+            半径加到 120 ⇒ 盘内只露出弧的顶部一段，观感扁宽而几何严格。
+            两条不能破的等式：**圆心 == 铰点**、**针长 == 弧半径 + 3**。
+
+         三层结构（**声明顺序 = 叠放顺序**）：
+           ① 表盘底 `VuFaceL/R`（226x128，浅黄面盘 + 刻度弧 + 红区 + VU + L/R 圆标）
+           ② 指针 `VuNeedleL/R`（**ZKPointer 控件**：234x234 透明图，铰点在图片正中）
+           ③ 读数 `TextVuDbL/R`（在**面盘下方**，不是盘内 —— 盘内那圈会被针扫过去）
+
+         ⚠️ 指针控件的坐标三件套（**MCP 知识库 `uicontrols/pointer-fields.md` 的口径**）：
+            `rotationPoint=(117,117)`（控件系旋转圆心）、`fixedPoint=(117,117)`（指针图系铰点）。
+            控件左上 = 面盘左上 + PIVOT − 117 = +(0, 25)，即铰点落在面盘的 (117,142)。
+            ★ `data-x` **不能是负数**、右盒也不能出屏（`check_bounds.py` 的闸）——
+              这两条把半径**卡死在 110**（`gen_vu_art.py` 里写了推导），`--check` 有断言。
+         ⚠️ `animatable=0`：指针由本页 25ms 定时器驱动（VU 弹道在 PgViz 里做），
+            不用控件自带的匀速旋转（那是给加载图标/时钟针用的）。
+         ⚠️ 这两只表与上面那组频谱**同一区域、按视图模式互相显隐**（见 radioLogic 的 syncView）。
+         ⚠️ 指针控件盒（234x234，会盖到下面那排控制键）**不影响按键触摸** ——
+            2026-09-19 真机实测：命中的是**最上层**控件，指针声明在前 ⇒ 按键照样收到点击
+            （`pginj tap` 在 y=630（盒内）与 y=710（盒外）都能换台）。别为此缩盒。 -->
+    <div class="icon" data-caption="VuFaceL" data-x="8" data-y="468" data-w="226" data-h="128"
+         data-pic="images/vu_face_l_226x128.png"></div>
+    <div class="icon" data-caption="VuFaceR" data-x="246" data-y="468" data-w="226" data-h="128"
+         data-pic="images/vu_face_r_226x128.png"></div>
+    <div class="pointer" data-caption="VuNeedleL" data-x="8" data-y="493" data-w="234" data-h="234"
+         data-pointer-pic="images/vu_needle_234.png"
+         data-pointer-w="234" data-pointer-h="234"
+         data-fixed-point="117,117" data-rotation-point="117,117"
+         data-start-angle="0" data-clockwise="1" data-animatable="0"></div>
+    <div class="pointer" data-caption="VuNeedleR" data-x="246" data-y="493" data-w="234" data-h="234"
+         data-pointer-pic="images/vu_needle_234.png"
+         data-pointer-w="234" data-pointer-h="234"
+         data-fixed-point="117,117" data-rotation-point="117,117"
+         data-start-angle="0" data-clockwise="1" data-animatable="0"></div>
+    <div class="text" data-caption="TextVuDbL" data-x="76" data-y="597" data-w="90" data-h="21"
+         data-fs="14" data-color="#FFD678" data-align="center" data-bg="#0E0D0C"></div>
+    <div class="text" data-caption="TextVuDbR" data-x="314" data-y="597" data-w="90" data-h="21"
+         data-fs="14" data-color="#FFD678" data-align="center" data-bg="#0E0D0C"></div>
+
+    <!-- 三个圆形控制键（图 = 整个按钮面；声明顺序在频谱/底图之后 ⇒ 命中区不被装饰盖住） -->
+    <div class="btn" data-caption="BtnRadioPrev" data-x="48" data-y="620" data-w="104" data-h="104"
+         data-bgpic="rp_btn_prev_104.png"></div>
+    <div class="btn" data-caption="BtnRadioStop" data-x="188" data-y="620" data-w="104" data-h="104"
+         data-bgpic="rp_btn_stop_104.png"></div>
+    <div class="btn" data-caption="BtnRadioNext" data-x="328" data-y="620" data-w="104" data-h="104"
+         data-bgpic="rp_btn_next_104.png"></div>
+
+    <div class="text" data-caption="TextRadioVolHint" data-x="12" data-y="728" data-w="456" data-h="24"
+         data-fs="12" data-color="#636366" data-align="center">音量键调音量 · 长按 B 返回列表</div>
+    <div class="text" data-caption="TextRadioPlayKeyBar" data-x="0" data-y="758" data-w="480" data-h="42"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E"></div>
+  </div>
+
+</div>

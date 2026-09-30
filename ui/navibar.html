@@ -1,0 +1,92 @@
+<!--
+  PocketGame - 全局导航栏（SysApp：navibar.ftu -> navibar，APP_TYPE_SYS_NAVIBAR）
+  源稿: html2json.py -> ui/navibar.json -> fui pack -> ui/navibar.ftu
+
+  ★ 2026-09-16 用户需求演进：
+     ① 「状态栏显示 wifi 连接状态」→ 做成常显导航栏（navibar）。
+     ② 「应用界面内模仿 android 手机右滑有个动效图片后返回主页」→ 也落在本页（全局触摸监听）。
+     ③ ★ 「状态栏显示不完整，直接把电池、页面 title 都放到状态栏，这样改动最小」
+        ⇒ 本页从「只有 WiFi」扩成**完整状态栏**：【页面标题(左) + 电量 + WiFi(右)】。
+        这样各页面不用再显示自己的标题/电量 —— 而那本来就放不下（见下条）。
+
+  ⚠️⚠️ 为什么各页的标题会被"切掉半截"（用户说的"显示不完整"）：
+     导航栏是**常显浮层**，它的窗口（480x52）是不透明黑底；而各页自己的标题画在
+     y=8~18（fs=20~22，墨迹约 10~42）⇒ 上半被本页盖住、下半露出来 = 半截标题。
+     ⇒ 正解就是用户说的：**标题统一在本页显示**，各页不用再画（本页标题由
+        navibar.cc 按 `EASYUICONTEXT->currentAppName()` 动态写）。
+     ⚠️ 反过来说：**本页高度只能到 52**（再多就把页面内容也压掉了）。
+        各页面从 **y≥52** 放内容（见各自的 html）。
+
+  ★★ 2026-09-16 第二轮「检讨 UI 覆盖」（用户需求：「把 Ui 目录下的 json 布局全部检讨
+     一遍…navibar 是盖在 UI 上面的，检讨有 UI 区域覆盖的情况下告警并修复」）：
+     上一次只改了**逻辑**，没回头扫**布局** —— 结果 11 个页面的顶部大标题盒仍是
+     `y=8 h=52`（盒 8..60），被本条盖到 52 ⇒ 在状态栏下沿**露出一条 8px 的 #1C1C1E 横带**
+     （真机实测抓到了）。这次的处理：
+       · 11 处同位置标题盒 ⇒ `data-h` 52→44（**收进本条覆盖区**，残带消失；标题仍由本页显示）；
+       · 「页面专属名字」不在 kTitleMap 里的两处（游戏名 / "世界时钟"子页名）⇒
+         新增 `pg::setNaviTitle()` 覆盖通道（见 src/platform/PgNavi.h）；
+       · 三个视频播放页（480x700 @y=0、等比铺满）⇒ 播放期间**由本页自己收起来**
+         （`pg::setVideoPage()`），把画面顶部 52px 让出来；
+       · 判据固化成 `tools/check_overlay.py`，并接进 `tools/gen_ui.py` 的检查链防回归。
+
+  ⚠️⚠️ 这个文件最关键的一条是 **root 的 data-res**：
+    导航栏是**常显**的（不像 statusbar 那样按需显隐），而整屏浮层一旦显示就吃掉
+    **全机控件级触摸**（血案见 statusbar.ftu 的注释：touchable=false / setTouchPass(true)
+    都拦不住）。所以这里把根节点做成 **480x52**：窗口就只有那一条，
+    挡住的也只是屏幕顶部 52px，下面的页面照常能点。
+    ★ 验收判据（改完必须真机验）：导航栏显示着时，主界面的 tab 与列表项**照常能点**。
+    ⚠️ 别把它改成 480x800（那会变成第二个"整机点不动"的血案）。
+
+  ⚠️ 内容只放**状态**（标题 / 电量 / WiFi），不放可点按钮 —— 常显浮层上的按钮会被自己吃掉触摸。
+     要按钮的话见 statusbar（音量 OSD）那套「按需显隐」。
+
+  ⚠️ 本文件只给工具读：看效果请开 navibar.preview.html。
+-->
+<div class="screen" data-res="480x52" data-bg="#0B0B0D">
+
+  <!-- ==================== 页面标题（左） ====================
+       文案由 navibar.cc 按当前 Activity 名写（`EASYUICONTEXT->currentAppName()`），
+       页面级名字（当前游戏名 / "世界时钟"子页名）走 `pg::setNaviTitle()` 覆盖。 -->
+  <div class="text" data-caption="TextNbTitle" data-x="8" data-y="13" data-w="190" data-h="38"
+       data-fs="20" data-color="#F2F2F7" data-align="left">口袋游戏机</div>
+
+  <!-- ==================== 电量 ====================
+       ★★ 2026-09-16 改版（用户原话：「电池图标不对。做成对应的图片直接贴就不存在错位了」）：
+       原来是 **3 个控件拼**（外壳 52x26 + 电量条 40x20 + 闪电 22x26），电量条的位置由
+       `navibar.cc` 的常量在**运行时** setPosition 决定 —— 而这里声明的是 y=16、常量却写成
+       y=5 ⇒ **电量条比外壳高 11px、顶出壳外**。根因：同一份几何有**两个来源**（源稿 + 
+       运行时常量），必然漂。
+       ⇒ 现在**只有 1 个控件 + 1 张整图**：`images/batt_<色>_<档>.png`（52x26，外壳 +
+       电量条 + 充电闪电都烘在里面），运行时只 `setBackgroundPic`、**永不 setPosition**
+       ⇒ 结构上不可能错位。
+       色：blue=正常 / red=低电 / amber=充电（闪电烘在 amber 里）；档：0,10,...,100 共 11 档。
+       生成器：`tools/ios_theme.py` 的 `gen_battery()`（图尺寸 == 控件盒 52x26，1:1 不许缩放）。
+
+       ⚠️⚠️ 只留这一个电量控件 —— **不要再拆回"外壳 + 电量条 + 闪电"**：
+         那套必须在运行时定位，就是上面那个错位的来源。 -->
+  <div class="text" data-caption="TextNbBatt" data-x="330" data-y="14" data-w="42" data-h="24"
+       data-fs="15" data-color="#9A9AA0" data-align="right">--%</div>
+  <div class="icon" data-caption="ImgNbBatt" data-x="378" data-y="13" data-w="52" data-h="26"
+       data-pic="images/batt_blue_100.png"></div>
+
+  <!-- ==================== WiFi 状态（右） ====================
+       两张图标叠在同一位置（已连=亮青蓝 / 未连=灰），运行时按连接状态显隐切换
+       —— 图标是烘成 PNG 的，颜色改不了，所以只能备两张。 -->
+  <div class="icon" data-caption="ImgNbWifiOn" data-icon="wifi" data-x="438" data-y="17"
+       data-w="20" data-h="18" data-color="#64D2FF"></div>
+  <div class="icon" data-caption="ImgNbWifiOff" data-icon="wifi" data-x="438" data-y="17"
+       data-w="20" data-h="18" data-color="#5A5A5E"></div>
+
+  <!-- 提示文字：已连显示 SSID，未连显示「未连接」，WiFi 关显示「WiFi 已关闭」 -->
+  <div class="text" data-caption="TextNbSsid" data-x="196" data-y="15" data-w="128" data-h="22"
+       data-fs="13" data-color="#9A9AA0" data-align="right">未连接</div>
+
+  <!-- ⛔ 2026-09-16 用户要求删掉的「返回主页」动效提示（原 ImgNbBackHome 16x16 +
+       TextNbBackHome「返回主页」）：
+       它原来是在右滑时跟手从左滑入的提示，**和页面标题抢同一块位置**（显示时要把标题藏掉）。
+       用户原话：「状态栏上面显示的返回主页去掉」⇒ 整组删除。
+       ⚠️ **右滑返回手势本身保留**（判定在 navibar.cc 的 onnavibarActivityTouchEvent，
+          达标照样 goBack()），只是不再有视觉提示 —— 别再把它加回来。
+       ⚠️ 连带影响：TextNbTitle 不再需要被"临时藏起来"，navibar.cc 里那段显隐代码一并删除。 -->
+
+</div>

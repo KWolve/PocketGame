@@ -1,0 +1,998 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "SaverBgNight",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "backgroundPic": "images/saver_bg_night.png",
+    "visible": false
+  },
+  "textview__2": {
+    "alignment": 36,
+    "caption": "SaverBgDay",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50002,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "backgroundPic": "images/saver_bg_day.png"
+  },
+  "textview__3": {
+    "alignment": 36,
+    "caption": "Brick0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50003,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_brick.png"
+  },
+  "textview__4": {
+    "alignment": 36,
+    "caption": "Brick1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50004,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_brick.png"
+  },
+  "textview__5": {
+    "alignment": 36,
+    "caption": "Brick2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50005,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_brick.png"
+  },
+  "textview__6": {
+    "alignment": 36,
+    "caption": "Brick3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50006,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_brick.png"
+  },
+  "textview__7": {
+    "alignment": 36,
+    "caption": "Dig0_0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50007,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig0.png",
+    "visible": true
+  },
+  "textview__8": {
+    "alignment": 36,
+    "caption": "Dig0_1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50008,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig1.png",
+    "visible": false
+  },
+  "textview__9": {
+    "alignment": 36,
+    "caption": "Dig0_2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50009,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig2.png",
+    "visible": false
+  },
+  "textview__10": {
+    "alignment": 36,
+    "caption": "Dig0_3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50010,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig3.png",
+    "visible": false
+  },
+  "textview__11": {
+    "alignment": 36,
+    "caption": "Dig0_4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50011,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig4.png",
+    "visible": false
+  },
+  "textview__12": {
+    "alignment": 36,
+    "caption": "Dig0_5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50012,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig5.png",
+    "visible": false
+  },
+  "textview__13": {
+    "alignment": 36,
+    "caption": "Dig0_6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50013,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig6.png",
+    "visible": false
+  },
+  "textview__14": {
+    "alignment": 36,
+    "caption": "Dig0_7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50014,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig7.png",
+    "visible": false
+  },
+  "textview__15": {
+    "alignment": 36,
+    "caption": "Dig0_8",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50015,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig8.png",
+    "visible": false
+  },
+  "textview__16": {
+    "alignment": 36,
+    "caption": "Dig0_9",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50016,
+    "position": {
+      "height": 140,
+      "left": 35,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig9.png",
+    "visible": false
+  },
+  "textview__17": {
+    "alignment": 36,
+    "caption": "Dig1_0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50017,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig0.png",
+    "visible": true
+  },
+  "textview__18": {
+    "alignment": 36,
+    "caption": "Dig1_1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50018,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig1.png",
+    "visible": false
+  },
+  "textview__19": {
+    "alignment": 36,
+    "caption": "Dig1_2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50019,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig2.png",
+    "visible": false
+  },
+  "textview__20": {
+    "alignment": 36,
+    "caption": "Dig1_3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50020,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig3.png",
+    "visible": false
+  },
+  "textview__21": {
+    "alignment": 36,
+    "caption": "Dig1_4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50021,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig4.png",
+    "visible": false
+  },
+  "textview__22": {
+    "alignment": 36,
+    "caption": "Dig1_5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50022,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig5.png",
+    "visible": false
+  },
+  "textview__23": {
+    "alignment": 36,
+    "caption": "Dig1_6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50023,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig6.png",
+    "visible": false
+  },
+  "textview__24": {
+    "alignment": 36,
+    "caption": "Dig1_7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50024,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig7.png",
+    "visible": false
+  },
+  "textview__25": {
+    "alignment": 36,
+    "caption": "Dig1_8",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50025,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig8.png",
+    "visible": false
+  },
+  "textview__26": {
+    "alignment": 36,
+    "caption": "Dig1_9",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50026,
+    "position": {
+      "height": 140,
+      "left": 131,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig9.png",
+    "visible": false
+  },
+  "textview__27": {
+    "alignment": 36,
+    "caption": "Dig2_0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50027,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig0.png",
+    "visible": true
+  },
+  "textview__28": {
+    "alignment": 36,
+    "caption": "Dig2_1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50028,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig1.png",
+    "visible": false
+  },
+  "textview__29": {
+    "alignment": 36,
+    "caption": "Dig2_2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50029,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig2.png",
+    "visible": false
+  },
+  "textview__30": {
+    "alignment": 36,
+    "caption": "Dig2_3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50030,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig3.png",
+    "visible": false
+  },
+  "textview__31": {
+    "alignment": 36,
+    "caption": "Dig2_4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50031,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig4.png",
+    "visible": false
+  },
+  "textview__32": {
+    "alignment": 36,
+    "caption": "Dig2_5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50032,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig5.png",
+    "visible": false
+  },
+  "textview__33": {
+    "alignment": 36,
+    "caption": "Dig2_6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50033,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig6.png",
+    "visible": false
+  },
+  "textview__34": {
+    "alignment": 36,
+    "caption": "Dig2_7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50034,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig7.png",
+    "visible": false
+  },
+  "textview__35": {
+    "alignment": 36,
+    "caption": "Dig2_8",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50035,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig8.png",
+    "visible": false
+  },
+  "textview__36": {
+    "alignment": 36,
+    "caption": "Dig2_9",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50036,
+    "position": {
+      "height": 140,
+      "left": 261,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig9.png",
+    "visible": false
+  },
+  "textview__37": {
+    "alignment": 36,
+    "caption": "Dig3_0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50037,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig0.png",
+    "visible": true
+  },
+  "textview__38": {
+    "alignment": 36,
+    "caption": "Dig3_1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50038,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig1.png",
+    "visible": false
+  },
+  "textview__39": {
+    "alignment": 36,
+    "caption": "Dig3_2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50039,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig2.png",
+    "visible": false
+  },
+  "textview__40": {
+    "alignment": 36,
+    "caption": "Dig3_3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50040,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig3.png",
+    "visible": false
+  },
+  "textview__41": {
+    "alignment": 36,
+    "caption": "Dig3_4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50041,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig4.png",
+    "visible": false
+  },
+  "textview__42": {
+    "alignment": 36,
+    "caption": "Dig3_5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50042,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig5.png",
+    "visible": false
+  },
+  "textview__43": {
+    "alignment": 36,
+    "caption": "Dig3_6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50043,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig6.png",
+    "visible": false
+  },
+  "textview__44": {
+    "alignment": 36,
+    "caption": "Dig3_7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50044,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig7.png",
+    "visible": false
+  },
+  "textview__45": {
+    "alignment": 36,
+    "caption": "Dig3_8",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50045,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig8.png",
+    "visible": false
+  },
+  "textview__46": {
+    "alignment": 36,
+    "caption": "Dig3_9",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50046,
+    "position": {
+      "height": 140,
+      "left": 357,
+      "top": 180,
+      "width": 88
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_dig9.png",
+    "visible": false
+  },
+  "textview__47": {
+    "alignment": 36,
+    "caption": "ColonOn",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50047,
+    "position": {
+      "height": 140,
+      "left": 227,
+      "top": 180,
+      "width": 26
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_colon_on.png",
+    "visible": true
+  },
+  "textview__48": {
+    "alignment": 36,
+    "caption": "ColonOff",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50048,
+    "position": {
+      "height": 140,
+      "left": 227,
+      "top": 180,
+      "width": 26
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_colon_off.png",
+    "visible": false
+  },
+  "textview__49": {
+    "alignment": 36,
+    "caption": "MarioW0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50049,
+    "position": {
+      "height": 68,
+      "left": 0,
+      "top": 472,
+      "width": 68
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_mario_w0.png",
+    "visible": false
+  },
+  "textview__50": {
+    "alignment": 36,
+    "caption": "MarioW1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50050,
+    "position": {
+      "height": 68,
+      "left": 0,
+      "top": 472,
+      "width": 68
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_mario_w1.png",
+    "visible": false
+  },
+  "textview__51": {
+    "alignment": 36,
+    "caption": "MarioW2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50051,
+    "position": {
+      "height": 68,
+      "left": 0,
+      "top": 472,
+      "width": 68
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_mario_w2.png",
+    "visible": false
+  },
+  "textview__52": {
+    "alignment": 36,
+    "caption": "MarioJump",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50052,
+    "position": {
+      "height": 68,
+      "left": 0,
+      "top": 472,
+      "width": 68
+    },
+    "touchable": false,
+    "backgroundPic": "images/mc_mario_jump.png",
+    "visible": false
+  },
+  "textview__53": {
+    "alignment": 36,
+    "caption": "TextSaverDate",
+    "colorTab": {
+      "color0": 16777215
+    },
+    "fontSize": 22,
+    "id": 50053,
+    "position": {
+      "height": 36,
+      "left": 16,
+      "top": 10,
+      "width": 250
+    },
+    "touchable": false,
+    "text": "--"
+  },
+  "textview__54": {
+    "alignment": 38,
+    "caption": "TextSaverWeek",
+    "colorTab": {
+      "color0": 16777215
+    },
+    "fontSize": 22,
+    "id": 50054,
+    "position": {
+      "height": 36,
+      "left": 214,
+      "top": 10,
+      "width": 250
+    },
+    "touchable": false,
+    "text": "--"
+  },
+  "textview__55": {
+    "alignment": 37,
+    "caption": "TextSaverHint",
+    "colorTab": {
+      "color0": 16771488
+    },
+    "fontSize": 13,
+    "id": 50055,
+    "position": {
+      "height": 28,
+      "left": 0,
+      "top": 752,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "轻触屏幕唤醒"
+  }
+}

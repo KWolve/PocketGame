@@ -1,0 +1,77 @@
+// 该文件由Versioning自动生成
+// 它不适用于手动编辑
+{
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "easyui",
+      "version": "^2.3.0",
+      "revision": "2.9.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "log",
+      "version": "0.0.0",
+      "revision": "0.0.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "zkhardware",
+      "version": "0.0.0",
+      "revision": "0.0.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "zknet",
+      "version": "0.0.0",
+      "revision": "0.0.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "base-utility",
+      "version": "^10.12.0",
+      "revision": "10.12.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "civetweb",
+      "version": "^1.16.1",
+      "revision": "1.17.0"
+    },
+    {
+      "repository": {
+        "id": "public",
+        "url": "https://package.flythings.cn"
+      },
+      "platform": "V85X",
+      "id": "btstack",
+      "version": "1.7.2",
+      "revision": "1.7.2"
+    }
+  ]
+}

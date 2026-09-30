@@ -1,0 +1,771 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": -1,
+    "caption": "WinCam",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "textview__2": {
+      "alignment": 36,
+      "caption": "BarCamTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50001,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__3": {
+      "alignment": 37,
+      "caption": "BtnCamBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20001,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__4": {
+      "alignment": 37,
+      "caption": "TextCamTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50002,
+      "position": {
+        "height": 36,
+        "left": 60,
+        "top": 4,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "局域网摄像头"
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnCamRescanTop",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 36,
+        "left": 428,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_44x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__6": {
+      "alignment": 36,
+      "caption": "TextCamStatus",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50003,
+      "position": {
+        "height": 46,
+        "left": 16,
+        "top": 92,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "正在扫描局域网..."
+    },
+    "listview__7": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListCam",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 6,
+      "position": {
+        "height": 554,
+        "left": 12,
+        "top": 142,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCamCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 90,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubCamName",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 19,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 34,
+              "left": 14,
+              "top": 6,
+              "width": 320
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubCamInfo",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 14,
+              "top": 44,
+              "width": 420
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubCamNote",
+            "colorTab": {
+              "color0": 16752394
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 330,
+              "top": 10,
+              "width": 110
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 86
+        }
+      }
+    },
+    "button__8": {
+      "alignment": 37,
+      "caption": "BtnCamRescan",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20003,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 706,
+        "width": 148
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "重新扫描",
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r14.9.png",
+        "pic1": "images/ios_btn_blue_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__9": {
+      "alignment": 37,
+      "caption": "BtnCamDeep",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20004,
+      "position": {
+        "height": 48,
+        "left": 166,
+        "top": 706,
+        "width": 148
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "深探指纹",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__10": {
+      "alignment": 37,
+      "caption": "BtnCamLogin",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20005,
+      "position": {
+        "height": 48,
+        "left": 320,
+        "top": 706,
+        "width": 148
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "账号登录",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__11": {
+      "alignment": 37,
+      "caption": "TextCamKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50004,
+      "position": {
+        "height": 42,
+        "left": 0,
+        "top": 758,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "要口令的用「账号登录」 · 长按 B 返回"
+    }
+  },
+  "window__12": {
+    "backgroundColor": -1,
+    "caption": "WinCamView",
+    "hideTimeOut": -1,
+    "id": 110002,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "videoview__13": {
+      "backgroundColor": 0,
+      "caption": "CamVideo",
+      "defaultVolume": 8,
+      "id": 95001,
+      "loopPlayback": false,
+      "rotation": 0,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": true,
+      "visible": true
+    },
+    "textview__14": {
+      "alignment": 36,
+      "caption": "ImgCamCover",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50005,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "backgroundPic": "images/video_cover.png",
+      "visible": false
+    },
+    "textview__15": {
+      "alignment": 36,
+      "caption": "TextCamViewMsg",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50006,
+      "position": {
+        "height": 34,
+        "left": 8,
+        "top": 54,
+        "width": 464
+      },
+      "touchable": false
+    },
+    "textview__16": {
+      "alignment": 37,
+      "caption": "TextCamLoad",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 26,
+      "id": 50007,
+      "position": {
+        "height": 46,
+        "left": 30,
+        "top": 286,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__17": {
+      "alignment": 37,
+      "caption": "TextCamLoadBar",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 18,
+      "id": 50008,
+      "position": {
+        "height": 26,
+        "left": 30,
+        "top": 340,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__18": {
+      "alignment": 37,
+      "caption": "TextCamLoadHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50009,
+      "position": {
+        "height": 48,
+        "left": 30,
+        "top": 374,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__19": {
+      "alignment": 36,
+      "caption": "BarCamBottom",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50010,
+      "position": {
+        "height": 100,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__20": {
+      "alignment": 37,
+      "caption": "BtnCamPrev",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20006,
+      "position": {
+        "height": 64,
+        "left": 12,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "上一台",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__21": {
+      "alignment": 37,
+      "caption": "BtnCamStop",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20007,
+      "position": {
+        "height": 64,
+        "left": 170,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 18,
+      "text": "停止",
+      "picTab": {
+        "pic0": "images/ios_btn_redsoft_r14.9.png",
+        "pic1": "images/ios_btn_redsoft_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__22": {
+      "alignment": 37,
+      "caption": "BtnCamNext",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20008,
+      "position": {
+        "height": 64,
+        "left": 328,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "下一台",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  },
+  "window__23": {
+    "backgroundColor": -1,
+    "caption": "WinCamPwd",
+    "hideTimeOut": -1,
+    "id": 110003,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__24": {
+      "alignment": 36,
+      "caption": "CardCamPwd",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50011,
+      "position": {
+        "height": 300,
+        "left": 40,
+        "top": 110,
+        "width": 400
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__25": {
+      "alignment": 37,
+      "caption": "TextCamPwdTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "id": 50012,
+      "position": {
+        "height": 30,
+        "left": 60,
+        "top": 124,
+        "width": 360
+      },
+      "touchable": false,
+      "text": "登录摄像头"
+    },
+    "textview__26": {
+      "alignment": 37,
+      "caption": "TextCamPwdTarget",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50013,
+      "position": {
+        "height": 22,
+        "left": 60,
+        "top": 156,
+        "width": 360
+      },
+      "touchable": false
+    },
+    "edittext__27": {
+      "alignment": 37,
+      "bold": false,
+      "caption": "EditCamUser",
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "hintTextColor": 0,
+      "id": 51001,
+      "position": {
+        "height": 52,
+        "left": 60,
+        "top": 184,
+        "width": 360
+      },
+      "textType": 0,
+      "hintText": "账号",
+      "text": "",
+      "backgroundPic": "images/ios_panel2_c.9.png",
+      "backgroundColor": -1,
+      "touchable": true,
+      "visible": true
+    },
+    "edittext__28": {
+      "alignment": 37,
+      "bold": false,
+      "caption": "EditCamPwd",
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "hintTextColor": 0,
+      "id": 51002,
+      "position": {
+        "height": 52,
+        "left": 60,
+        "top": 244,
+        "width": 360
+      },
+      "textType": 0,
+      "isPassword": true,
+      "hintText": "密码",
+      "text": "",
+      "backgroundPic": "images/ios_panel2_c.9.png",
+      "backgroundColor": -1,
+      "touchable": true,
+      "visible": true
+    },
+    "textview__29": {
+      "alignment": 37,
+      "caption": "TextCamPwdMsg",
+      "colorTab": {
+        "color0": 16729402
+      },
+      "fontSize": 13,
+      "id": 50014,
+      "position": {
+        "height": 22,
+        "left": 60,
+        "top": 300,
+        "width": 360
+      },
+      "touchable": false
+    },
+    "button__30": {
+      "alignment": 37,
+      "caption": "BtnCamPwdCancel",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20009,
+      "position": {
+        "height": 52,
+        "left": 60,
+        "top": 328,
+        "width": 170
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 17,
+      "text": "取消",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__31": {
+      "alignment": 37,
+      "caption": "BtnCamPwdOk",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20010,
+      "position": {
+        "height": 52,
+        "left": 250,
+        "top": 328,
+        "width": 170
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 16,
+      "text": "保存并播放",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  }
+}

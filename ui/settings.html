@@ -1,0 +1,93 @@
+<!--
+  PocketGame - 系统设置（独立 ftu：settings.ftu -> settingsActivity）
+
+  ★ 2026-09-16 用户要求：「把音效开关，wifi，音量调节，背光调节都做到系统设置里面」。
+    同时要求「音效开关从主界面移除」—— 所以主界面顶部那颗"音效 开/关"已删，
+    以后统一从本页进（slot 32，系统分类）。
+
+  四项的实现来源（都不是新造的）：
+    · 静音开关 —— `pg::isMutedGlobal()` / `setMutedGlobal()`（真静音：codec 输出开关；
+                  与音量面板左侧那个可点图标**同一个开关**）
+    · WiFi     —— pg::WifiService（zknet 封装：enabled/connected/ssid/setEnabled/openSystemSettings）
+    · 音量     —— pg::volumeStepGlobal() / gHost->audio.setVolumePercent()（落盘，重启恢复）
+    · 背光     —— BRIGHTNESSHELPER（zkhardware 的 BrightnessHelper，0..100）—— 真背光，
+                 不是画面遮罩（设备上没有 /sys/class/backlight，只有这条 SDK 通路）。
+
+  版式（沿用平台既有规矩，见 docs/ui-design-baseline.md）：
+    · 顶栏 0..60（色条 8 + 标题）+ 返回按钮在右上（x=428..472）
+      ⚠️ 全局导航栏（navibar.ftu）常显，占屏幕顶部 26px；本页顶栏与其它页一致保留 0..60，
+         标题文字墨迹在 y≈21..47，只被压掉最上面几像素（实测可读），不做特殊让位。
+    · 四张卡片：行高 72 / 96（音量与背光带进度条），间距 12
+    · 进度条一律 ZKSeekBar（规范铁律：进度条禁止色块/字符模拟）
+    · 底部提示 680..740
+
+  ⚠️ 本文件只给工具读：看效果请开 settings.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== 顶栏 ==================== -->
+  <div class="text" data-caption="BarSet" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#0A84FF"></div>
+  <!-- ⚠️ data-h=44：标题由 navibar 代显，盒必须收进其覆盖区 0..52，否则露出 8px 残带（见 ui/navibar.html） -->
+  <div class="text" data-caption="TextSetTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+       data-fs="22" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">系统设置</div>
+  <div class="btn" data-caption="BtnSetBack" data-x="424" data-y="54" data-w="48" data-h="36"
+       data-bg="#2C2C2E" data-fs="20" data-color="#F2F2F7">返回</div>
+
+  <!-- ==================== ① 静音开关 ====================
+       ★ 2026-09-17 用户明确：「音效开关就是等于静音按键了，就不存在音效开关的说法」
+         ⇒ 这一行从"音效 开/关"改成 **"静音 开/关"**，走的是**真静音**
+           （`pg::setMutedGlobal` = codec 输出开关，连在线流一起哑），
+           不再是原来的 `Host::setSoundOn()`（那个只管游戏音效 SFX，日志写着"流照旧"，
+           语义完全不同 —— 别混）。
+       ⚠️ caption 仍叫 `BtnSetSound` / `TextSetSoundVal`：**改名要同步 fun 生成的
+           `settingsLogic.cc` 桩**，而这两个名字界面上不显示，沿用历史名成本最低
+           （语义以这条注释 + settings.cc 的回调为准）。 -->
+  <div class="btn" data-caption="BtnSetSound" data-x="16" data-y="98" data-w="448" data-h="72"
+       data-bg="#1C1C1E" data-fs="19" data-color="#F2F2F7" data-align="left">静音</div>
+  <div class="text" data-caption="TextSetSoundVal" data-x="300" data-y="118" data-w="148" data-h="32"
+       data-fs="18" data-color="#64D2FF" data-align="right">关</div>
+
+  <!-- ==================== ② WiFi ==================== -->
+  <div class="btn" data-caption="BtnSetWifi" data-x="16" data-y="182" data-w="320" data-h="72"
+       data-bg="#1C1C1E" data-fs="19" data-color="#F2F2F7" data-align="left">WiFi</div>
+  <div class="text" data-caption="TextSetWifiVal" data-x="176" data-y="202" data-w="148" data-h="32"
+       data-fs="15" data-color="#9A9AA0" data-align="right">未连接</div>
+  <div class="btn" data-caption="BtnSetWifiPage" data-x="348" data-y="182" data-w="116" data-h="72"
+       data-bg="#0A84FF" data-fs="16" data-color="#FFFFFF">选网</div>
+
+  <!-- ==================== ③ 音量（可拖动） ====================
+       ★ 2026-09-17 用户要求：「进度条不需要按键，直接拖动就好了」
+         ⇒ **删掉 ＋/－ 按钮**，条自己就是操作面（手机的做法）。
+       两条硬约束（真机踩出来的）：
+         ① **命中区**：手指最小可拖区约 34px，而视觉上要保持 10px 细条
+            ⇒ 控件盒做成 448x34，胶囊画在盒内 y=12..21（见 tools/gen_ui.py 的
+              VOL_BAR_VARIANTS）。素材尺寸必须 == 控件盒，所以 448 那套是单独两张图。
+         ② **数据入口**：条拖动时走 `pg::setVolumePercentGlobal()`（绝对设值）／
+            `BRIGHTNESSHELPER->setBrightness()`，并用 "抑制时间窗" 压掉音量 OSD
+            —— 用户已经在拖本页的条，再弹一个全局音量面板就是噪音。
+       ⚠️ **不要给 seekbar 加 `data-thumb`**：ZKSeekBar 把填充图**按进度缩放**，
+         胶囊两端天然是圆的；加圆钮反而会在 0% 时留一个白点（实测）。
+         详见 ui/statusbar.html 里同一处的实测记录。
+       ⚠️ 文字与条的盒**不许重叠**（`tools/check_overlap.py` 会报）：文字 268..296，
+         条盒 296..330（胶囊在 308..317）。 -->
+  <div class="text" data-caption="TextSetVolVal" data-x="16" data-y="268" data-w="448" data-h="28"
+       data-fs="18" data-color="#F2F2F7" data-align="left">音量  50%</div>
+  <div class="bar" data-caption="BarSetVol" data-x="16" data-y="296" data-w="448" data-h="34"
+       data-max="100" data-value="50" data-track="vol_track_448.png" data-fill="vol_fill_448.png"
+       data-drag="1"></div>
+
+  <!-- ==================== ④ 背光（可拖动） ====================
+       与音量同构：文字 376..404，条盒 404..438（胶囊在 416..425）。
+       ★ 背光有**下限 10%**：拖到更低时条会被吸回 10（完全熄屏会让用户以为死机，
+         与原先按 － 到 10% 的行为一致）—— 代码在 settings.cc 的 onProgressChanged。 -->
+  <div class="text" data-caption="TextSetBrightVal" data-x="16" data-y="376" data-w="448" data-h="28"
+       data-fs="18" data-color="#F2F2F7" data-align="left">背光  100%</div>
+  <div class="bar" data-caption="BarSetBright" data-x="16" data-y="404" data-w="448" data-h="34"
+       data-max="100" data-value="100" data-track="vol_track_448.png" data-fill="vol_fill_448.png"
+       data-drag="1"></div>
+
+  <!-- ==================== 提示 ==================== -->
+  <div class="text" data-caption="TextSetHint" data-x="16" data-y="680" data-w="448" data-h="60"
+       data-fs="13" data-color="#9A9AA0" data-align="center">音量/背光 拖动进度条调节 · 自动保存 · 长按暂停键返回列表</div>
+
+</div>

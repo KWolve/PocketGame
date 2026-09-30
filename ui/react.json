@@ -1,0 +1,162 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "BarRc",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 8,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 689407
+    }
+  },
+  "textview__2": {
+    "alignment": 37,
+    "caption": "TextRcTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50002,
+    "position": {
+      "height": 44,
+      "left": 0,
+      "top": 8,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "反应计时"
+  },
+  "textview__3": {
+    "alignment": 37,
+    "caption": "TextRcPhase",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 22,
+    "id": 50003,
+    "position": {
+      "height": 40,
+      "left": 0,
+      "top": 86,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "点击下方按钮开始"
+  },
+  "textview__4": {
+    "alignment": 37,
+    "caption": "TextRcMain",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 96,
+    "id": 50004,
+    "position": {
+      "height": 160,
+      "left": 0,
+      "top": 146,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "--"
+  },
+  "textview__5": {
+    "alignment": 37,
+    "caption": "TextRcSub",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50005,
+    "position": {
+      "height": 34,
+      "left": 0,
+      "top": 316,
+      "width": 480
+    },
+    "touchable": false
+  },
+  "textview__6": {
+    "alignment": 37,
+    "caption": "TextRcHint",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50006,
+    "position": {
+      "height": 32,
+      "left": 16,
+      "top": 366,
+      "width": 448
+    },
+    "touchable": false
+  },
+  "button__7": {
+    "alignment": 37,
+    "caption": "BtnRc0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20001,
+    "position": {
+      "height": 276,
+      "left": 24,
+      "top": 408,
+      "width": 432
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 3199320
+    },
+    "fontSize": 40,
+    "text": "开始",
+    "picTab": {}
+  },
+  "textview__8": {
+    "alignment": 37,
+    "caption": "TextRcKeyBar",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50007,
+    "position": {
+      "height": 100,
+      "left": 0,
+      "top": 700,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "暂停键 开始/下一轮 · 长按 返回列表"
+  }
+}

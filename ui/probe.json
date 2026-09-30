@@ -1,0 +1,3430 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": 0,
+    "caption": "WinProbeWifi",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "textview__2": {
+      "alignment": 36,
+      "caption": "BarWifiTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50001,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__3": {
+      "alignment": 37,
+      "caption": "BtnWifiBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20001,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__4": {
+      "alignment": 36,
+      "caption": "TextWifiTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 24,
+      "id": 50002,
+      "position": {
+        "height": 44,
+        "left": 60,
+        "top": 2,
+        "width": 260
+      },
+      "touchable": false,
+      "text": "信号探针"
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnWifiRefr",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 36,
+        "left": 404,
+        "top": 54,
+        "width": 56
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_56x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_56x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "button__6": {
+      "alignment": 37,
+      "caption": "BarSegProbe",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20003,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 94,
+        "width": 456
+      },
+      "touchable": false,
+      "picTab": {
+        "pic0": "images/ios_seg.9.png",
+        "pic1": "images/ios_seg.9.png"
+      },
+      "text": ""
+    },
+    "button__7": {
+      "alignment": 37,
+      "caption": "TabWifi",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20004,
+      "position": {
+        "height": 40,
+        "left": 16,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "WiFi",
+      "picTab": {}
+    },
+    "button__8": {
+      "alignment": 37,
+      "caption": "TabBt",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20005,
+      "position": {
+        "height": 40,
+        "left": 129,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "蓝牙",
+      "picTab": {}
+    },
+    "button__9": {
+      "alignment": 37,
+      "caption": "TabLan",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20006,
+      "position": {
+        "height": 40,
+        "left": 242,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "局域网",
+      "picTab": {}
+    },
+    "button__10": {
+      "alignment": 37,
+      "caption": "TabSn",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20007,
+      "position": {
+        "height": 40,
+        "left": 355,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "嗅探",
+      "picTab": {}
+    },
+    "textview__11": {
+      "alignment": 36,
+      "caption": "CardSum",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50003,
+      "position": {
+        "height": 114,
+        "left": 12,
+        "top": 150,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__12": {
+      "alignment": 36,
+      "caption": "TextSumL1",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 16,
+      "id": 50004,
+      "position": {
+        "height": 28,
+        "left": 26,
+        "top": 162,
+        "width": 430
+      },
+      "touchable": false,
+      "text": "正在扫描附近网络..."
+    },
+    "textview__13": {
+      "alignment": 36,
+      "caption": "TextSumL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50005,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 192,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__14": {
+      "alignment": 36,
+      "caption": "TextSumL3",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 14,
+      "id": 50006,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 220,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "listview__15": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListProbeAp",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 74,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 5,
+      "position": {
+        "height": 402,
+        "left": 12,
+        "top": 272,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 74,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrBand",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 16,
+              "top": 7,
+              "width": 84
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrCh",
+            "colorTab": {
+              "color0": 16752394
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 16,
+              "top": 34,
+              "width": 84
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrSsid",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 18,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 32,
+              "left": 106,
+              "top": 6,
+              "width": 214
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrSec",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24005,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 106,
+              "top": 40,
+              "width": 214
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrRssi",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 17,
+            "id": 24006,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 32,
+              "left": 328,
+              "top": 6,
+              "width": 118
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPrRisk",
+            "colorTab": {
+              "color0": 16729402
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24007,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 328,
+              "top": 40,
+              "width": 118
+            }
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "ApBar",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24008,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 54,
+              "left": 8,
+              "top": 10,
+              "width": 5
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 74
+        }
+      }
+    },
+    "button__16": {
+      "alignment": 37,
+      "caption": "BtnApOnly",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20008,
+      "position": {
+        "height": 38,
+        "left": 12,
+        "top": 676,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 15,
+      "text": "只看风险设备",
+      "picTab": {}
+    },
+    "button__17": {
+      "alignment": 37,
+      "caption": "BtnProbeRescan",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20009,
+      "position": {
+        "height": 88,
+        "left": 12,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__18": {
+      "alignment": 37,
+      "caption": "BtnProbeHunt",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20010,
+      "position": {
+        "height": 88,
+        "left": 246,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r20.9.png",
+        "pic1": "images/ios_btn_blue_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__19": {
+      "alignment": 36,
+      "caption": "ImageView1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50007,
+      "position": {
+        "height": 44,
+        "left": 101,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_refresh_44x44_F2F2F7.png",
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__20": {
+      "alignment": 36,
+      "caption": "ImageView2",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50008,
+      "position": {
+        "height": 44,
+        "left": 335,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_search_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 689407
+      }
+    },
+    "textview__21": {
+      "alignment": 37,
+      "caption": "TextRescanLbl",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50009,
+      "position": {
+        "height": 26,
+        "left": 12,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "重新扫描"
+    },
+    "textview__22": {
+      "alignment": 37,
+      "caption": "TextHuntLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50010,
+      "position": {
+        "height": 26,
+        "left": 246,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "热点猎手"
+    }
+  },
+  "window__23": {
+    "backgroundColor": 0,
+    "caption": "WinProbeBt",
+    "hideTimeOut": -1,
+    "id": 110002,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__24": {
+      "alignment": 36,
+      "caption": "BarBtTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50011,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__25": {
+      "alignment": 37,
+      "caption": "BtnBtBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20011,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__26": {
+      "alignment": 36,
+      "caption": "TextBtTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 24,
+      "id": 50012,
+      "position": {
+        "height": 40,
+        "left": 60,
+        "top": 54,
+        "width": 260
+      },
+      "touchable": false,
+      "text": "信号探针"
+    },
+    "button__27": {
+      "alignment": 37,
+      "caption": "BtnBtRefr",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20012,
+      "position": {
+        "height": 36,
+        "left": 404,
+        "top": 54,
+        "width": 56
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_56x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_56x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "button__28": {
+      "alignment": 37,
+      "caption": "BarSegProbe2",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20013,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 94,
+        "width": 456
+      },
+      "touchable": false,
+      "picTab": {
+        "pic0": "images/ios_seg.9.png",
+        "pic1": "images/ios_seg.9.png"
+      },
+      "text": ""
+    },
+    "button__29": {
+      "alignment": 37,
+      "caption": "TabWifi2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20014,
+      "position": {
+        "height": 40,
+        "left": 16,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "WiFi",
+      "picTab": {}
+    },
+    "button__30": {
+      "alignment": 37,
+      "caption": "TabBt2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20015,
+      "position": {
+        "height": 40,
+        "left": 129,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "蓝牙",
+      "picTab": {}
+    },
+    "button__31": {
+      "alignment": 37,
+      "caption": "TabLan2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20016,
+      "position": {
+        "height": 40,
+        "left": 242,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "局域网",
+      "picTab": {}
+    },
+    "button__32": {
+      "alignment": 37,
+      "caption": "TabSn2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20017,
+      "position": {
+        "height": 40,
+        "left": 355,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "嗅探",
+      "picTab": {}
+    },
+    "textview__33": {
+      "alignment": 36,
+      "caption": "CardBtState",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50013,
+      "position": {
+        "height": 110,
+        "left": 12,
+        "top": 150,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__34": {
+      "alignment": 36,
+      "caption": "TextBtStateV",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "id": 50014,
+      "position": {
+        "height": 34,
+        "left": 26,
+        "top": 162,
+        "width": 210
+      },
+      "touchable": false,
+      "text": "未启动"
+    },
+    "textview__35": {
+      "alignment": 38,
+      "caption": "TextBtCount",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 20,
+      "id": 50015,
+      "position": {
+        "height": 34,
+        "left": 250,
+        "top": 162,
+        "width": 204
+      },
+      "touchable": false,
+      "text": "0 个设备"
+    },
+    "textview__36": {
+      "alignment": 36,
+      "caption": "TextBtAdv",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50016,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 200,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__37": {
+      "alignment": 36,
+      "caption": "TextBtTip",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 13,
+      "id": 50017,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 226,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "listview__38": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListProbeBt",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 62,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80002,
+      "rows": 6,
+      "position": {
+        "height": 402,
+        "left": 12,
+        "top": 272,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24009,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 62,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubBtName",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24010,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 28,
+              "left": 16,
+              "top": 5,
+              "width": 240
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubBtRssi",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24011,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 28,
+              "left": 268,
+              "top": 5,
+              "width": 172
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubBtAddr",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24012,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 16,
+              "top": 34,
+              "width": 240
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubBtRisk",
+            "colorTab": {
+              "color0": 16729402
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24013,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 268,
+              "top": 34,
+              "width": 172
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 61
+        }
+      }
+    },
+    "button__39": {
+      "alignment": 37,
+      "caption": "BtnBtStart",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20018,
+      "position": {
+        "height": 88,
+        "left": 12,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r20.9.png",
+        "pic1": "images/ios_btn_blue_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__40": {
+      "alignment": 37,
+      "caption": "BtnBtRescan",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20019,
+      "position": {
+        "height": 88,
+        "left": 246,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__41": {
+      "alignment": 36,
+      "caption": "ImageView3",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50018,
+      "position": {
+        "height": 44,
+        "left": 101,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_search_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 689407
+      }
+    },
+    "textview__42": {
+      "alignment": 36,
+      "caption": "ImageView4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50019,
+      "position": {
+        "height": 44,
+        "left": 335,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_refresh_44x44_F2F2F7.png",
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__43": {
+      "alignment": 37,
+      "caption": "TextBtStartLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50020,
+      "position": {
+        "height": 26,
+        "left": 12,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "启动蓝牙"
+    },
+    "textview__44": {
+      "alignment": 37,
+      "caption": "TextBtRescanLbl",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50021,
+      "position": {
+        "height": 26,
+        "left": 246,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "重新扫描"
+    }
+  },
+  "window__45": {
+    "backgroundColor": 0,
+    "caption": "WinProbeLan",
+    "hideTimeOut": -1,
+    "id": 110003,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__46": {
+      "alignment": 36,
+      "caption": "BarLanTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50022,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__47": {
+      "alignment": 37,
+      "caption": "BtnLanBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20020,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__48": {
+      "alignment": 36,
+      "caption": "TextLanTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 24,
+      "id": 50023,
+      "position": {
+        "height": 36,
+        "left": 60,
+        "top": 54,
+        "width": 260
+      },
+      "touchable": false,
+      "text": "信号探针"
+    },
+    "button__49": {
+      "alignment": 37,
+      "caption": "BtnLanRefr",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20021,
+      "position": {
+        "height": 36,
+        "left": 404,
+        "top": 54,
+        "width": 56
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_56x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_56x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "button__50": {
+      "alignment": 37,
+      "caption": "BtnLanMode",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20022,
+      "position": {
+        "height": 36,
+        "left": 328,
+        "top": 54,
+        "width": 72
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 14,
+      "text": "目标网",
+      "picTab": {}
+    },
+    "button__51": {
+      "alignment": 37,
+      "caption": "BarSegProbe3",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20023,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 94,
+        "width": 456
+      },
+      "touchable": false,
+      "picTab": {
+        "pic0": "images/ios_seg.9.png",
+        "pic1": "images/ios_seg.9.png"
+      },
+      "text": ""
+    },
+    "button__52": {
+      "alignment": 37,
+      "caption": "TabWifi3",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20024,
+      "position": {
+        "height": 40,
+        "left": 16,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "WiFi",
+      "picTab": {}
+    },
+    "button__53": {
+      "alignment": 37,
+      "caption": "TabBt3",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20025,
+      "position": {
+        "height": 40,
+        "left": 129,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "蓝牙",
+      "picTab": {}
+    },
+    "button__54": {
+      "alignment": 37,
+      "caption": "TabLan3",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20026,
+      "position": {
+        "height": 40,
+        "left": 242,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "局域网",
+      "picTab": {}
+    },
+    "button__55": {
+      "alignment": 37,
+      "caption": "TabSn3",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20027,
+      "position": {
+        "height": 40,
+        "left": 355,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "嗅探",
+      "picTab": {}
+    },
+    "textview__56": {
+      "alignment": 36,
+      "caption": "CardLan",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50024,
+      "position": {
+        "height": 114,
+        "left": 12,
+        "top": 150,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__57": {
+      "alignment": 36,
+      "caption": "TextLanL1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50025,
+      "position": {
+        "height": 28,
+        "left": 26,
+        "top": 162,
+        "width": 430
+      },
+      "touchable": false,
+      "text": "还没有扫描"
+    },
+    "textview__58": {
+      "alignment": 36,
+      "caption": "TextLanL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50026,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 192,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__59": {
+      "alignment": 36,
+      "caption": "TextLanL3",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 14,
+      "id": 50027,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 220,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "listview__60": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListProbeLan",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 86,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80003,
+      "rows": 5,
+      "position": {
+        "height": 402,
+        "left": 12,
+        "top": 272,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24014,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 86,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanTag",
+            "colorTab": {
+              "color0": 16752394
+            },
+            "fontFamily": 0,
+            "fontSize": 14,
+            "id": 24015,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 14,
+              "top": 6,
+              "width": 96
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanPort",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24016,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 14,
+              "top": 36,
+              "width": 96
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanIp",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 19,
+            "id": 24017,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 30,
+              "left": 118,
+              "top": 4,
+              "width": 224
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanMac",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24018,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 118,
+              "top": 35,
+              "width": 224
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanMeta",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24019,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 30,
+              "left": 344,
+              "top": 4,
+              "width": 100
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanRisk",
+            "colorTab": {
+              "color0": 16729402
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24020,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 312,
+              "top": 34,
+              "width": 136
+            }
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "LanBar",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24021,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 66,
+              "left": 8,
+              "top": 10,
+              "width": 5
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLanNote",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24022,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 14,
+              "top": 60,
+              "width": 428
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 74
+        }
+      }
+    },
+    "button__61": {
+      "alignment": 37,
+      "caption": "BtnLanOnly",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20028,
+      "position": {
+        "height": 38,
+        "left": 12,
+        "top": 676,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 15,
+      "text": "只看风险设备",
+      "picTab": {}
+    },
+    "button__62": {
+      "alignment": 37,
+      "caption": "BtnLanScan",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20029,
+      "position": {
+        "height": 88,
+        "left": 12,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r20.9.png",
+        "pic1": "images/ios_btn_blue_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__63": {
+      "alignment": 37,
+      "caption": "BtnLanProbe",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20030,
+      "position": {
+        "height": 88,
+        "left": 246,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__64": {
+      "alignment": 36,
+      "caption": "ImageView5",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50028,
+      "position": {
+        "height": 44,
+        "left": 101,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_search_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 689407
+      }
+    },
+    "textview__65": {
+      "alignment": 36,
+      "caption": "ImageView6",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50029,
+      "position": {
+        "height": 44,
+        "left": 335,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_refresh_44x44_F2F2F7.png",
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__66": {
+      "alignment": 37,
+      "caption": "TextLanScanLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50030,
+      "position": {
+        "height": 26,
+        "left": 12,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "扫描局域网"
+    },
+    "textview__67": {
+      "alignment": 37,
+      "caption": "TextLanProbeLbl",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50031,
+      "position": {
+        "height": 26,
+        "left": 246,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "深探端口"
+    }
+  },
+  "window__68": {
+    "backgroundColor": 0,
+    "caption": "WinProbeSniff",
+    "hideTimeOut": -1,
+    "id": 110004,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__69": {
+      "alignment": 36,
+      "caption": "BarSnTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50032,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__70": {
+      "alignment": 37,
+      "caption": "BtnSnBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20031,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__71": {
+      "alignment": 36,
+      "caption": "TextSnTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 24,
+      "id": 50033,
+      "position": {
+        "height": 36,
+        "left": 60,
+        "top": 54,
+        "width": 260
+      },
+      "touchable": false,
+      "text": "信号探针"
+    },
+    "button__72": {
+      "alignment": 37,
+      "caption": "BtnSnRefr",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20032,
+      "position": {
+        "height": 36,
+        "left": 404,
+        "top": 54,
+        "width": 56
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_refresh_56x36_F2F2F7.png",
+        "pic1": "images/icon_refresh_56x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "button__73": {
+      "alignment": 37,
+      "caption": "BtnSnHop",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20033,
+      "position": {
+        "height": 36,
+        "left": 326,
+        "top": 54,
+        "width": 74
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 14,
+      "text": "全信道",
+      "picTab": {}
+    },
+    "button__74": {
+      "alignment": 37,
+      "caption": "BarSegProbe4",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20034,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 94,
+        "width": 456
+      },
+      "touchable": false,
+      "picTab": {
+        "pic0": "images/ios_seg.9.png",
+        "pic1": "images/ios_seg.9.png"
+      },
+      "text": ""
+    },
+    "button__75": {
+      "alignment": 37,
+      "caption": "TabWifi4",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20035,
+      "position": {
+        "height": 40,
+        "left": 16,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "WiFi",
+      "picTab": {}
+    },
+    "button__76": {
+      "alignment": 37,
+      "caption": "TabBt4",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20036,
+      "position": {
+        "height": 40,
+        "left": 129,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "蓝牙",
+      "picTab": {}
+    },
+    "button__77": {
+      "alignment": 37,
+      "caption": "TabLan4",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20037,
+      "position": {
+        "height": 40,
+        "left": 242,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "局域网",
+      "picTab": {}
+    },
+    "button__78": {
+      "alignment": 37,
+      "caption": "TabSn4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20038,
+      "position": {
+        "height": 40,
+        "left": 355,
+        "top": 98,
+        "width": 107
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3621975
+      },
+      "fontSize": 15,
+      "text": "嗅探",
+      "picTab": {}
+    },
+    "textview__79": {
+      "alignment": 36,
+      "caption": "CardSnState",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50034,
+      "position": {
+        "height": 110,
+        "left": 12,
+        "top": 150,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__80": {
+      "alignment": 36,
+      "caption": "TextSnStateV",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "id": 50035,
+      "position": {
+        "height": 34,
+        "left": 26,
+        "top": 162,
+        "width": 210
+      },
+      "touchable": false,
+      "text": "未启动"
+    },
+    "textview__81": {
+      "alignment": 38,
+      "caption": "TextSnChan",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 20,
+      "id": 50036,
+      "position": {
+        "height": 34,
+        "left": 250,
+        "top": 162,
+        "width": 204
+      },
+      "touchable": false,
+      "text": "CH --"
+    },
+    "textview__82": {
+      "alignment": 36,
+      "caption": "TextSnInfo",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50037,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 200,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__83": {
+      "alignment": 36,
+      "caption": "TextSnTip",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 13,
+      "id": 50038,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 226,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__84": {
+      "alignment": 36,
+      "caption": "CardSnStat",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50039,
+      "position": {
+        "height": 96,
+        "left": 12,
+        "top": 268,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__85": {
+      "alignment": 36,
+      "caption": "TextSnPeersL",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50040,
+      "position": {
+        "height": 22,
+        "left": 26,
+        "top": 278,
+        "width": 140
+      },
+      "touchable": false,
+      "text": "发射者"
+    },
+    "textview__86": {
+      "alignment": 36,
+      "caption": "TextSnPeersV",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 26,
+      "id": 50041,
+      "position": {
+        "height": 46,
+        "left": 26,
+        "top": 298,
+        "width": 140
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "textview__87": {
+      "alignment": 36,
+      "caption": "TextSnFramesL",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50042,
+      "position": {
+        "height": 22,
+        "left": 176,
+        "top": 278,
+        "width": 140
+      },
+      "touchable": false,
+      "text": "帧数"
+    },
+    "textview__88": {
+      "alignment": 36,
+      "caption": "TextSnFramesV",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 26,
+      "id": 50043,
+      "position": {
+        "height": 46,
+        "left": 176,
+        "top": 298,
+        "width": 140
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "textview__89": {
+      "alignment": 36,
+      "caption": "TextSnSsidsL",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50044,
+      "position": {
+        "height": 22,
+        "left": 326,
+        "top": 278,
+        "width": 142
+      },
+      "touchable": false,
+      "text": "顺听 SSID"
+    },
+    "textview__90": {
+      "alignment": 36,
+      "caption": "TextSnSsidsV",
+      "colorTab": {
+        "color0": 3199320
+      },
+      "fontSize": 26,
+      "id": 50045,
+      "position": {
+        "height": 46,
+        "left": 326,
+        "top": 298,
+        "width": 142
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "listview__91": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListProbeSn",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 56,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80004,
+      "rows": 5,
+      "position": {
+        "height": 300,
+        "left": 12,
+        "top": 374,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24023,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 56,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubSnMac",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24024,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 14,
+              "top": 4,
+              "width": 170
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubSnRole",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24025,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 188,
+              "top": 4,
+              "width": 86
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubSnRssi",
+            "colorTab": {
+              "color0": 3199320
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24026,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 278,
+              "top": 4,
+              "width": 76
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubSnCnt",
+            "colorTab": {
+              "color0": 16752394
+            },
+            "fontFamily": 0,
+            "fontSize": 14,
+            "id": 24027,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 358,
+              "top": 4,
+              "width": 84
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubSnInfo",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24028,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 14,
+              "top": 30,
+              "width": 428
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 54
+        }
+      }
+    },
+    "button__92": {
+      "alignment": 37,
+      "caption": "BtnSnStart",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20039,
+      "position": {
+        "height": 88,
+        "left": 12,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r20.9.png",
+        "pic1": "images/ios_btn_blue_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__93": {
+      "alignment": 37,
+      "caption": "BtnSnStop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20040,
+      "position": {
+        "height": 88,
+        "left": 246,
+        "top": 696,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_red_r20.9.png",
+        "pic1": "images/ios_btn_red_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__94": {
+      "alignment": 36,
+      "caption": "ImageView7",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50046,
+      "position": {
+        "height": 44,
+        "left": 101,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_wifi_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 689407
+      }
+    },
+    "textview__95": {
+      "alignment": 36,
+      "caption": "ImageView8",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50047,
+      "position": {
+        "height": 44,
+        "left": 335,
+        "top": 708,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_back_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__96": {
+      "alignment": 37,
+      "caption": "TextSnStartLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50048,
+      "position": {
+        "height": 26,
+        "left": 12,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "开始嗅探"
+    },
+    "textview__97": {
+      "alignment": 37,
+      "caption": "TextSnStopLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50049,
+      "position": {
+        "height": 26,
+        "left": 246,
+        "top": 756,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "停止嗅探"
+    }
+  },
+  "window__98": {
+    "backgroundColor": 0,
+    "caption": "WinHunt",
+    "hideTimeOut": -1,
+    "id": 110005,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__99": {
+      "alignment": 36,
+      "caption": "BarHuntTop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50050,
+      "position": {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__100": {
+      "alignment": 37,
+      "caption": "BtnHuntBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20041,
+      "position": {
+        "height": 36,
+        "left": 8,
+        "top": 54,
+        "width": 44
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_back_44x36_F2F2F7.png",
+        "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+      },
+      "text": ""
+    },
+    "textview__101": {
+      "alignment": 36,
+      "caption": "TextHuntTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50051,
+      "position": {
+        "height": 36,
+        "left": 60,
+        "top": 54,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "热点猎手"
+    },
+    "button__102": {
+      "alignment": 37,
+      "caption": "BtnHuntBeep",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20042,
+      "position": {
+        "height": 36,
+        "left": 396,
+        "top": 54,
+        "width": 72
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 15,
+      "text": "蜂鸣",
+      "picTab": {}
+    },
+    "textview__103": {
+      "alignment": 36,
+      "caption": "CardHuntTgt",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50052,
+      "position": {
+        "height": 84,
+        "left": 12,
+        "top": 98,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__104": {
+      "alignment": 36,
+      "caption": "TextHuntTgt",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 20,
+      "id": 50053,
+      "position": {
+        "height": 32,
+        "left": 26,
+        "top": 106,
+        "width": 430
+      },
+      "touchable": false,
+      "text": "未锁定目标"
+    },
+    "textview__105": {
+      "alignment": 36,
+      "caption": "TextHuntSub",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50054,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 140,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__106": {
+      "alignment": 36,
+      "caption": "CardHuntVal",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50055,
+      "position": {
+        "height": 168,
+        "left": 12,
+        "top": 194,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__107": {
+      "alignment": 37,
+      "caption": "TextHuntDbm",
+      "colorTab": {
+        "color0": 3199320
+      },
+      "fontSize": 64,
+      "id": 50056,
+      "position": {
+        "height": 88,
+        "left": 26,
+        "top": 200,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__108": {
+      "alignment": 37,
+      "caption": "TextHuntMeta",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50057,
+      "position": {
+        "height": 26,
+        "left": 26,
+        "top": 294,
+        "width": 430
+      },
+      "touchable": false
+    },
+    "textview__109": {
+      "alignment": 36,
+      "caption": "Bar0",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50058,
+      "position": {
+        "height": 52,
+        "left": 24,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__110": {
+      "alignment": 36,
+      "caption": "Bar1",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50059,
+      "position": {
+        "height": 52,
+        "left": 61,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__111": {
+      "alignment": 36,
+      "caption": "Bar2",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50060,
+      "position": {
+        "height": 52,
+        "left": 98,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__112": {
+      "alignment": 36,
+      "caption": "Bar3",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50061,
+      "position": {
+        "height": 52,
+        "left": 135,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__113": {
+      "alignment": 36,
+      "caption": "Bar4",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50062,
+      "position": {
+        "height": 52,
+        "left": 172,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16752394
+      }
+    },
+    "textview__114": {
+      "alignment": 36,
+      "caption": "Bar5",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50063,
+      "position": {
+        "height": 52,
+        "left": 209,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16752394
+      }
+    },
+    "textview__115": {
+      "alignment": 36,
+      "caption": "Bar6",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50064,
+      "position": {
+        "height": 52,
+        "left": 246,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16752394
+      }
+    },
+    "textview__116": {
+      "alignment": 36,
+      "caption": "Bar7",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50065,
+      "position": {
+        "height": 52,
+        "left": 283,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16752394
+      }
+    },
+    "textview__117": {
+      "alignment": 36,
+      "caption": "Bar8",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50066,
+      "position": {
+        "height": 52,
+        "left": 320,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 3199320
+      }
+    },
+    "textview__118": {
+      "alignment": 36,
+      "caption": "Bar9",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50067,
+      "position": {
+        "height": 52,
+        "left": 357,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 3199320
+      }
+    },
+    "textview__119": {
+      "alignment": 36,
+      "caption": "Bar10",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50068,
+      "position": {
+        "height": 52,
+        "left": 394,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 3199320
+      }
+    },
+    "textview__120": {
+      "alignment": 36,
+      "caption": "Bar11",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50069,
+      "position": {
+        "height": 52,
+        "left": 431,
+        "top": 378,
+        "width": 25
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 3199320
+      }
+    },
+    "textview__121": {
+      "alignment": 37,
+      "caption": "TextHuntLevel",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "id": 50070,
+      "position": {
+        "height": 32,
+        "left": 12,
+        "top": 442,
+        "width": 456
+      },
+      "touchable": false,
+      "text": "等待锁定目标"
+    },
+    "textview__122": {
+      "alignment": 36,
+      "caption": "CardHuntStat",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50071,
+      "position": {
+        "height": 96,
+        "left": 12,
+        "top": 484,
+        "width": 456
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__123": {
+      "alignment": 36,
+      "caption": "TextPeakL",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50072,
+      "position": {
+        "height": 24,
+        "left": 26,
+        "top": 496,
+        "width": 200
+      },
+      "touchable": false,
+      "text": "最强记录"
+    },
+    "textview__124": {
+      "alignment": 36,
+      "caption": "TextPeakV",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 20,
+      "id": 50073,
+      "position": {
+        "height": 40,
+        "left": 26,
+        "top": 522,
+        "width": 200
+      },
+      "touchable": false,
+      "text": "-- dBm"
+    },
+    "textview__125": {
+      "alignment": 36,
+      "caption": "TextAvgL",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50074,
+      "position": {
+        "height": 24,
+        "left": 256,
+        "top": 496,
+        "width": 200
+      },
+      "touchable": false,
+      "text": "平滑值 / 采样"
+    },
+    "textview__126": {
+      "alignment": 36,
+      "caption": "TextAvgV",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 20,
+      "id": 50075,
+      "position": {
+        "height": 40,
+        "left": 256,
+        "top": 522,
+        "width": 200
+      },
+      "touchable": false,
+      "text": "-- dBm"
+    },
+    "textview__127": {
+      "alignment": 37,
+      "caption": "TextHuntTip",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50076,
+      "position": {
+        "height": 52,
+        "left": 12,
+        "top": 592,
+        "width": 456
+      },
+      "touchable": false,
+      "text": "拿稳设备慢慢走动，信号最强的地方就是目标所在"
+    },
+    "button__128": {
+      "alignment": 37,
+      "caption": "BtnHuntRelock",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20043,
+      "position": {
+        "height": 88,
+        "left": 12,
+        "top": 662,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__129": {
+      "alignment": 37,
+      "caption": "BtnHuntStop",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20044,
+      "position": {
+        "height": 88,
+        "left": 246,
+        "top": 662,
+        "width": 222
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_red_r20.9.png",
+        "pic1": "images/ios_btn_red_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__130": {
+      "alignment": 36,
+      "caption": "ImageView9",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50077,
+      "position": {
+        "height": 44,
+        "left": 101,
+        "top": 674,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_refresh_44x44_F2F2F7.png",
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__131": {
+      "alignment": 36,
+      "caption": "ImageView10",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "id": 50078,
+      "position": {
+        "height": 44,
+        "left": 335,
+        "top": 674,
+        "width": 44
+      },
+      "touchable": false,
+      "backgroundPic": "images/icon_back_44x44_FFFFFF.png",
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__132": {
+      "alignment": 37,
+      "caption": "TextHuntRelockLbl",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50079,
+      "position": {
+        "height": 26,
+        "left": 12,
+        "top": 700,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "重新锁定"
+    },
+    "textview__133": {
+      "alignment": 37,
+      "caption": "TextHuntStopLbl",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 15,
+      "id": 50080,
+      "position": {
+        "height": 26,
+        "left": 246,
+        "top": 700,
+        "width": 222
+      },
+      "touchable": false,
+      "text": "停止追踪"
+    }
+  }
+}

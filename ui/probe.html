@@ -1,0 +1,404 @@
+<!--
+  PocketGame - WiFi / 蓝牙信号探针（独立应用，probe.ftu / 480x800 竖屏）
+  源稿: html2json.py -> ui/probe.json -> fui pack -> ui/probe.ftu
+  一个 Activity = 一个 ftu：probeActivity（EventApp<Activity>("probe")）加载 probe.ftu。
+
+  功能参考 iOS「Find Spy 隐藏设备探测器」，全部用 **FlyThings 原生控件**实现
+  （铁律：非游戏功能禁止自定义绘图）。四个页签 + 一个整屏浮层页：
+
+    1) WiFi 探测页（WinProbeWifi，默认可见）
+       附近网络总览（2.4G/5G 分布、可疑数、开放数、推荐信道）+ 按强度排序的 AP 列表
+       （频段 / 信道 / SSID / 加密 / dBm / 风险标记）
+    2) 蓝牙探测页（WinProbeBt，初始隐藏）
+       BT 状态卡（初始化状态 / 广播条数 / 周边设备数）+ BLE 设备列表
+    3) 局域网设备页（WinProbeLan，初始隐藏）★ 2026-09-15 新增
+       **主动探测**：连进同一张网后扫在线设备（邻居发现 → /proc/net/arp 拿 IP+MAC）
+       → MAC 厂商 OUI → 摄像头端口扫描 + **RTSP/HTTP 协议指纹**
+       ⇒ 这是"找 STA 型偷拍设备 / IP 摄像头"的正解（AP 扫描根本看不见它们）
+    4) 无线嗅探页（WinProbeSniff，初始隐藏）★ 2026-09-15 新增
+       把闲置的 wlan1 切成 MONITOR 顺听空口（不碰 zknet/wlan0）：
+       同信道所有发射者（含平时完全隐身的 STA）+ 真实 RSSI + 信道 +
+       **probe/assoc 里的明文 SSID**（隐藏网络的名字就是这么解出来的）
+    5) 热点猎手（WinHunt，整屏浮层）
+       锁定一个目标（AP / BLE / 局域网设备）后实时刷新 RSSI，用「大号 dBm +
+       12 段强度条 + 提示语 + 蜂鸣」帮你**物理上找到**它（信号越强 = 越近）。
+
+  ★ 全部走 iOS 深色令牌（tools/ios_theme.py 是唯一真值）；卡片标 data-round="panel"
+    由 gen_ui.py 自动挂圆角九宫格；按钮底色→九宫格图也是自动挂（不用写 data-pic）。
+  ⚠️ 本文件只给工具读：看效果请开 probe.preview.html。
+  ⚠️ 所有整屏 window 都必须是**普通 window**（modal 是输入黑洞）。
+  ⚠️ 页签是"每个页面各带一套"的（窗口是整屏的，浮层会盖住别页的页签）——
+     加页签要**四个页面一起加**，漏一个就会出现"某页点不动页签"（踩过）。
+  ⚠️ 强度条的 12 段是 div.text（不是 btn）：**只切换 visible、不改底色** ——
+     运行时 setBackgroundColor 会清掉 backgroundPic（血案见 ui/main.html 注释），
+     而 div.text 没有 picTab，gen_ui 的圆角注入会整段跳过，底色就是干净的直角色块。
+
+  ★ 页签几何：容器 12..468（456 宽），内缩 4 ⇒ 4 段各 107 宽、间隙 6：
+     x = 16 / 129 / 242 / 355（末段右边界 462）。文字用短标签（WiFi/蓝牙/局域网/嗅探）。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== 1) WiFi 探测页（默认可见） ==================== -->
+  <div class="window" data-caption="WinProbeWifi" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- 顶栏 -->
+    <div class="text" data-caption="BarWifiTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnWifiBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextWifiTitle" data-x="60" data-y="2" data-w="260" data-h="44"
+         data-fs="24" data-color="#F2F2F7" data-align="left">信号探针</div>
+    <div class="btn" data-caption="BtnWifiRefr" data-icon="refresh" data-x="404" data-y="54" data-w="56" data-h="36" data-color="#F2F2F7"></div>
+
+    <!-- 页签（iOS 分段控件：容器 + 4 段，选中态底色由逻辑层 setSeg 负责） -->
+    <div class="btn" data-caption="BarSegProbe" data-x="12" data-y="94" data-w="456" data-h="48"
+         data-untouchable="1" data-pic0="images/ios_seg.9.png" data-pic1="images/ios_seg.9.png"></div>
+    <div class="btn" data-caption="TabWifi" data-x="16"  data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#F2F2F7">WiFi</div>
+    <div class="btn" data-caption="TabBt"   data-x="129" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">蓝牙</div>
+    <div class="btn" data-caption="TabLan"  data-x="242" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">局域网</div>
+    <div class="btn" data-caption="TabSn"   data-x="355" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">嗅探</div>
+
+    <!-- 总览卡（三行，逻辑层拼文本） -->
+    <div class="text" data-caption="CardSum" data-round="panel" data-x="12" data-y="150" data-w="456" data-h="114"></div>
+    <div class="text" data-caption="TextSumL1" data-x="26" data-y="162" data-w="430" data-h="28"
+         data-fs="16" data-color="#FF9F0A" data-align="left">正在扫描附近网络...</div>
+    <div class="text" data-caption="TextSumL2" data-x="26" data-y="192" data-w="430" data-h="26"
+         data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+    <div class="text" data-caption="TextSumL3" data-x="26" data-y="220" data-w="430" data-h="26"
+         data-fs="14" data-color="#64D2FF" data-align="left"></div>
+
+    <!-- AP 列表：按信号强度排序；点一行 = 锁定为「热点猎手」目标 -->
+    <div class="list" data-caption="ListProbeAp" data-x="12" data-y="272" data-w="456" data-h="402"
+         data-cols="1" data-rows="5" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="74" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="74" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubPrBand" data-x="16" data-y="7" data-w="84" data-h="24"
+             data-fs="13" data-color="#64D2FF" data-align="left"></div>
+        <div class="text" data-caption="SubPrCh" data-x="16" data-y="34" data-w="84" data-h="24"
+             data-fs="13" data-color="#FF9F0A" data-align="left"></div>
+        <div class="text" data-caption="SubPrSsid" data-x="106" data-y="6" data-w="214" data-h="32"
+             data-fs="18" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubPrSec" data-x="106" data-y="40" data-w="214" data-h="22"
+             data-fs="12" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubPrRssi" data-x="328" data-y="6" data-w="118" data-h="32"
+             data-fs="17" data-color="#64D2FF" data-align="right"></div>
+        <div class="text" data-caption="SubPrRisk" data-x="328" data-y="40" data-w="118" data-h="22"
+             data-fs="12" data-color="#FF453A" data-align="right"></div>
+        <!-- ★ 风险色条：div.text（不是 btn）⇒ 没有 picTab，gen_ui 的圆角注入会跳过它，
+             底色就是干净的直角色块（同文件头注释里"12 段强度条"那段）。
+             红=高危 / 金=可疑 / 灰=关注 / 卡同色=普通（隐形）。 -->
+        <div class="text" data-caption="ApBar" data-x="8" data-y="10" data-w="5" data-h="54"
+             data-bg="#1C1C1E"></div>
+      </div>
+    </div>
+
+    <!-- 底部操作（图标在上、文字在下 —— 与 wifi.ftu 同款）
+         ⚠️ 不要给按钮本身写 data-icon：生成的图标图尺寸 == 整个控件盒，字形居中，
+            压在文字上会糊成一团。图标单独用 div.icon 控尺寸。 -->
+    <!-- 「只看风险」筛选条：占列表(652)与底部按钮(696)之间的 44px 空隙，不动任何现有坐标。
+         动态底色（开启→蓝）⇒ data-noround，圆角由逻辑层 setCtrlBg 挂
+         （按控件**高度**自动选 r10 档，宽度由九宫格拉伸 ⇒ 尺寸随意）。 -->
+    <div class="btn" data-caption="BtnApOnly" data-x="12" data-y="676" data-w="456" data-h="38"
+         data-noround="1" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">只看风险设备</div>
+
+    <div class="btn" data-caption="BtnProbeRescan" data-x="12" data-y="696" data-w="222" data-h="88" data-bg="#2C2C2E"></div>
+    <div class="btn" data-caption="BtnProbeHunt" data-x="246" data-y="696" data-w="222" data-h="88" data-bg="#0A84FF"></div>
+    <div class="icon" data-icon="refresh" data-x="101" data-y="708" data-w="44" data-h="44" data-color="#F2F2F7"></div>
+    <div class="icon" data-icon="search" data-x="335" data-y="708" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="text" data-caption="TextRescanLbl" data-x="12" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#F2F2F7" data-align="center">重新扫描</div>
+    <div class="text" data-caption="TextHuntLbl" data-x="246" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">热点猎手</div>
+  </div>
+
+  <!-- ==================== 2) 蓝牙探测页（初始隐藏） ==================== -->
+  <div class="window" data-caption="WinProbeBt" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarBtTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnBtBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextBtTitle" data-x="60" data-y="54" data-w="260" data-h=364"
+         data-fs="24" data-color="#F2F2F7" data-align="left">信号探针</div>
+    <div class="btn" data-caption="BtnBtRefr" data-icon="refresh" data-x="404" data-y="54" data-w="56" data-h="36" data-color="#F2F2F7"></div>
+
+    <div class="btn" data-caption="BarSegProbe2" data-x="12" data-y="94" data-w="456" data-h="48"
+         data-untouchable="1" data-pic0="images/ios_seg.9.png" data-pic1="images/ios_seg.9.png"></div>
+    <div class="btn" data-caption="TabWifi2" data-x="16"  data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">WiFi</div>
+    <div class="btn" data-caption="TabBt2"   data-x="129" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#F2F2F7">蓝牙</div>
+    <div class="btn" data-caption="TabLan2"  data-x="242" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">局域网</div>
+    <div class="btn" data-caption="TabSn2"   data-x="355" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">嗅探</div>
+
+    <!-- BT 状态卡 -->
+    <div class="text" data-caption="CardBtState" data-round="panel" data-x="12" data-y="150" data-w="456" data-h="110"></div>
+    <div class="text" data-caption="TextBtStateV" data-x="26" data-y="162" data-w="210" data-h="34"
+         data-fs="20" data-color="#F2F2F7" data-align="left">未启动</div>
+    <div class="text" data-caption="TextBtCount" data-x="250" data-y="162" data-w="204" data-h="34"
+         data-fs="20" data-color="#64D2FF" data-align="right">0 个设备</div>
+    <div class="text" data-caption="TextBtAdv" data-x="26" data-y="200" data-w="430" data-h="26"
+         data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+    <div class="text" data-caption="TextBtTip" data-x="26" data-y="226" data-w="430" data-h="26"
+         data-fs="13" data-color="#FF9F0A" data-align="left"></div>
+
+    <!-- BLE 设备列表：点一行 = 锁定为「热点猎手」目标 -->
+    <div class="list" data-caption="ListProbeBt" data-x="12" data-y="272" data-w="456" data-h="402"
+         data-cols="1" data-rows="6" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="62" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="62" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubBtName" data-x="16" data-y="5" data-w="240" data-h="28"
+             data-fs="16" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubBtRssi" data-x="268" data-y="5" data-w="172" data-h="28"
+             data-fs="16" data-color="#64D2FF" data-align="right"></div>
+        <div class="text" data-caption="SubBtAddr" data-x="16" data-y="34" data-w="240" data-h="22"
+             data-fs="12" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubBtRisk" data-x="268" data-y="34" data-w="172" data-h="22"
+             data-fs="12" data-color="#FF453A" data-align="right"></div>
+      </div>
+    </div>
+
+    <div class="btn" data-caption="BtnBtStart" data-x="12" data-y="696" data-w="222" data-h="88" data-bg="#0A84FF"></div>
+    <div class="btn" data-caption="BtnBtRescan" data-x="246" data-y="696" data-w="222" data-h="88" data-bg="#2C2C2E"></div>
+    <div class="icon" data-icon="search" data-x="101" data-y="708" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="icon" data-icon="refresh" data-x="335" data-y="708" data-w="44" data-h="44" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextBtStartLbl" data-x="12" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">启动蓝牙</div>
+    <div class="text" data-caption="TextBtRescanLbl" data-x="246" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#F2F2F7" data-align="center">重新扫描</div>
+  </div>
+
+  <!-- ==================== 3) 局域网设备页（初始隐藏）★新增 ====================
+       主动探测：邻居发现（UDP 触发 ARP + 读 /proc/net/arp）→ MAC 厂商 OUI
+       → 摄像头端口扫描 + RTSP/HTTP 协议指纹 → 风险判定。
+       列表点一行 = **只深探这一台**（快），底部「深探端口」= 把所有台都探一遍。
+  -->
+  <div class="window" data-caption="WinProbeLan" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarLanTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnLanBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextLanTitle" data-x="60" data-y="54" data-w="260" data-h="36"
+         data-fs="24" data-color="#F2F2F7" data-align="left">信号探针</div>
+    <div class="btn" data-caption="BtnLanRefr" data-icon="refresh" data-x="404" data-y="54" data-w="56" data-h="36" data-color="#F2F2F7"></div>
+    <!-- 目标网模式开关：进 = 把当前网络存成"原网络"，出 = 还原并重连回去。
+         动态底色（进模式变绿）⇒ data-noround，圆角由 logic 的 setCtrlBg 挂（ON_PAGE）。 -->
+    <div class="btn" data-caption="BtnLanMode" data-x="328" data-y="54" data-w="72" data-h="36"
+         data-noround="1" data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">目标网</div>
+
+    <div class="btn" data-caption="BarSegProbe3" data-x="12" data-y="94" data-w="456" data-h="48"
+         data-untouchable="1" data-pic0="images/ios_seg.9.png" data-pic1="images/ios_seg.9.png"></div>
+    <div class="btn" data-caption="TabWifi3" data-x="16"  data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">WiFi</div>
+    <div class="btn" data-caption="TabBt3"   data-x="129" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">蓝牙</div>
+    <div class="btn" data-caption="TabLan3"  data-x="242" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#F2F2F7">局域网</div>
+    <div class="btn" data-caption="TabSn3"   data-x="355" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">嗅探</div>
+
+    <div class="text" data-caption="CardLan" data-round="panel" data-x="12" data-y="150" data-w="456" data-h="114"></div>
+    <div class="text" data-caption="TextLanL1" data-x="26" data-y="162" data-w="430" data-h="28"
+         data-fs="16" data-color="#F2F2F7" data-align="left">还没有扫描</div>
+    <div class="text" data-caption="TextLanL2" data-x="26" data-y="192" data-w="430" data-h="26"
+         data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+    <div class="text" data-caption="TextLanL3" data-x="26" data-y="220" data-w="430" data-h="26"
+         data-fs="14" data-color="#64D2FF" data-align="left"></div>
+
+    <!-- 设备列表（行高 86 = 三行信息：IP/标签 · MAC/厂商 · 协议指纹） -->
+    <div class="list" data-caption="ListProbeLan" data-x="12" data-y="272" data-w="456" data-h="402"
+         data-cols="1" data-rows="5" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="86" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="86" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubLanTag" data-x="14" data-y="6" data-w="96" data-h="26"
+             data-fs="14" data-color="#FF9F0A" data-align="left"></div>
+        <div class="text" data-caption="SubLanPort" data-x="14" data-y="36" data-w="96" data-h="22"
+             data-fs="11" data-color="#64D2FF" data-align="left"></div>
+        <div class="text" data-caption="SubLanIp" data-x="118" data-y="4" data-w="224" data-h="30"
+             data-fs="19" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubLanMac" data-x="118" data-y="35" data-w="224" data-h="22"
+             data-fs="11" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubLanMeta" data-x="344" data-y="4" data-w="100" data-h="30"
+             data-fs="15" data-color="#64D2FF" data-align="right"></div>
+        <!-- ⚠️ 这一列原来只有 100x22 / fs=11，装不下"视频流可直读""IPC 备用端口"这类判据
+             （判据本身就是"谁是摄像头"的答案，被截断等于没答案）⇒ 加宽到 136、字号提到 12。 -->
+        <div class="text" data-caption="SubLanRisk" data-x="312" data-y="34" data-w="136" data-h="24"
+             data-fs="12" data-color="#FF453A" data-align="right"></div>
+        <div class="text" data-caption="LanBar" data-x="8" data-y="10" data-w="5" data-h="66"
+             data-bg="#1C1C1E"></div>
+        <div class="text" data-caption="SubLanNote" data-x="14" data-y="60" data-w="428" data-h="22"
+             data-fs="11" data-color="#9A9AA0" data-align="left"></div>
+      </div>
+    </div>
+
+    <!-- 「只看风险」筛选条（同 WiFi 页）：进目标网扫完一遍后一键把手机/路由器滤掉，
+         剩下的**就是**嫌疑设备 —— 这是"谁是摄像头"最直接的答案。 -->
+    <div class="btn" data-caption="BtnLanOnly" data-x="12" data-y="676" data-w="456" data-h="38"
+         data-noround="1" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">只看风险设备</div>
+
+    <div class="btn" data-caption="BtnLanScan" data-x="12" data-y="696" data-w="222" data-h="88" data-bg="#0A84FF"></div>
+    <div class="btn" data-caption="BtnLanProbe" data-x="246" data-y="696" data-w="222" data-h="88" data-bg="#2C2C2E"></div>
+    <div class="icon" data-icon="search" data-x="101" data-y="708" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="icon" data-icon="refresh" data-x="335" data-y="708" data-w="44" data-h="44" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextLanScanLbl" data-x="12" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">扫描局域网</div>
+    <div class="text" data-caption="TextLanProbeLbl" data-x="246" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#F2F2F7" data-align="center">深探端口</div>
+  </div>
+
+  <!-- ==================== 4) 无线嗅探页（初始隐藏）★新增 ====================
+       把闲置的 wlan1 切成 MONITOR 顺听空口（不碰 zknet / wlan0）。
+       三格统计（发射者 / 帧数 / 顺听 SSID）+ 发射者列表。
+       ★ 隐藏网络的**名字**就是从客户端的 assoc request 里顺出来的（明文）。
+  -->
+  <div class="window" data-caption="WinProbeSniff" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarSnTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnSnBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextSnTitle" data-x="60" data-y="54" data-w="260" data-h="36"
+         data-fs="24" data-color="#F2F2F7" data-align="left">信号探针</div>
+    <div class="btn" data-caption="BtnSnRefr" data-icon="refresh" data-x="404" data-y="54" data-w="56" data-h="36" data-color="#F2F2F7"></div>
+    <!-- 全信道开关（★ 会让设备暂时断网：必须把 wlan0 down 掉才切得动信道，
+         占用射频的是接口本身而不是关联状态）。开启变绿，退出应用自动还原。 -->
+    <div class="btn" data-caption="BtnSnHop" data-x="326" data-y="54" data-w="74" data-h="36"
+         data-noround="1" data-bg="#2C2C2E" data-fs="14" data-color="#F2F2F7">全信道</div>
+
+    <div class="btn" data-caption="BarSegProbe4" data-x="12" data-y="94" data-w="456" data-h="48"
+         data-untouchable="1" data-pic0="images/ios_seg.9.png" data-pic1="images/ios_seg.9.png"></div>
+    <div class="btn" data-caption="TabWifi4" data-x="16"  data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">WiFi</div>
+    <div class="btn" data-caption="TabBt4"   data-x="129" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">蓝牙</div>
+    <div class="btn" data-caption="TabLan4"  data-x="242" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#9A9AA0">局域网</div>
+    <div class="btn" data-caption="TabSn4"   data-x="355" data-y="98" data-w="107" data-h="40"
+         data-noround="1" data-fs="15" data-color="#F2F2F7">嗅探</div>
+
+    <!-- 状态卡 -->
+    <div class="text" data-caption="CardSnState" data-round="panel" data-x="12" data-y="150" data-w="456" data-h="110"></div>
+    <div class="text" data-caption="TextSnStateV" data-x="26" data-y="162" data-w="210" data-h="34"
+         data-fs="20" data-color="#F2F2F7" data-align="left">未启动</div>
+    <div class="text" data-caption="TextSnChan" data-x="250" data-y="162" data-w="204" data-h="34"
+         data-fs="20" data-color="#64D2FF" data-align="right">CH --</div>
+    <div class="text" data-caption="TextSnInfo" data-x="26" data-y="200" data-w="430" data-h="26"
+         data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+    <div class="text" data-caption="TextSnTip" data-x="26" data-y="226" data-w="430" data-h="26"
+         data-fs="13" data-color="#FF9F0A" data-align="left"></div>
+
+    <!-- 三格统计 -->
+    <div class="text" data-caption="CardSnStat" data-round="panel" data-x="12" data-y="268" data-w="456" data-h="96"></div>
+    <div class="text" data-caption="TextSnPeersL" data-x="26" data-y="278" data-w="140" data-h="22"
+         data-fs="12" data-color="#9A9AA0" data-align="left">发射者</div>
+    <div class="text" data-caption="TextSnPeersV" data-x="26" data-y="298" data-w="140" data-h="46"
+         data-fs="26" data-color="#64D2FF" data-align="left">0</div>
+    <div class="text" data-caption="TextSnFramesL" data-x="176" data-y="278" data-w="140" data-h="22"
+         data-fs="12" data-color="#9A9AA0" data-align="left">帧数</div>
+    <div class="text" data-caption="TextSnFramesV" data-x="176" data-y="298" data-w="140" data-h="46"
+         data-fs="26" data-color="#FF9F0A" data-align="left">0</div>
+    <div class="text" data-caption="TextSnSsidsL" data-x="326" data-y="278" data-w="142" data-h="22"
+         data-fs="12" data-color="#9A9AA0" data-align="left">顺听 SSID</div>
+    <div class="text" data-caption="TextSnSsidsV" data-x="326" data-y="298" data-w="142" data-h="46"
+         data-fs="26" data-color="#30D158" data-align="left">0</div>
+
+    <!-- 发射者列表 -->
+    <div class="list" data-caption="ListProbeSn" data-x="12" data-y="374" data-w="456" data-h="300"
+         data-cols="1" data-rows="5" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="56" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="56" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubSnMac" data-x="14" data-y="4" data-w="170" data-h="26"
+             data-fs="15" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubSnRole" data-x="188" data-y="4" data-w="86" data-h="26"
+             data-fs="12" data-color="#64D2FF" data-align="right"></div>
+        <div class="text" data-caption="SubSnRssi" data-x="278" data-y="4" data-w="76" data-h="26"
+             data-fs="15" data-color="#30D158" data-align="right"></div>
+        <div class="text" data-caption="SubSnCnt" data-x="358" data-y="4" data-w="84" data-h="26"
+             data-fs="14" data-color="#FF9F0A" data-align="right"></div>
+        <div class="text" data-caption="SubSnInfo" data-x="14" data-y="30" data-w="428" data-h="22"
+             data-fs="11" data-color="#9A9AA0" data-align="left"></div>
+      </div>
+    </div>
+
+    <div class="btn" data-caption="BtnSnStart" data-x="12" data-y="696" data-w="222" data-h="88" data-bg="#0A84FF"></div>
+    <div class="btn" data-caption="BtnSnStop" data-x="246" data-y="696" data-w="222" data-h="88" data-bg="#FF453A"></div>
+    <div class="icon" data-icon="wifi" data-x="101" data-y="708" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="icon" data-icon="back" data-x="335" data-y="708" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="text" data-caption="TextSnStartLbl" data-x="12" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">开始嗅探</div>
+    <div class="text" data-caption="TextSnStopLbl" data-x="246" data-y="756" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">停止嗅探</div>
+  </div>
+
+  <!-- ==================== 5) 热点猎手（整屏浮层）====================
+       锁定目标后实时刷新 RSSI：大号 dBm + 12 段强度条 + 提示语 + 蜂鸣。
+       强度条按"段位置"固定配色（后 4 段绿 = 强 / 中 4 段金 / 前 4 段红 = 弱），
+       逻辑层只切 visible，可见段越多 = 信号越强。**不改底色**（见文件头注释）。
+       ⚠️ 这个 window 写在**最后 = 窗口栈最上层** ⇒ showTab() 必须显式把它收起来，
+          否则切页签时它会一直盖在上面（症状：点页签"没反应"，踩过）。
+  -->
+  <div class="window" data-caption="WinHunt" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarHuntTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnHuntBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextHuntTitle" data-x="60" data-y="54" data-w="300" data-h="36"
+         data-fs="22" data-color="#F2F2F7" data-align="left">热点猎手</div>
+    <!-- 蜂鸣开关：开=绿 / 关=灰，是**动态底色** ⇒ data-noround，
+         圆角由 logic 的 setCtrlBg 挂（坐在页面黑底上 → ON_PAGE）。 -->
+    <div class="btn" data-caption="BtnHuntBeep" data-x="396" data-y="54" data-w="72" data-h="36"
+         data-noround="1" data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">蜂鸣</div>
+
+    <!-- 目标卡 -->
+    <div class="text" data-caption="CardHuntTgt" data-round="panel" data-x="12" data-y="98" data-w="456" data-h="84"></div>
+    <div class="text" data-caption="TextHuntTgt" data-x="26" data-y="106" data-w="430" data-h="32"
+         data-fs="20" data-color="#FF9F0A" data-align="left">未锁定目标</div>
+    <div class="text" data-caption="TextHuntSub" data-x="26" data-y="140" data-w="430" data-h="26"
+         data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+
+    <!-- 大号 dBm -->
+    <div class="text" data-caption="CardHuntVal" data-round="panel" data-x="12" data-y="194" data-w="456" data-h="168"></div>
+    <div class="text" data-caption="TextHuntDbm" data-x="26" data-y="200" data-w="430" data-h="88"
+         data-fs="64" data-color="#30D158" data-align="center"></div>
+    <div class="text" data-caption="TextHuntMeta" data-x="26" data-y="294" data-w="430" data-h="26"
+         data-fs="14" data-color="#9A9AA0" data-align="center"></div>
+
+    <!-- 12 段强度条（段 i 的 x = 24 + i*37，宽 25，高 52） -->
+    <div class="text" data-caption="Bar0"  data-x="24"  data-y="378" data-w="25" data-h="52" data-bg="#FF453A"></div>
+    <div class="text" data-caption="Bar1"  data-x="61"  data-y="378" data-w="25" data-h="52" data-bg="#FF453A"></div>
+    <div class="text" data-caption="Bar2"  data-x="98"  data-y="378" data-w="25" data-h="52" data-bg="#FF453A"></div>
+    <div class="text" data-caption="Bar3"  data-x="135" data-y="378" data-w="25" data-h="52" data-bg="#FF453A"></div>
+    <div class="text" data-caption="Bar4"  data-x="172" data-y="378" data-w="25" data-h="52" data-bg="#FF9F0A"></div>
+    <div class="text" data-caption="Bar5"  data-x="209" data-y="378" data-w="25" data-h="52" data-bg="#FF9F0A"></div>
+    <div class="text" data-caption="Bar6"  data-x="246" data-y="378" data-w="25" data-h="52" data-bg="#FF9F0A"></div>
+    <div class="text" data-caption="Bar7"  data-x="283" data-y="378" data-w="25" data-h="52" data-bg="#FF9F0A"></div>
+    <div class="text" data-caption="Bar8"  data-x="320" data-y="378" data-w="25" data-h="52" data-bg="#30D158"></div>
+    <div class="text" data-caption="Bar9"  data-x="357" data-y="378" data-w="25" data-h="52" data-bg="#30D158"></div>
+    <div class="text" data-caption="Bar10" data-x="394" data-y="378" data-w="25" data-h="52" data-bg="#30D158"></div>
+    <div class="text" data-caption="Bar11" data-x="431" data-y="378" data-w="25" data-h="52" data-bg="#30D158"></div>
+
+    <div class="text" data-caption="TextHuntLevel" data-x="12" data-y="442" data-w="456" data-h="32"
+         data-fs="18" data-color="#F2F2F7" data-align="center">等待锁定目标</div>
+
+    <!-- 峰值 / 平均 -->
+    <div class="text" data-caption="CardHuntStat" data-round="panel" data-x="12" data-y="484" data-w="456" data-h="96"></div>
+    <div class="text" data-caption="TextPeakL" data-x="26" data-y="496" data-w="200" data-h="24"
+         data-fs="13" data-color="#9A9AA0" data-align="left">最强记录</div>
+    <div class="text" data-caption="TextPeakV" data-x="26" data-y="522" data-w="200" data-h="40"
+         data-fs="20" data-color="#FF9F0A" data-align="left">-- dBm</div>
+    <div class="text" data-caption="TextAvgL" data-x="256" data-y="496" data-w="200" data-h="24"
+         data-fs="13" data-color="#9A9AA0" data-align="left">平滑值 / 采样</div>
+    <div class="text" data-caption="TextAvgV" data-x="256" data-y="522" data-w="200" data-h="40"
+         data-fs="20" data-color="#64D2FF" data-align="left">-- dBm</div>
+
+    <div class="text" data-caption="TextHuntTip" data-x="12" data-y="592" data-w="456" data-h="52"
+         data-fs="13" data-color="#9A9AA0" data-align="center">拿稳设备慢慢走动，信号最强的地方就是目标所在</div>
+
+    <div class="btn" data-caption="BtnHuntRelock" data-x="12" data-y="662" data-w="222" data-h="88" data-bg="#2C2C2E"></div>
+    <div class="btn" data-caption="BtnHuntStop" data-x="246" data-y="662" data-w="222" data-h="88" data-bg="#FF453A"></div>
+    <div class="icon" data-icon="refresh" data-x="101" data-y="674" data-w="44" data-h="44" data-color="#F2F2F7"></div>
+    <div class="icon" data-icon="back" data-x="335" data-y="674" data-w="44" data-h="44" data-color="#FFFFFF"></div>
+    <div class="text" data-caption="TextHuntRelockLbl" data-x="12" data-y="700" data-w="222" data-h="26"
+         data-fs="15" data-color="#F2F2F7" data-align="center">重新锁定</div>
+    <div class="text" data-caption="TextHuntStopLbl" data-x="246" data-y="700" data-w="222" data-h="26"
+         data-fs="15" data-color="#FFFFFF" data-align="center">停止追踪</div>
+  </div>
+
+</div>

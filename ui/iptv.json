@@ -1,0 +1,480 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": 0,
+    "caption": "WinIptv",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "textview__2": {
+      "alignment": 36,
+      "caption": "BarIptv",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50001,
+      "position": {
+        "height": 8,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 12540658
+      }
+    },
+    "textview__3": {
+      "alignment": 36,
+      "caption": "TextIptvStatus",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50002,
+      "position": {
+        "height": 26,
+        "left": 16,
+        "top": 54,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "正在加载频道表..."
+    },
+    "listview__4": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListIptv",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 7,
+      "position": {
+        "height": 588,
+        "left": 12,
+        "top": 108,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 82,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubChName",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 20,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 34,
+              "left": 14,
+              "top": 6,
+              "width": 316
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubChInfo",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 14,
+              "top": 42,
+              "width": 420
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubChNote",
+            "colorTab": {
+              "color0": 16752394
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 334,
+              "top": 8,
+              "width": 100
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 78
+        }
+      }
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnIptvReload",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20001,
+      "position": {
+        "height": 48,
+        "left": 12,
+        "top": 702,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "重新加载频道表",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__6": {
+      "alignment": 37,
+      "caption": "TextIptvKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50003,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 756,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "B 键返回列表 · 点列表里的频道即播放"
+    }
+  },
+  "window__7": {
+    "backgroundColor": -1,
+    "caption": "WinIptvPlay",
+    "hideTimeOut": -1,
+    "id": 110002,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "videoview__8": {
+      "backgroundColor": 0,
+      "caption": "IptvVideo",
+      "defaultVolume": 8,
+      "id": 95001,
+      "loopPlayback": false,
+      "rotation": 0,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": true,
+      "visible": true
+    },
+    "textview__9": {
+      "alignment": 36,
+      "caption": "ImgIptvCover",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50004,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "backgroundPic": "images/video_cover.png",
+      "visible": false
+    },
+    "textview__10": {
+      "alignment": 36,
+      "caption": "TextIptvPlayMsg",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50005,
+      "position": {
+        "height": 34,
+        "left": 8,
+        "top": 54,
+        "width": 464
+      },
+      "touchable": false
+    },
+    "textview__11": {
+      "alignment": 37,
+      "caption": "TextIptvLoad",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 26,
+      "id": 50006,
+      "position": {
+        "height": 46,
+        "left": 30,
+        "top": 290,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__12": {
+      "alignment": 37,
+      "caption": "TextIptvLoadBar",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 18,
+      "id": 50007,
+      "position": {
+        "height": 26,
+        "left": 30,
+        "top": 344,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__13": {
+      "alignment": 37,
+      "caption": "TextIptvLoadHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50008,
+      "position": {
+        "height": 24,
+        "left": 30,
+        "top": 380,
+        "width": 420
+      },
+      "touchable": false
+    },
+    "textview__14": {
+      "alignment": 36,
+      "caption": "BarIptvBottom",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50009,
+      "position": {
+        "height": 100,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__15": {
+      "alignment": 37,
+      "caption": "BtnIptvPrev",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20002,
+      "position": {
+        "height": 64,
+        "left": 12,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "上一个",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__16": {
+      "alignment": 37,
+      "caption": "BtnIptvStop",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20003,
+      "position": {
+        "height": 64,
+        "left": 170,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 18,
+      "text": "停止",
+      "picTab": {
+        "pic0": "images/ios_btn_redsoft_r14.9.png",
+        "pic1": "images/ios_btn_redsoft_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__17": {
+      "alignment": 37,
+      "caption": "BtnIptvNext",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20004,
+      "position": {
+        "height": 64,
+        "left": 328,
+        "top": 718,
+        "width": 140
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "下一个",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  }
+}

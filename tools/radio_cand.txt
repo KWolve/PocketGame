@@ -1,0 +1,100 @@
+# 网络收音机候选台（tools/radio_probe.py 的输入）
+# 格式：名称 | 分组 | 地址      （# 开头是注释）
+# 名字用字注意：本工程字库是子集、**没有逐字回退** ⇒ 生僻字会静默不画，尽量用常用字。
+# ============ 中央广播电视总台（央广 CNR） ============
+中国之声 | 央广 | https://ngcdn001.cnr.cn/live/zgzs/index.m3u8
+经济之声 | 央广 | https://ngcdn002.cnr.cn/live/jjzs/index.m3u8
+音乐之声 | 央广 | https://ngcdn003.cnr.cn/live/yyzs/index.m3u8
+中国交通广播 | 央广 | https://ngcdn002.cnr.cn/live/gsgljtgb/index.m3u8
+香港之声 | 央广 | https://ngcdn002.cnr.cn/live/xgzs/index.m3u8
+中国之声(MP3直连) | 央广 | https://lhttp.qtfm.cn/live/15318317/64k.mp3
+经典音乐广播 | 央广 | https://lhttp.qtfm.cn/live/15318302/64k.mp3
+文艺之声 | 央广 | https://lhttp.qtfm.cn/live/15318303/64k.mp3
+# ============ 中国国际广播电台（CRI / CGTN Radio） ============
+环球资讯广播 | 国家台 | https://sk.cri.cn/hyhq.m3u8
+世界华声 | 国家台 | https://sk.cri.cn/hxfh.m3u8
+英语资讯广播 | 国家台 | https://sk.cri.cn/am846.m3u8
+南海之声 | 国家台 | https://sk.cri.cn/nhzs.m3u8
+# ============ 省市台（蜻蜓FM CDN，64k MP3 直连） ============
+北京交通广播 | 省市台 | https://lhttp.qtfm.cn/live/336/64k.mp3
+北京音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/332/64k.mp3
+北京新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/334/64k.mp3
+上海新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/270/64k.mp3
+第一财经广播 | 省市台 | https://lhttp.qtfm.cn/live/276/64k.mp3
+广东珠江经济台 | 省市台 | https://lhttp.qtfm.cn/live/1259/64k.mp3
+广东音乐之声 | 省市台 | https://lhttp.qtfm.cn/live/1260/64k.mp3
+广东交通之声 | 省市台 | https://lhttp.qtfm.cn/live/1262/64k.mp3
+深圳新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/1270/64k.mp3
+深圳音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/1271/64k.mp3
+深圳交通广播 | 省市台 | https://lhttp.qtfm.cn/live/1272/64k.mp3
+四川新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/4906/64k.mp3
+四川交通广播 | 省市台 | https://lhttp.qtfm.cn/live/4886/64k.mp3
+湖北楚天交通广播 | 省市台 | https://lhttp.qtfm.cn/live/1291/64k.mp3
+湖北经典音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/1296/64k.mp3
+云南音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/1929/64k.mp3
+云南新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/1926/64k.mp3
+陕西交通广播 | 省市台 | https://lhttp.qtfm.cn/live/1601/64k.mp3
+陕西新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/1600/64k.mp3
+福建新闻综合广播 | 省市台 | https://lhttp.qtfm.cn/live/1731/64k.mp3
+福建交通广播 | 省市台 | https://lhttp.qtfm.cn/live/1733/64k.mp3
+温州音乐之声 | 省市台 | https://lhttp.qtfm.cn/live/1149/64k.mp3
+贵州音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/20067/64k.mp3
+山东经济广播 | 省市台 | https://lhttp.qtfm.cn/live/20236/64k.mp3
+山东文艺广播 | 省市台 | https://lhttp.qtfm.cn/live/20238/64k.mp3
+辽宁交通广播 | 省市台 | https://lhttp.qtfm.cn/live/20025/64k.mp3
+大连音乐广播 | 省市台 | https://lhttp.qtfm.cn/live/1084/64k.mp3
+青岛新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/1673/64k.mp3
+浙江之声 | 省市台 | https://lhttp.qtfm.cn/live/1180/64k.mp3
+南京新闻广播 | 省市台 | https://lhttp.qtfm.cn/live/1050/64k.mp3
+天津相声广播 | 省市台 | https://lhttp.qtfm.cn/live/1063/64k.mp3
+# ============ 中国香港 ============
+香港电台第1台 | 中国香港 | https://stm.rthk.hk/radio1
+香港电台第2台 | 中国香港 | https://stm.rthk.hk/radio2
+香港电台第3台 | 中国香港 | https://stm.rthk.hk/radio3
+香港电台第4台 | 中国香港 | https://stm.rthk.hk/radio4
+# ============ 华语音乐台 ============
+华语金曲台 | 音乐 | https://lhttp.qtfm.cn/live/5022308/64k.mp3
+怀集音乐之声 | 音乐 | https://lhttp.qtfm.cn/live/4804/64k.mp3
+清晨音乐台 | 音乐 | https://lhttp.qtfm.cn/live/4915/64k.mp3
+广州金曲音乐广播 | 音乐 | https://lhttp.qtfm.cn/live/20192/64k.mp3
+两广之声音乐台 | 音乐 | https://lhttp.qtfm.cn/live/20500149/64k.mp3
+亚洲粤语台 | 音乐 | https://lhttp.qtfm.cn/live/15318569/64k.mp3
+河南星河音乐广播 | 音乐 | https://lhttp.qtfm.cn/live/20210755/64k.mp3
+河南音乐广播 | 音乐 | https://stream.hndt.com/live/yinyue/playlist.m3u8
+山东音乐广播 | 音乐 | http://audiolive302.iqilu.com/sdradioYinyue/sdradio07/playlist.m3u8
+云南音乐广播HLS | 音乐 | https://gbw.ynradio.cn/radio/yygb.stream/playlist.m3u8
+吉林音乐广播 | 音乐 | https://live-jlr.jlntv.cn/live/fm927.m3u8
+哈尔滨音乐广播 | 音乐 | https://stream.hrbtv.net/yypl/playlist.m3u8
+# ============ 爵士 / 古典 / 轻音乐（国际） ============
+SomaFM Groove Salad | 氛围 | https://ice2.somafm.com/groovesalad-128-mp3
+SomaFM Drone Zone | 氛围 | https://ice6.somafm.com/dronezone-128-mp3
+SomaFM Lush | 氛围 | https://ice5.somafm.com/lush-128-mp3
+SomaFM Secret Agent | 氛围 | https://ice5.somafm.com/secretagent-128-mp3
+SomaFM Indie Pop Rocks | 氛围 | https://ice2.somafm.com/indiepop-128-mp3
+SomaFM Beat Blender | 氛围 | https://ice2.somafm.com/beatblender-128-mp3
+SomaFM Suburbs of Goa | 氛围 | https://ice2.somafm.com/suburbsofgoa-128-mp3
+SomaFM The Trip | 氛围 | https://ice2.somafm.com/thetrip-128-mp3
+SomaFM Underground 80s | 氛围 | https://ice5.somafm.com/u80s-128-mp3
+SomaFM Deep Space One | 氛围 | https://ice2.somafm.com/deepspaceone-128-mp3
+SomaFM Metal Detector | 氛围 | https://ice6.somafm.com/metal-128-mp3
+SomaFM DEF CON Radio | 氛围 | https://ice2.somafm.com/defcon-128-mp3
+Radio Paradise 主流 | 氛围 | http://stream.radioparadise.com/mp3-128
+Radio Paradise 舒缓 | 氛围 | http://stream.radioparadise.com/mellow-128
+Radio Paradise 摇滚 | 氛围 | http://stream.radioparadise.com/rock-128
+经典调频 | 古典 | http://media-ice.musicradio.com/ClassicFMMP3
+瑞士古典爵士 | 爵士 | http://stream.srg-ssr.ch/m/rsj/mp3_128
+法国音乐台 | 古典 | http://direct.francemusique.fr/live/francemusique-midfi.mp3
+法国FIP爵士 | 爵士 | http://icecast.radiofrance.fr/fipjazz-hifi.aac
+Jazz Radio 爵士 | 爵士 | http://jazzradio.ice.infomaniak.ch/jazzradio-high.mp3
+Jazz Radio 蓝调 | 爵士 | http://jazzblues.ice.infomaniak.ch/jazzblues-high.mp3
+Smooth Jazz 101 | 爵士 | http://jking.cdnstream1.com/b22139_128mp3
+Chilltrax | 氛围 | http://server1.chilltrax.com:9000/
+Café del Mar | 氛围 | https://streams.radio.co/se1a320b47/listen
+1.FM Chillout Lounge | 氛围 | http://strm112.1.fm/chilloutlounge_mobile_mp3
+YourClassical 放松 | 古典 | http://relax.stream.publicradio.org/relax.mp3
+Classic Vinyl HD | 古典 | https://icecast.walmradio.com:8443/classic
+Adroit Jazz Underground | 爵士 | https://icecast.walmradio.com:8443/jazz
+Antenne Bayern Chillout | 氛围 | http://mp3channels.webradio.antenne.de/chillout
+Smooth Chill | 氛围 | https://media-ssl.musicradio.com/ChillMP3
+Radio Swiss Classic | 古典 | http://stream.srg-ssr.ch/m/rsc_de/mp3_128
+德国拜仁古典 | 古典 | http://mp3channels.webradio.antenne.de/classic-rock-live

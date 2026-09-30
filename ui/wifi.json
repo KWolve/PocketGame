@@ -1,0 +1,827 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "BarWifiTop",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 64,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false
+  },
+  "button__2": {
+    "alignment": 37,
+    "caption": "BtnWifiBack",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20001,
+    "position": {
+      "height": 36,
+      "left": 8,
+      "top": 54,
+      "width": 44
+    },
+    "touchable": true,
+    "picTab": {
+      "pic0": "images/icon_back_44x36_F2F2F7.png",
+      "pic1": "images/icon_back_44x36_F2F2F7_p.png"
+    },
+    "text": ""
+  },
+  "textview__3": {
+    "alignment": 37,
+    "caption": "TextWifiTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50002,
+    "position": {
+      "height": 36,
+      "left": 60,
+      "top": 4,
+      "width": 360
+    },
+    "touchable": false,
+    "text": "无线局域网"
+  },
+  "button__4": {
+    "alignment": 37,
+    "caption": "BtnRescan",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20002,
+    "position": {
+      "height": 36,
+      "left": 428,
+      "top": 54,
+      "width": 44
+    },
+    "touchable": true,
+    "picTab": {
+      "pic0": "images/icon_refresh_44x36_F2F2F7.png",
+      "pic1": "images/icon_refresh_44x36_F2F2F7_p.png"
+    },
+    "text": ""
+  },
+  "textview__5": {
+    "alignment": 36,
+    "caption": "CardWifiSwitch",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50003,
+    "position": {
+      "height": 88,
+      "left": 16,
+      "top": 98,
+      "width": 448
+    },
+    "touchable": false,
+    "backgroundPic": "images/ios_panel.9.png",
+    "backgroundColor": -1
+  },
+  "textview__6": {
+    "alignment": 36,
+    "caption": "TextWifiSwitchLabel",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50004,
+    "position": {
+      "height": 28,
+      "left": 32,
+      "top": 106,
+      "width": 328
+    },
+    "touchable": false,
+    "text": "无线局域网"
+  },
+  "textview__7": {
+    "alignment": 36,
+    "caption": "TextWifiState",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50005,
+    "position": {
+      "height": 20,
+      "left": 32,
+      "top": 114,
+      "width": 328
+    },
+    "touchable": false,
+    "text": "已关闭"
+  },
+  "textview__8": {
+    "alignment": 36,
+    "caption": "TextWifiIp",
+    "colorTab": {
+      "color0": 3199320
+    },
+    "fontSize": 13,
+    "id": 50006,
+    "position": {
+      "height": 20,
+      "left": 32,
+      "top": 136,
+      "width": 328
+    },
+    "touchable": false
+  },
+  "checkbox__9": {
+    "alignment": 36,
+    "backgroundColor": -1,
+    "bold": false,
+    "caption": "CbWifiOn",
+    "checked": false,
+    "fontSize": 16,
+    "italic": false,
+    "touchable": true,
+    "colorTab": {
+      "color0": 15659766,
+      "color2": 16777215
+    },
+    "iconPosition": {
+      "left": 0,
+      "top": 0,
+      "width": 72,
+      "height": 44
+    },
+    "id": 21001,
+    "position": {
+      "height": 44,
+      "left": 376,
+      "top": 98,
+      "width": 72
+    },
+    "textPosition": {
+      "left": 78,
+      "top": 0,
+      "width": 10,
+      "height": 44
+    },
+    "visible": true,
+    "picTab": {
+      "pic0": "images/switch_off.png",
+      "pic2": "images/switch_on.png"
+    },
+    "text": ""
+  },
+  "textview__10": {
+    "alignment": 36,
+    "caption": "TextWifiListLabel",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 14,
+    "id": 50007,
+    "position": {
+      "height": 24,
+      "left": 32,
+      "top": 178,
+      "width": 240
+    },
+    "touchable": false,
+    "text": "可用网络"
+  },
+  "listview__11": {
+    "autoRollback": false,
+    "backgroundColor": -1,
+    "caption": "ListWifiAp",
+    "cols": 1,
+    "cycleEnable": false,
+    "dragMaxDis": 67,
+    "edgeEffect": 1,
+    "hasScrollbar": true,
+    "id": 80001,
+    "rows": 5,
+    "position": {
+      "height": 418,
+      "left": 16,
+      "top": 232,
+      "width": 448
+    },
+    "colSpacing": 0,
+    "rowSpacing": 0,
+    "orientation": 1,
+    "touchable": true,
+    "visible": true,
+    "item": {
+      "alignment": 37,
+      "backgroundColor": -1,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "bold": false,
+      "caption": "item",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "italic": false,
+      "longClickIntervalTime": -1,
+      "longClickTimeOut": -1,
+      "picTab": {},
+      "text": "",
+      "touchable": true,
+      "visible": true,
+      "subItem": [
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "RowCardTop",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24001,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 88,
+            "left": 0,
+            "top": 0,
+            "width": 448
+          },
+          "backgroundPic": "images/ios_row_top.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "RowCardMid",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24002,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 88,
+            "left": 0,
+            "top": 0,
+            "width": 448
+          },
+          "backgroundPic": "images/ios_row_mid.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "RowCardBot",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24003,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 88,
+            "left": 0,
+            "top": 0,
+            "width": 448
+          },
+          "backgroundPic": "images/ios_row_bot.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "RowCardSolo",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24004,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 88,
+            "left": 0,
+            "top": 0,
+            "width": 448
+          },
+          "backgroundPic": "images/ios_row_solo.png"
+        },
+        {
+          "alignment": 36,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApSsid",
+          "colorTab": {
+            "color0": 15921911
+          },
+          "fontFamily": 0,
+          "fontSize": 20,
+          "id": 24005,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 32,
+            "left": 16,
+            "top": 2,
+            "width": 300
+          }
+        },
+        {
+          "alignment": 36,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApInfo",
+          "colorTab": {
+            "color0": 10132128
+          },
+          "fontFamily": 0,
+          "fontSize": 13,
+          "id": 24006,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 22,
+            "left": 16,
+            "top": 50,
+            "width": 300
+          }
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApLock",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24007,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 28,
+            "left": 350,
+            "top": 30,
+            "width": 28
+          },
+          "backgroundPic": "images/lock.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApSig3",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24008,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 28,
+            "left": 388,
+            "top": 30,
+            "width": 28
+          },
+          "backgroundPic": "images/sig_3.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApSig2",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24009,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 28,
+            "left": 388,
+            "top": 30,
+            "width": 28
+          },
+          "backgroundPic": "images/sig_2.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApSig1",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24010,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 28,
+            "left": 388,
+            "top": 30,
+            "width": 28
+          },
+          "backgroundPic": "images/sig_1.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubApSig0",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24011,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 28,
+            "left": 388,
+            "top": 30,
+            "width": 28
+          },
+          "backgroundPic": "images/sig_0.png"
+        }
+      ],
+      "position": {
+        "left": 0,
+        "top": 0,
+        "width": 448,
+        "height": 83
+      }
+    }
+  },
+  "button__12": {
+    "alignment": 37,
+    "caption": "BtnProbeBg",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20003,
+    "position": {
+      "height": 72,
+      "left": 16,
+      "top": 690,
+      "width": 448
+    },
+    "touchable": false,
+    "backgroundPic": "images/ios_panel.9.png",
+    "picTab": {},
+    "text": ""
+  },
+  "textview__13": {
+    "alignment": 36,
+    "caption": "ImgProbeIcon",
+    "colorTab": {
+      "color0": 16752394
+    },
+    "fontSize": 16,
+    "id": 50008,
+    "position": {
+      "height": 44,
+      "left": 32,
+      "top": 704,
+      "width": 44
+    },
+    "touchable": false,
+    "backgroundPic": "images/icon_search_44x44_FF9F0A.png"
+  },
+  "textview__14": {
+    "alignment": 36,
+    "caption": "TextProbeLabel",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50009,
+    "position": {
+      "height": 44,
+      "left": 92,
+      "top": 704,
+      "width": 240
+    },
+    "touchable": false,
+    "text": "信号探针"
+  },
+  "textview__15": {
+    "alignment": 36,
+    "caption": "ImgProbeArrow",
+    "colorTab": {
+      "color0": 6513510
+    },
+    "fontSize": 16,
+    "id": 50010,
+    "position": {
+      "height": 32,
+      "left": 404,
+      "top": 710,
+      "width": 32
+    },
+    "touchable": false,
+    "backgroundPic": "images/icon_forward_32x32_636366.png"
+  },
+  "button__16": {
+    "alignment": 37,
+    "caption": "BtnProbe",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20004,
+    "position": {
+      "height": 72,
+      "left": 16,
+      "top": 690,
+      "width": 448
+    },
+    "touchable": true,
+    "picTab": {},
+    "text": ""
+  },
+  "window__17": {
+    "backgroundColor": 0,
+    "caption": "WinWifiPwd",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__18": {
+      "alignment": 36,
+      "caption": "CardPwd",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50011,
+      "position": {
+        "height": 260,
+        "left": 40,
+        "top": 150,
+        "width": 400
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel.9.png",
+      "backgroundColor": -1
+    },
+    "textview__19": {
+      "alignment": 37,
+      "caption": "TextPwdTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "id": 50012,
+      "position": {
+        "height": 32,
+        "left": 60,
+        "top": 170,
+        "width": 360
+      },
+      "touchable": false,
+      "text": "输入密码"
+    },
+    "textview__20": {
+      "alignment": 37,
+      "caption": "TextPwdSsid",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50013,
+      "position": {
+        "height": 24,
+        "left": 60,
+        "top": 204,
+        "width": 360
+      },
+      "touchable": false
+    },
+    "edittext__21": {
+      "alignment": 37,
+      "bold": false,
+      "caption": "EditPwd",
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "hintTextColor": 0,
+      "id": 51001,
+      "position": {
+        "height": 60,
+        "left": 60,
+        "top": 238,
+        "width": 360
+      },
+      "textType": 0,
+      "isPassword": true,
+      "hintText": "WiFi 密码",
+      "text": "",
+      "backgroundPic": "images/ios_panel2_c.9.png",
+      "backgroundColor": -1,
+      "touchable": true,
+      "visible": true
+    },
+    "textview__22": {
+      "alignment": 37,
+      "caption": "TextPwdMsg",
+      "colorTab": {
+        "color0": 16729402
+      },
+      "fontSize": 13,
+      "id": 50014,
+      "position": {
+        "height": 24,
+        "left": 60,
+        "top": 302,
+        "width": 360
+      },
+      "touchable": false
+    },
+    "button__23": {
+      "alignment": 37,
+      "caption": "BtnPwdCancel",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20005,
+      "position": {
+        "height": 56,
+        "left": 60,
+        "top": 336,
+        "width": 170
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 17,
+      "text": "取消",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__24": {
+      "alignment": 37,
+      "caption": "BtnPwdOk",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20006,
+      "position": {
+        "height": 56,
+        "left": 250,
+        "top": 336,
+        "width": 170
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 17,
+      "text": "连接",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  }
+}

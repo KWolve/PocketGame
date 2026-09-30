@@ -1,0 +1,147 @@
+<!--
+  PocketGame - 局域网摄像头查看（独立 ftu：camera.ftu -> cameraActivity）
+  源稿: html2json.py -> ui/camera.json -> fui pack -> ui/camera.ftu
+
+  两个窗口：
+    WinCam     —— 扫描页（默认显示）：局域网里"疑似摄像头"的设备列表
+    WinCamView —— 查看页（初始隐藏）：videoview 透明窗口 + 地址探测提示 + 底部三键
+
+  ⚠️ WinCamView 必须留在 gen_ui.py 的 HIDDEN_PAGE_WINDOWS（进页先看到扫描页）；
+     WinCam **不能**列在那里（列了进页就是一片空白）。
+  ⚠️ ImgCamCover（缓冲底图）必须留在 gen_ui.py 的 HIDDEN_CONTROLS：它是**不透明**的
+     480x700 大图，压在 videoview 上，不首帧隐藏就会一直挡着视频。
+  ⚠️ 本文档只给工具读：看效果请开 camera.preview.html。
+
+  ★ 链路（全部复用工程里已验证的模块，本页不新增任何底层）：
+     ① 找设备：`pg::Lan` —— 邻居发现（UDP 广播 → /proc/net/arp）+ 摄像头端口扫描
+        （554/8554/8000/34567…）+ RTSP DESCRIBE 指纹（回 200/401 且带 m=video
+        = 坐实"这是一路视频流"）。列表里只显示**端口带 554/8554** 的设备。
+     ② 找地址：worker 线程用 `pg::Ff::probeFast()` 逐个试常见 RTSP 路径
+        （`/`、`/stream1`、`/11`、`/h264/ch1/main/av_stream`、`/cam/realmonitor?…`、
+        `/onvif1`、`/live/ch0` …）—— 第一轮不带密码，全失败再带一组常见默认口令重试。
+     ③ 出画面：`pg::StreamPlayer::startWithDisplay(url, 0, 0, 0, 480, 700)` ——
+        ffmpeg 解封装（**rtsp 解封装在本板 ffmpeg 里是编进去的**）
+        → 设备硬解（zk_h264_player）→ disp 视频层 → 从 `CamVideo` 这个
+        **UI 层透明窗口**透出来。
+        ⚠️ 起流必须在 **UI 线程**里发起（startCommon 要在 UI 线程拿回声卡），
+           所以 worker 只负责"探测地址"，探测结果由 onUI_Timer 取走再起流。
+
+  ★ 判断"真的出画了"：`pg::H264Player::framesDecodedInRun() > 0`（**别用累计值做减法**，
+    清零在子线程里，自己记基线会有竞态，见 docs/iptv.md §11.4.4）。
+  ★ 想抓一帧证据：QA `camgrab` → `StreamPlayer::requestGrab(30)` 落 /tmp/pgframe.pgm
+    （视频层不在 /dev/fb0，普通截图抓不到画面）。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== ① 扫描页（默认显示） ==================== -->
+  <div class="window" data-caption="WinCam" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <div class="text" data-caption="BarCamTop" data-x="0" data-y="0" data-w="480" data-h="64" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnCamBack" data-icon="back" data-x="8" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+    <!-- ⚠️ 标题盒不能整屏宽（x=0/w=480）—— 按"后声明 = 更上层"会盖住先声明的返回键，
+         症状是"返回键点不动"。见 ui/wifi.html 的实测血案注释。 -->
+    <div class="text" data-caption="TextCamTitle" data-x="60" data-y="4" data-w="300" data-h="36"
+         data-fs="22" data-color="#F2F2F7" data-align="center">局域网摄像头</div>
+    <div class="btn" data-caption="BtnCamRescanTop" data-icon="refresh" data-x="428" data-y="54" data-w="44" data-h="36" data-color="#F2F2F7"></div>
+
+    <div class="text" data-caption="TextCamStatus" data-x="16" data-y="92" data-w="448" data-h="46"
+         data-fs="13" data-color="#9A9AA0" data-align="left">正在扫描局域网...</div>
+
+    <!-- 疑似摄像头列表。行数/内容/点击分别由 getListItemCount_ListCam /
+         obtainListItemData_ListCam / onListItemClick_ListCam 决定。 -->
+    <div class="list" data-caption="ListCam" data-x="12" data-y="142" data-w="456" data-h="554"
+         data-cols="1" data-rows="6" data-row-spacing="6" data-scrollbar="1"
+         data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+      <div class="item">
+        <div class="btn" data-caption="RowCamCard" data-x="0" data-y="0" data-w="456" data-h="90" data-bgpic="ios_card_row.9.png"></div>
+        <div class="text" data-caption="SubCamName" data-x="14" data-y="6" data-w="320" data-h="34"
+             data-fs="19" data-color="#F2F2F7" data-align="left"></div>
+        <div class="text" data-caption="SubCamInfo" data-x="14" data-y="44" data-w="420" data-h="24"
+             data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+        <div class="text" data-caption="SubCamNote" data-x="330" data-y="10" data-w="110" data-h="26"
+             data-fs="12" data-color="#FF9F0A" data-align="right"></div>
+      </div>
+    </div>
+
+    <!-- 底部三键：**重新扫描 / 深探指纹 / 账号登录**
+         ★ 2026-09-17 由两个 220 宽改成三个 148 宽 —— 加了「账号登录」（带口令的摄像头，
+           比如海康，自动探测拿不到 URL，得让用户在设备上直接输入账号密码）。 -->
+    <div class="btn" data-caption="BtnCamRescan" data-x="12" data-y="706" data-w="148" data-h="48"
+         data-bg="#0A84FF" data-fs="15" data-color="#FFFFFF">重新扫描</div>
+    <div class="btn" data-caption="BtnCamDeep" data-x="166" data-y="706" data-w="148" data-h="48"
+         data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">深探指纹</div>
+    <div class="btn" data-caption="BtnCamLogin" data-x="320" data-y="706" data-w="148" data-h="48"
+         data-bg="#2C2C2E" data-fs="15" data-color="#F2F2F7">账号登录</div>
+
+    <div class="text" data-caption="TextCamKeyBar" data-x="0" data-y="758" data-w="480" data-h="42"
+         data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">要口令的用「账号登录」 · 长按 B 返回</div>
+  </div>
+
+  <!-- ==================== ② 查看页（初始隐藏） ==================== -->
+  <div class="window" data-caption="WinCamView" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- videoview 就是 UI 层给下层 disp 视频层开的"透明窗口" -->
+    <div class="videoview" data-caption="CamVideo" data-x="0" data-y="0" data-w="480" data-h="700" data-volume="8"></div>
+    <!-- ★ 缓冲底图：videoview 那块在没数据时"透出最底层的黑"，黑底上的字发虚。
+         铺一张不透明底图当占位；**出画必须立刻隐藏**（UI 层在视频层之上，留着就挡死视频）。 -->
+    <div class="icon" data-caption="ImgCamCover" data-pic="images/video_cover.png"
+         data-x="0" data-y="0" data-w="480" data-h="700"></div>
+    <div class="text" data-caption="TextCamViewMsg" data-x="8" data-y="54" data-w="464" data-h="34"
+         data-fs="15" data-color="#F2F2F7" data-align="left"></div>
+    <!-- 三行加载/超时提示（同一套做法见 iptv.html）：进度条用 ASCII 拼，不引素材也不怕缺字 -->
+    <div class="text" data-caption="TextCamLoad" data-x="30" data-y="286" data-w="420" data-h="46"
+         data-fs="26" data-color="#F2F2F7" data-align="center"></div>
+    <div class="text" data-caption="TextCamLoadBar" data-x="30" data-y="340" data-w="420" data-h="26"
+         data-fs="18" data-color="#64D2FF" data-align="center"></div>
+    <div class="text" data-caption="TextCamLoadHint" data-x="30" data-y="374" data-w="420" data-h="48"
+         data-fs="13" data-color="#9A9AA0" data-align="center"></div>
+    <!-- 底部条：**必须先于三个按钮声明**（后声明者更上层，写反了三个键就点不动） -->
+    <div class="text" data-caption="BarCamBottom" data-x="0" data-y="700" data-w="480" data-h="100" data-bg="#000000"></div>
+    <div class="btn" data-caption="BtnCamPrev" data-x="12" data-y="718" data-w="140" data-h="64"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">上一台</div>
+    <div class="btn" data-caption="BtnCamStop" data-x="170" data-y="718" data-w="140" data-h="64"
+         data-bg="#3A1F1F" data-fs="18" data-color="#FFFFFF">停止</div>
+    <div class="btn" data-caption="BtnCamNext" data-x="328" data-y="718" data-w="140" data-h="64"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">下一台</div>
+  </div>
+
+  <!-- ==================== ③ 账号密码弹窗（初始隐藏） ====================
+       为什么需要：**要 Digest 鉴权的摄像头**（海康/大华…）自动探测拿不到 URL ——
+       不带凭据时它只回 401，带凭据才给 SDP。这一页让用户**在设备上直接输入**
+       （不用 adb 写 /data/camera.txt）。
+
+       布局/写法**整段照抄 ui/wifi.html 的密码弹窗**（那边已经把坑踩完了）：
+         · **普通 window，不是 modal** —— modal 是输入黑洞（历史坑）；
+         · 所有可交互控件必须落在 **y < 424**：下半屏（y≥424）是自定义 IME
+           （src/logic/imeApp.cc + ui/ime.html）画键盘的地方，压过去就点不到；
+         · 弹窗 window 的 `touchable` **必须保持 false** —— 整屏窗口一旦可触摸，
+           连键盘区域的触摸都会被本 Activity 吃掉，IME 就再也收不到按键
+           （"wifi 键盘敲不进字"的老血案）。代价是**窗口里的按钮收不到点击**，
+           所以四个可交互区在 cameraLogic.cc 的 `oncameraActivityTouchEvent` 里
+           **按坐标手动分发**——那里的数字必须与这里的控件盒逐个对齐，改布局要一起改。
+         · `div.input` 是**原生 ZKEditText**（点它 → 系统调起 IME，不需要代码 showIME，
+           但本页仍显式拉起一次，见 showCamPwdIme：框架的自动拉起是间歇性的）。
+         · ★★ `div.input` 的 `data-bg` **必须写 #1C1C1E**：框架画 .9.png 时整圈跳过
+           1px marker 边 ⇒ 控件最外 1px 露的是**控件自己的底色**，而 input 的
+           引擎默认底色是**白色**（bgColorTab=0xFFFFFF）⇒ 不写就露一圈白框。
+           这里它坐在 `data-round="panel"`（#1C1C1E）的卡片上，露 #1C1C1E 正好无缝。
+  -->
+  <div class="window" data-caption="WinCamPwd" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+    <!-- 卡片底 410 < 424：不能压到键盘区 -->
+    <div class="text" data-caption="CardCamPwd" data-round="panel" data-x="40" data-y="110" data-w="400" data-h="300"></div>
+    <div class="text" data-caption="TextCamPwdTitle" data-x="60" data-y="124" data-w="360" data-h="30"
+         data-fs="20" data-color="#F2F2F7" data-align="center">登录摄像头</div>
+    <div class="text" data-caption="TextCamPwdTarget" data-x="60" data-y="156" data-w="360" data-h="22"
+         data-fs="13" data-color="#9A9AA0" data-align="center"></div>
+    <div class="input" data-caption="EditCamUser" data-round="panel2c" data-bg="#1C1C1E"
+         data-x="60" data-y="184" data-w="360" data-h="52" data-hint="账号" data-fs="18" data-color="#F2F2F7"></div>
+    <div class="input" data-caption="EditCamPwd" data-round="panel2c" data-bg="#1C1C1E"
+         data-x="60" data-y="244" data-w="360" data-h="52" data-password="1" data-hint="密码"
+         data-fs="18" data-color="#F2F2F7"></div>
+    <div class="text" data-caption="TextCamPwdMsg" data-x="60" data-y="300" data-w="360" data-h="22"
+         data-fs="13" data-color="#FF453A" data-align="center"></div>
+    <div class="btn" data-caption="BtnCamPwdCancel" data-x="60" data-y="328" data-w="170" data-h="52"
+         data-bg="#2C2C2E" data-fs="17" data-color="#F2F2F7">取消</div>
+    <div class="btn" data-caption="BtnCamPwdOk" data-x="250" data-y="328" data-w="170" data-h="52"
+         data-bg="#30D158" data-fs="16" data-color="#000000">保存并播放</div>
+  </div>
+
+</div>

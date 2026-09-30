@@ -1,0 +1,28 @@
+# 统一按 LF 入库，避免 Windows/Linux 协作时整个文件被判定为"已修改"
+* text=auto eol=lf
+
+# 脚本必须保持 LF（在设备/CI 上执行）
+*.sh   text eol=lf
+*.py   text eol=lf
+*.cc   text eol=lf
+*.cpp  text eol=lf
+*.h    text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# 二进制素材：不做行尾转换，也不要在 diff 里展开
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ttf  binary
+*.wav  binary
+*.pem  binary
+*.a    binary
+*.so   binary
+*.img  binary
+*.ftu  binary
+
+# 文档与代码在 GitHub 上按语言正确高亮
+*.md   linguist-documentation
+docs/** linguist-documentation

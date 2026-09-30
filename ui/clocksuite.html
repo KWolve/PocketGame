@@ -1,0 +1,118 @@
+<!--
+  PocketGame - 时钟套件（独立 ftu：clocksuite.ftu -> clocksuiteActivity）
+  源稿: html2json.py -> ui/clocksuite.json -> fui pack -> ui/clocksuite.ftu
+
+  为什么独立：主界面拆分口径 =「游戏不动，其余功能界面全部独立成 ftu」
+  （见 docs/page-split-plan.md）。逻辑在 src/logic/clocksuiteLogic.cc。
+
+  ⚠️ 响铃提醒页 WinAlarmRing **不在这里**，仍在 main.ftu：闹钟是跨页面的
+     （pg::Alarm 守护线程在任何页面都会响），提醒页由主循环 tickAlarmRing() 弹出 ——
+     它属于"整屏浮层"（与音量 OSD 同类）。本页在响铃期间会**自动收掉自己**让位，
+     回主界面后由主循环把提醒页弹出来（见 clocksuiteLogic.cc 的 onUI_Timer）。
+
+  ⚠️ 两个窗口都用普通 window（**不用 modal**：modal 是输入黑洞）。
+     WinClockSuite 是主页（默认显示）；WinWorld 初始隐藏 —— html2json 对 div.window
+     实际给 visible:true，所以 WinWorld 仍要列进 tools/gen_ui.py 的 HIDDEN_PAGE_WINDOWS
+     （WinClockSuite 已从那份清单里去掉，否则进页看到的是空白）。
+
+  ⚠️ 本文件只给工具读：看效果请开 clocksuite.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+    <div class="window" data-caption="WinClockSuite" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+      <div class="text" data-caption="BarSuite" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#FF9F0A"></div>
+      <div class="text" data-caption="TextSuiteTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+           data-fs="20" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">时钟套件</div>
+      <div class="text" data-caption="TextSuiteTime" data-x="0" data-y="52" data-w="480" data-h="96"
+           data-fs="64" data-color="#F2F2F7" data-align="center">--:--</div>
+      <div class="text" data-caption="TextSuiteDate" data-x="0" data-y="148" data-w="480" data-h="28"
+           data-fs="15" data-color="#9A9AA0" data-align="center"></div>
+
+      <div class="text" data-caption="TextAlarmsHdr" data-x="16" data-y="180" data-w="448" data-h="28"
+           data-fs="14" data-color="#9A9AA0" data-align="left">闹钟（点时间行编辑）</div>
+
+      <!-- 闹钟 5 行 -->
+      <div class="btn"  data-caption="BtnAlTime0" data-x="16"  data-y="208" data-w="130" data-h="52" data-bg="#2C2C2E" data-fs="24" data-color="#F2F2F7" data-noround="1">--:--</div>
+      <div class="text" data-caption="TextAlRep0" data-x="152" data-y="208" data-w="180" data-h="52" data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+      <div class="btn"  data-caption="BtnAlSw0"   data-x="340" data-y="208" data-w="60"  data-h="52" data-bg="#2C2C2E" data-fs="15" data-noround="1">关</div>
+      <div class="btn"  data-caption="BtnAlDel0"  data-x="408" data-y="208" data-w="56"  data-h="52" data-bg="#3A1F1F" data-fs="14" data-color="#FF453A">删</div>
+
+      <div class="btn"  data-caption="BtnAlTime1" data-x="16"  data-y="264" data-w="130" data-h="52" data-bg="#2C2C2E" data-fs="24" data-color="#F2F2F7" data-noround="1">--:--</div>
+      <div class="text" data-caption="TextAlRep1" data-x="152" data-y="264" data-w="180" data-h="52" data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+      <div class="btn"  data-caption="BtnAlSw1"   data-x="340" data-y="264" data-w="60"  data-h="52" data-bg="#2C2C2E" data-fs="15" data-noround="1">关</div>
+      <div class="btn"  data-caption="BtnAlDel1"  data-x="408" data-y="264" data-w="56"  data-h="52" data-bg="#3A1F1F" data-fs="14" data-color="#FF453A">删</div>
+
+      <div class="btn"  data-caption="BtnAlTime2" data-x="16"  data-y="320" data-w="130" data-h="52" data-bg="#2C2C2E" data-fs="24" data-color="#F2F2F7" data-noround="1">--:--</div>
+      <div class="text" data-caption="TextAlRep2" data-x="152" data-y="320" data-w="180" data-h="52" data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+      <div class="btn"  data-caption="BtnAlSw2"   data-x="340" data-y="320" data-w="60"  data-h="52" data-bg="#2C2C2E" data-fs="15" data-noround="1">关</div>
+      <div class="btn"  data-caption="BtnAlDel2"  data-x="408" data-y="320" data-w="56"  data-h="52" data-bg="#3A1F1F" data-fs="14" data-color="#FF453A">删</div>
+
+      <div class="btn"  data-caption="BtnAlTime3" data-x="16"  data-y="376" data-w="130" data-h="52" data-bg="#2C2C2E" data-fs="24" data-color="#F2F2F7" data-noround="1">--:--</div>
+      <div class="text" data-caption="TextAlRep3" data-x="152" data-y="376" data-w="180" data-h="52" data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+      <div class="btn"  data-caption="BtnAlSw3"   data-x="340" data-y="376" data-w="60"  data-h="52" data-bg="#2C2C2E" data-fs="15" data-noround="1">关</div>
+      <div class="btn"  data-caption="BtnAlDel3"  data-x="408" data-y="376" data-w="56"  data-h="52" data-bg="#3A1F1F" data-fs="14" data-color="#FF453A">删</div>
+
+      <div class="btn"  data-caption="BtnAlTime4" data-x="16"  data-y="432" data-w="130" data-h="52" data-bg="#2C2C2E" data-fs="24" data-color="#F2F2F7" data-noround="1">--:--</div>
+      <div class="text" data-caption="TextAlRep4" data-x="152" data-y="432" data-w="180" data-h="52" data-fs="14" data-color="#9A9AA0" data-align="left"></div>
+      <div class="btn"  data-caption="BtnAlSw4"   data-x="340" data-y="432" data-w="60"  data-h="52" data-bg="#2C2C2E" data-fs="15" data-noround="1">关</div>
+      <div class="btn"  data-caption="BtnAlDel4"  data-x="408" data-y="432" data-w="56"  data-h="52" data-bg="#3A1F1F" data-fs="14" data-color="#FF453A">删</div>
+
+      <div class="text" data-caption="TextEditHdr" data-x="16" data-y="492" data-w="448" data-h="26"
+           data-fs="13" data-color="#9A9AA0" data-align="left">编辑（先点一行，或点「新建」）</div>
+
+      <!-- 编辑区：时 / 分 各一组 +/- -->
+      <div class="btn"  data-caption="BtnHrDown"  data-x="16"  data-y="520" data-w="56" data-h="56" data-bg="#2C2C2E" data-fs="28">-</div>
+      <div class="text" data-caption="TextEditHr" data-x="76"  data-y="520" data-w="72" data-h="56" data-fs="32"
+           data-color="#F2F2F7" data-align="center" data-bg="#000000">--</div>
+      <div class="btn"  data-caption="BtnHrUp"    data-x="152" data-y="520" data-w="56" data-h="56" data-bg="#2C2C2E" data-fs="28">+</div>
+      <div class="btn"  data-caption="BtnMinDown" data-x="216" data-y="520" data-w="56" data-h="56" data-bg="#2C2C2E" data-fs="28">-</div>
+      <div class="text" data-caption="TextEditMin" data-x="276" data-y="520" data-w="72" data-h="56" data-fs="32"
+           data-color="#F2F2F7" data-align="center" data-bg="#000000">--</div>
+      <div class="btn"  data-caption="BtnMinUp"   data-x="352" data-y="520" data-w="56" data-h="56" data-bg="#2C2C2E" data-fs="28">+</div>
+
+      <div class="btn" data-caption="BtnRepeat" data-x="16"  data-y="584" data-w="150" data-h="52" data-bg="#2C2C2E" data-fs="15">重复：每天</div>
+      <div class="btn" data-caption="BtnSave"   data-x="174" data-y="584" data-w="140" data-h="52" data-bg="#30D158" data-fs="17">保存</div>
+      <div class="btn" data-caption="BtnCancel" data-x="322" data-y="584" data-w="142" data-h="52" data-bg="#2C2C2E" data-fs="17">取消</div>
+
+      <div class="btn" data-caption="BtnAdd"   data-x="16"  data-y="644" data-w="228" data-h="56" data-bg="#30D158" data-fs="17">+ 新建闹钟</div>
+      <div class="btn" data-caption="BtnWorld" data-x="252" data-y="644" data-w="212" data-h="56" data-bg="#2C2C2E" data-fs="17">世界时钟</div>
+
+      <div class="text" data-caption="TextSuiteHint" data-x="0" data-y="706" data-w="480" data-h="28"
+           data-fs="13" data-color="#9A9AA0" data-align="center"></div>
+      <div class="text" data-caption="TextSuiteKeyBar" data-x="0" data-y="744" data-w="480" data-h="56"
+           data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">B 键返回列表 · 到点会自动响铃并亮屏</div>
+    </div>
+
+    <div class="window" data-caption="WinWorld" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+      <div class="text" data-caption="BarWorld" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#0A84FF"></div>
+      <div class="text" data-caption="TextWorldTitle" data-x="0" data-y="8" data-w="480" data-h="44"
+           data-fs="20" data-color="#F2F2F7" data-align="center" data-bg="#1C1C1E">世界时钟</div>
+      <div class="text" data-caption="TextWorldCity0" data-x="16"  data-y="60"  data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime0" data-x="232" data-y="60"  data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity1" data-x="16"  data-y="124" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime1" data-x="232" data-y="124" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity2" data-x="16"  data-y="188" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime2" data-x="232" data-y="188" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity3" data-x="16"  data-y="252" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime3" data-x="232" data-y="252" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity4" data-x="16"  data-y="316" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime4" data-x="232" data-y="316" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity5" data-x="16"  data-y="380" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime5" data-x="232" data-y="380" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity6" data-x="16"  data-y="444" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime6" data-x="232" data-y="444" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity7" data-x="16"  data-y="508" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime7" data-x="232" data-y="508" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity8" data-x="16"  data-y="572" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime8" data-x="232" data-y="572" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldCity9" data-x="16"  data-y="636" data-w="200" data-h="56" data-fs="18" data-color="#9A9AA0" data-align="left">--</div>
+      <div class="text" data-caption="TextWorldTime9" data-x="232" data-y="636" data-w="232" data-h="56" data-fs="28" data-color="#F2F2F7" data-align="right">--:--</div>
+      <div class="text" data-caption="TextWorldHint" data-x="0" data-y="696" data-w="480" data-h="28"
+           data-fs="13" data-color="#9A9AA0" data-align="center">固定时差，不含夏令时 · 时区表内置</div>
+      <div class="btn" data-caption="BtnWorldBack" data-x="0" data-y="736" data-w="480" data-h="56"
+           data-bg="#2C2C2E" data-fs="17">返回</div>
+    </div>
+
+    <!-- 响铃提醒页（到点自动弹出；停止 / 贪睡） -->
+
+</div>

@@ -1,0 +1,2445 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": 0,
+    "caption": "WinHaHome",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "textview__2": {
+      "alignment": 36,
+      "caption": "TextHaTitle",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 20,
+      "id": 50001,
+      "position": {
+        "height": 44,
+        "left": 16,
+        "top": 52,
+        "width": 280
+      },
+      "touchable": false,
+      "text": "我的设备"
+    },
+    "button__3": {
+      "alignment": 37,
+      "caption": "BtnHaAdd",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20001,
+      "position": {
+        "height": 36,
+        "left": 336,
+        "top": 58,
+        "width": 44
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "+",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__4": {
+      "alignment": 37,
+      "caption": "BtnHaSet",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 36,
+        "left": 388,
+        "top": 58,
+        "width": 88
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 13,
+      "text": "设置",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__5": {
+      "alignment": 36,
+      "caption": "LineHaHead",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50002,
+      "position": {
+        "height": 1,
+        "left": 16,
+        "top": 96,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__6": {
+      "alignment": 36,
+      "caption": "TextHaState",
+      "colorTab": {
+        "color0": 3199320
+      },
+      "fontSize": 13,
+      "id": 50003,
+      "position": {
+        "height": 24,
+        "left": 16,
+        "top": 104,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "• 正在连接 Home Assistant"
+    },
+    "textview__7": {
+      "alignment": 38,
+      "caption": "TextHaCount",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50004,
+      "position": {
+        "height": 24,
+        "left": 304,
+        "top": 104,
+        "width": 160
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "textview__8": {
+      "alignment": 36,
+      "caption": "TextHaHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50005,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 130,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "正在连接 Home Assistant"
+    },
+    "listview__9": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListHaMy",
+      "cols": 2,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 4,
+      "position": {
+        "height": 616,
+        "left": 12,
+        "top": 158,
+        "width": 456
+      },
+      "colSpacing": 8,
+      "rowSpacing": 12,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMyCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 145,
+              "left": 0,
+              "top": 0,
+              "width": 224
+            },
+            "backgroundPic": "images/ha_card_my.png"
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMyDic",
+            "colorTab": {
+              "color0": 15703847
+            },
+            "fontFamily": 0,
+            "fontSize": 30,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 64,
+              "left": 16,
+              "top": 16,
+              "width": 64
+            },
+            "backgroundPic": "images/ha_domchip_64.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMyNm",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 17,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 92,
+              "top": 14,
+              "width": 88
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMySt",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 14,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 22,
+              "left": 92,
+              "top": 42,
+              "width": 112
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMySb",
+            "colorTab": {
+              "color0": 9342611
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24005,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 18,
+              "left": 16,
+              "top": 110,
+              "width": 192
+            }
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubMyMenu",
+            "colorTab": {
+              "color0": 9342611
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24006,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "•••",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 34,
+              "left": 176,
+              "top": 6,
+              "width": 42
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 142
+        }
+      }
+    },
+    "button__10": {
+      "alignment": 37,
+      "caption": "CardHaOffline",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20003,
+      "position": {
+        "height": 96,
+        "left": 12,
+        "top": 104,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "text": "",
+      "visible": false,
+      "backgroundColor": -1
+    },
+    "textview__11": {
+      "alignment": 36,
+      "caption": "TextHaOffL1",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 17,
+      "id": 50006,
+      "position": {
+        "height": 26,
+        "left": 28,
+        "top": 117,
+        "width": 308
+      },
+      "touchable": false,
+      "text": "未连接 Home Assistant",
+      "visible": false
+    },
+    "textview__12": {
+      "alignment": 36,
+      "caption": "TextHaOffL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50007,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 148,
+        "width": 320
+      },
+      "touchable": false,
+      "text": "—",
+      "visible": false
+    },
+    "textview__13": {
+      "alignment": 36,
+      "caption": "TextHaOffL3",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50008,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 170,
+        "width": 320
+      },
+      "touchable": false,
+      "text": "未连接时不会发送控制命令，下面显示最后已知状态",
+      "visible": false
+    },
+    "button__14": {
+      "alignment": 37,
+      "caption": "BtnHaOffSet",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20004,
+      "position": {
+        "height": 40,
+        "left": 360,
+        "top": 132,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 14,
+      "text": "去设置",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "visible": false,
+      "backgroundColor": -1
+    },
+    "button__15": {
+      "alignment": 37,
+      "caption": "ImgHaEmpty",
+      "colorTab": {
+        "color0": 3199320
+      },
+      "id": 20005,
+      "position": {
+        "height": 120,
+        "left": 180,
+        "top": 186,
+        "width": 120
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 40,
+      "text": "家",
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r20.9.png",
+        "pic1": "images/ios_btn_dark_r20_p.9.png"
+      },
+      "visible": false,
+      "backgroundColor": -1
+    },
+    "textview__16": {
+      "alignment": 37,
+      "caption": "TextHaEmpT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50009,
+      "position": {
+        "height": 34,
+        "left": 40,
+        "top": 334,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "还没有添加设备",
+      "visible": false
+    },
+    "textview__17": {
+      "alignment": 37,
+      "caption": "TextHaEmpL1",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50010,
+      "position": {
+        "height": 22,
+        "left": 40,
+        "top": 380,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "这块屏幕只显示你挑出来的设备",
+      "visible": false
+    },
+    "textview__18": {
+      "alignment": 37,
+      "caption": "TextHaEmpL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50011,
+      "position": {
+        "height": 22,
+        "left": 40,
+        "top": 404,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "新买的设备请先在 Home Assistant 里添加",
+      "visible": false
+    },
+    "textview__19": {
+      "alignment": 37,
+      "caption": "TextHaEmpL3",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50012,
+      "position": {
+        "height": 22,
+        "left": 40,
+        "top": 428,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "它会自动出现在下面的列表里",
+      "visible": false
+    },
+    "button__20": {
+      "alignment": 37,
+      "caption": "BtnHaEmpAdd",
+      "colorTab": {
+        "color0": 65793
+      },
+      "id": 20006,
+      "position": {
+        "height": 54,
+        "left": 80,
+        "top": 492,
+        "width": 320
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "+ 从 Home Assistant 添加",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "visible": false,
+      "backgroundColor": -1
+    },
+    "button__21": {
+      "alignment": 37,
+      "caption": "BtnHaEmpOne",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "id": 20007,
+      "position": {
+        "height": 48,
+        "left": 80,
+        "top": 560,
+        "width": 320
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "一键添加全部可控设备",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "visible": false,
+      "backgroundColor": -1
+    },
+    "textview__22": {
+      "alignment": 37,
+      "caption": "TextHaEmpHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50013,
+      "position": {
+        "height": 20,
+        "left": 40,
+        "top": 628,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "只挑能开关的设备，只读传感器不会加进来",
+      "visible": false
+    }
+  },
+  "window__23": {
+    "backgroundColor": 0,
+    "caption": "WinHaPick",
+    "hideTimeOut": -1,
+    "id": 110002,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__24": {
+      "alignment": 36,
+      "caption": "TextHaPickT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 19,
+      "id": 50014,
+      "position": {
+        "height": 44,
+        "left": 16,
+        "top": 52,
+        "width": 320
+      },
+      "touchable": false,
+      "text": "从 Home Assistant 添加"
+    },
+    "button__25": {
+      "alignment": 37,
+      "caption": "BtnHaPickX",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20008,
+      "position": {
+        "height": 36,
+        "left": 384,
+        "top": 58,
+        "width": 80
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "取消",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__26": {
+      "alignment": 36,
+      "caption": "LineHaPick",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50015,
+      "position": {
+        "height": 1,
+        "left": 16,
+        "top": 96,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__27": {
+      "alignment": 37,
+      "caption": "TextHaPickStep",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50016,
+      "position": {
+        "height": 22,
+        "left": 16,
+        "top": 104,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "第 1 步 / 共 3 步 · 选择设备"
+    },
+    "textview__28": {
+      "alignment": 36,
+      "caption": "TextHaPickNote",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50017,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 132,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "这些是 HA 里已有的设备。新设备请先在 Home Assistant 里添加。"
+    },
+    "button__29": {
+      "alignment": 37,
+      "caption": "SegHaCtrl",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20009,
+      "position": {
+        "height": 36,
+        "left": 12,
+        "top": 164,
+        "width": 224
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "可控 0",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__30": {
+      "alignment": 37,
+      "caption": "SegHaCtrlOn",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20010,
+      "position": {
+        "height": 36,
+        "left": 12,
+        "top": 164,
+        "width": 224
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "可控 0",
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r10.9.png",
+        "pic1": "images/ios_btn_blue_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__31": {
+      "alignment": 37,
+      "caption": "SegHaAll",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "id": 20011,
+      "position": {
+        "height": 36,
+        "left": 244,
+        "top": 164,
+        "width": 224
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "全部 0",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__32": {
+      "alignment": 37,
+      "caption": "SegHaAllOn",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20012,
+      "position": {
+        "height": 36,
+        "left": 244,
+        "top": 164,
+        "width": 224
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "全部 0",
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r10.9.png",
+        "pic1": "images/ios_btn_blue_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "listview__33": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListHaPick",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80002,
+      "rows": 5,
+      "position": {
+        "height": 384,
+        "left": 12,
+        "top": 208,
+        "width": 456
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowPickCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24007,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 72,
+              "left": 0,
+              "top": 0,
+              "width": 456
+            },
+            "backgroundPic": "images/ha_row_pick.png"
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPickDic",
+            "colorTab": {
+              "color0": 15703847
+            },
+            "fontFamily": 0,
+            "fontSize": 19,
+            "id": 24008,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 40,
+              "left": 14,
+              "top": 16,
+              "width": 40
+            },
+            "backgroundPic": "images/ha_domchip_40.png"
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPickName",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 17,
+            "id": 24009,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 66,
+              "top": 12,
+              "width": 272
+            }
+          },
+          {
+            "alignment": 36,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPickInfo",
+            "colorTab": {
+              "color0": 9342611
+            },
+            "fontFamily": 0,
+            "fontSize": 11,
+            "id": 24010,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 20,
+              "left": 66,
+              "top": 38,
+              "width": 272
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubPickTag",
+            "colorTab": {
+              "color0": 9342611
+            },
+            "fontFamily": 0,
+            "fontSize": 12,
+            "id": 24011,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 24,
+              "left": 344,
+              "top": 24,
+              "width": 100
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 456,
+          "height": 70
+        }
+      }
+    },
+    "textview__34": {
+      "alignment": 37,
+      "caption": "TextHaSelSum",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 12,
+      "id": 50018,
+      "position": {
+        "height": 22,
+        "left": 16,
+        "top": 600,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "已选 0 台"
+    },
+    "button__35": {
+      "alignment": 37,
+      "caption": "BtnHaPickNext",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "id": 20013,
+      "position": {
+        "height": 54,
+        "left": 12,
+        "top": 628,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "请选择要添加的设备",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__36": {
+      "alignment": 37,
+      "caption": "TextHaPickHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50019,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 692,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "点一行勾选 / 取消 · 已添加的设备显示为「已在面板」"
+    }
+  },
+  "window__37": {
+    "backgroundColor": 0,
+    "caption": "WinHaName",
+    "hideTimeOut": -1,
+    "id": 110003,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__38": {
+      "alignment": 36,
+      "caption": "TextHaNameT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 19,
+      "id": 50020,
+      "position": {
+        "height": 44,
+        "left": 16,
+        "top": 52,
+        "width": 264
+      },
+      "touchable": false,
+      "text": "命名与排序"
+    },
+    "button__39": {
+      "alignment": 37,
+      "caption": "BtnHaNameOk",
+      "colorTab": {
+        "color0": 65793
+      },
+      "id": 20014,
+      "position": {
+        "height": 36,
+        "left": 288,
+        "top": 58,
+        "width": 88
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "完成",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r10.9.png",
+        "pic1": "images/ios_btn_green_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__40": {
+      "alignment": 37,
+      "caption": "BtnHaSkip",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20015,
+      "position": {
+        "height": 36,
+        "left": 384,
+        "top": 58,
+        "width": 80
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "跳过",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__41": {
+      "alignment": 36,
+      "caption": "LineHaName",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50021,
+      "position": {
+        "height": 1,
+        "left": 16,
+        "top": 96,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "textview__42": {
+      "alignment": 37,
+      "caption": "TextHaNameStep",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50022,
+      "position": {
+        "height": 22,
+        "left": 16,
+        "top": 104,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "第 2 步 / 共 3 步 · 给设备起个名字"
+    },
+    "textview__43": {
+      "alignment": 36,
+      "caption": "TextHaNameCur",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 15,
+      "id": 50023,
+      "position": {
+        "height": 30,
+        "left": 16,
+        "top": 134,
+        "width": 344
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "button__44": {
+      "alignment": 37,
+      "caption": "BtnHaPrevDev",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20016,
+      "position": {
+        "height": 30,
+        "left": 372,
+        "top": 134,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 12,
+      "text": "上一台",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "edittext__45": {
+      "alignment": 37,
+      "bold": false,
+      "caption": "EditHaName",
+      "bgColorTab": {
+        "color0": 65793
+      },
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "hintTextColor": 0,
+      "id": 51001,
+      "position": {
+        "height": 56,
+        "left": 16,
+        "top": 172,
+        "width": 384
+      },
+      "textType": 0,
+      "hintText": "给这台设备起个名字",
+      "text": "",
+      "backgroundPic": "images/ios_panel2.9.png",
+      "backgroundColor": -1,
+      "touchable": true,
+      "visible": true
+    },
+    "button__46": {
+      "alignment": 37,
+      "caption": "BtnHaClear",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20017,
+      "position": {
+        "height": 56,
+        "left": 408,
+        "top": 172,
+        "width": 56
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 12,
+      "text": "清空",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__47": {
+      "alignment": 37,
+      "caption": "ChipHaName0",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20018,
+      "position": {
+        "height": 44,
+        "left": 12,
+        "top": 234,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__48": {
+      "alignment": 37,
+      "caption": "ChipHaName1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20019,
+      "position": {
+        "height": 44,
+        "left": 168,
+        "top": 234,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__49": {
+      "alignment": 37,
+      "caption": "ChipHaName2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20020,
+      "position": {
+        "height": 44,
+        "left": 324,
+        "top": 234,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__50": {
+      "alignment": 37,
+      "caption": "ChipHaName3",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20021,
+      "position": {
+        "height": 44,
+        "left": 12,
+        "top": 288,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__51": {
+      "alignment": 37,
+      "caption": "ChipHaName4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20022,
+      "position": {
+        "height": 44,
+        "left": 168,
+        "top": 288,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__52": {
+      "alignment": 37,
+      "caption": "ChipHaName5",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20023,
+      "position": {
+        "height": 44,
+        "left": 324,
+        "top": 288,
+        "width": 144
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__53": {
+      "alignment": 36,
+      "caption": "TextHaNameH1",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50024,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 338,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "打完字先按键盘上的「完成」上屏，再点右上角「完成」"
+    },
+    "textview__54": {
+      "alignment": 36,
+      "caption": "TextHaNameH2",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 11,
+      "id": 50025,
+      "position": {
+        "height": 18,
+        "left": 16,
+        "top": 358,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "名字留空 = 用 HA 原名；「跳过」= 后面几台都不改名"
+    }
+  },
+  "window__55": {
+    "backgroundColor": 0,
+    "caption": "WinHaDone",
+    "hideTimeOut": -1,
+    "id": 110004,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__56": {
+      "alignment": 36,
+      "caption": "TextHaDoneT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 19,
+      "id": 50026,
+      "position": {
+        "height": 44,
+        "left": 16,
+        "top": 52,
+        "width": 320
+      },
+      "touchable": false,
+      "text": "添加完成"
+    },
+    "textview__57": {
+      "alignment": 36,
+      "caption": "LineHaDone",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50027,
+      "position": {
+        "height": 1,
+        "left": 16,
+        "top": 96,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "button__58": {
+      "alignment": 37,
+      "caption": "ImgHaDone",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20024,
+      "position": {
+        "height": 96,
+        "left": 192,
+        "top": 196,
+        "width": 96
+      },
+      "touchable": true,
+      "backgroundPic": "images/ha_done.png",
+      "picTab": {},
+      "text": ""
+    },
+    "textview__59": {
+      "alignment": 37,
+      "caption": "TextHaDoneTi",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50028,
+      "position": {
+        "height": 34,
+        "left": 40,
+        "top": 322,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "已添加 0 台设备"
+    },
+    "textview__60": {
+      "alignment": 37,
+      "caption": "TextHaDoneL1",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50029,
+      "position": {
+        "height": 22,
+        "left": 40,
+        "top": 366,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "它们已经出现在「我的设备」里"
+    },
+    "textview__61": {
+      "alignment": 37,
+      "caption": "TextHaDoneL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50030,
+      "position": {
+        "height": 22,
+        "left": 40,
+        "top": 390,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "回到面板就能直接开关"
+    },
+    "textview__62": {
+      "alignment": 37,
+      "caption": "TextHaDoneStep",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50031,
+      "position": {
+        "height": 22,
+        "left": 16,
+        "top": 436,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "第 3 步 / 共 3 步 · 完成"
+    },
+    "button__63": {
+      "alignment": 37,
+      "caption": "BtnHaDoneGo",
+      "colorTab": {
+        "color0": 65793
+      },
+      "id": 20025,
+      "position": {
+        "height": 54,
+        "left": 80,
+        "top": 490,
+        "width": 320
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "去我的设备看看",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__64": {
+      "alignment": 37,
+      "caption": "BtnHaDoneMore",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20026,
+      "position": {
+        "height": 48,
+        "left": 80,
+        "top": 558,
+        "width": 320
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "继续添加",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  },
+  "window__65": {
+    "backgroundColor": -1,
+    "caption": "WinHaMenu",
+    "hideTimeOut": -1,
+    "id": 110005,
+    "modal": true,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "button__66": {
+      "alignment": 37,
+      "caption": "ImgHaMask",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20027,
+      "position": {
+        "height": 748,
+        "left": 0,
+        "top": 52,
+        "width": 480
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/sheet_mask.png",
+        "pic1": "images/sheet_mask.png"
+      },
+      "text": ""
+    },
+    "button__67": {
+      "alignment": 37,
+      "caption": "CardHaMenu",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20028,
+      "position": {
+        "height": 360,
+        "left": 16,
+        "top": 396,
+        "width": 448
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r20.9.png",
+        "pic1": "images/ios_btn_dark_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__68": {
+      "alignment": 36,
+      "caption": "TextHaMenuT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50032,
+      "position": {
+        "height": 24,
+        "left": 36,
+        "top": 422,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "textview__69": {
+      "alignment": 36,
+      "caption": "TextHaMenuS",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50033,
+      "position": {
+        "height": 20,
+        "left": 36,
+        "top": 446,
+        "width": 400
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "button__70": {
+      "alignment": 37,
+      "caption": "BtnHaMenuRename",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20029,
+      "position": {
+        "height": 44,
+        "left": 36,
+        "top": 474,
+        "width": 408
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "改名",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__71": {
+      "alignment": 37,
+      "caption": "BtnHaMenuUp",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20030,
+      "position": {
+        "height": 44,
+        "left": 36,
+        "top": 524,
+        "width": 408
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "移到前面",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__72": {
+      "alignment": 37,
+      "caption": "BtnHaMenuDown",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20031,
+      "position": {
+        "height": 44,
+        "left": 36,
+        "top": 574,
+        "width": 408
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "移到后面",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__73": {
+      "alignment": 37,
+      "caption": "BtnHaMenuRemove",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20032,
+      "position": {
+        "height": 44,
+        "left": 36,
+        "top": 624,
+        "width": 408
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "移除设备",
+      "picTab": {
+        "pic0": "images/ios_btn_red_r10.9.png",
+        "pic1": "images/ios_btn_red_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__74": {
+      "alignment": 37,
+      "caption": "BtnHaMenuCancel",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20033,
+      "position": {
+        "height": 44,
+        "left": 36,
+        "top": 674,
+        "width": 408
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "取消",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  },
+  "window__75": {
+    "backgroundColor": -1,
+    "caption": "WinHaConfirm",
+    "hideTimeOut": -1,
+    "id": 110006,
+    "modal": true,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "button__76": {
+      "alignment": 37,
+      "caption": "ImgHaMask2",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20034,
+      "position": {
+        "height": 748,
+        "left": 0,
+        "top": 52,
+        "width": 480
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/dialog_mask.png",
+        "pic1": "images/dialog_mask.png"
+      },
+      "text": ""
+    },
+    "button__77": {
+      "alignment": 37,
+      "caption": "CardHaConfirm",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20035,
+      "position": {
+        "height": 264,
+        "left": 50,
+        "top": 272,
+        "width": 380
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r20.9.png",
+        "pic1": "images/ios_btn_dark_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__78": {
+      "alignment": 36,
+      "caption": "TextHaCfT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 17,
+      "id": 50034,
+      "position": {
+        "height": 26,
+        "left": 74,
+        "top": 300,
+        "width": 332
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "textview__79": {
+      "alignment": 36,
+      "caption": "TextHaCfL1",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50035,
+      "position": {
+        "height": 20,
+        "left": 74,
+        "top": 338,
+        "width": 332
+      },
+      "touchable": false,
+      "text": "只是从这块屏幕上移除"
+    },
+    "textview__80": {
+      "alignment": 36,
+      "caption": "TextHaCfL2",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50036,
+      "position": {
+        "height": 20,
+        "left": 74,
+        "top": 362,
+        "width": 332
+      },
+      "touchable": false,
+      "text": "Home Assistant 里的设备不受影响"
+    },
+    "button__81": {
+      "alignment": 37,
+      "caption": "BtnHaCfNo",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20036,
+      "position": {
+        "height": 48,
+        "left": 74,
+        "top": 460,
+        "width": 156
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "取消",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__82": {
+      "alignment": 37,
+      "caption": "BtnHaCfYes",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20037,
+      "position": {
+        "height": 48,
+        "left": 250,
+        "top": 460,
+        "width": 156
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 15,
+      "text": "移除",
+      "picTab": {
+        "pic0": "images/ios_btn_red_r14.9.png",
+        "pic1": "images/ios_btn_red_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  },
+  "window__83": {
+    "backgroundColor": 0,
+    "caption": "WinHaSet",
+    "hideTimeOut": -1,
+    "id": 110007,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__84": {
+      "alignment": 36,
+      "caption": "TextHaSetT",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 20,
+      "id": 50037,
+      "position": {
+        "height": 44,
+        "left": 16,
+        "top": 52,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "设置"
+    },
+    "button__85": {
+      "alignment": 37,
+      "caption": "BtnHaSetBack",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20038,
+      "position": {
+        "height": 36,
+        "left": 384,
+        "top": 58,
+        "width": 80
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "返回",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__86": {
+      "alignment": 36,
+      "caption": "LineHaSet",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50038,
+      "position": {
+        "height": 1,
+        "left": 16,
+        "top": 96,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 2894894
+      }
+    },
+    "button__87": {
+      "alignment": 37,
+      "caption": "RowHaSet1",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20039,
+      "position": {
+        "height": 80,
+        "left": 12,
+        "top": 112,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r20.9.png",
+        "pic1": "images/ios_btn_dark_r20_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__88": {
+      "alignment": 36,
+      "caption": "TextHaSetK1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50039,
+      "position": {
+        "height": 24,
+        "left": 28,
+        "top": 124,
+        "width": 300
+      },
+      "touchable": false,
+      "text": "Home Assistant 连接"
+    },
+    "textview__89": {
+      "alignment": 36,
+      "caption": "TextHaSetV1",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50040,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 148,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "textview__90": {
+      "alignment": 36,
+      "caption": "TextHaSetV2",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50041,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 168,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "button__91": {
+      "alignment": 36,
+      "caption": "BtnHaSetReload",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20040,
+      "position": {
+        "height": 64,
+        "left": 12,
+        "top": 200,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r14.9.png",
+        "pic1": "images/ios_btn_dark_r14_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__92": {
+      "alignment": 36,
+      "caption": "TextHaSetK2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50042,
+      "position": {
+        "height": 24,
+        "left": 28,
+        "top": 208,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "重新读取配置"
+    },
+    "textview__93": {
+      "alignment": 36,
+      "caption": "TextHaSetV3",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50043,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 232,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "从 /data/ha.conf 重新加载地址与令牌"
+    },
+    "button__94": {
+      "alignment": 37,
+      "caption": "RowHaSet3",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20041,
+      "position": {
+        "height": 64,
+        "left": 12,
+        "top": 272,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r14.9.png",
+        "pic1": "images/ios_btn_dark_r14_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__95": {
+      "alignment": 36,
+      "caption": "TextHaSetK3",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50044,
+      "position": {
+        "height": 24,
+        "left": 28,
+        "top": 280,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "设备与实体"
+    },
+    "textview__96": {
+      "alignment": 36,
+      "caption": "TextHaSetV4",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50045,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 304,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "button__97": {
+      "alignment": 37,
+      "caption": "RowHaSet4",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20042,
+      "position": {
+        "height": 64,
+        "left": 12,
+        "top": 344,
+        "width": 456
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "picTab": {
+        "pic0": "images/ios_btn_dark_r14.9.png",
+        "pic1": "images/ios_btn_dark_r14_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__98": {
+      "alignment": 36,
+      "caption": "TextHaSetK4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50046,
+      "position": {
+        "height": 24,
+        "left": 28,
+        "top": 352,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "关于"
+    },
+    "textview__99": {
+      "alignment": 36,
+      "caption": "TextHaSetV5",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50047,
+      "position": {
+        "height": 20,
+        "left": 28,
+        "top": 376,
+        "width": 380
+      },
+      "touchable": false,
+      "text": "智能家居 v2 · 交互改版"
+    },
+    "textview__100": {
+      "alignment": 36,
+      "caption": "TextHaSetMsg",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50048,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 428,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "—"
+    },
+    "textview__101": {
+      "alignment": 37,
+      "caption": "TextHaSetFoot",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 11,
+      "id": 50049,
+      "position": {
+        "height": 20,
+        "left": 16,
+        "top": 740,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "长按音量键可随时返回应用列表"
+    }
+  }
+}

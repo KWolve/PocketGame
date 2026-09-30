@@ -1,0 +1,3009 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "button__1": {
+    "alignment": 37,
+    "caption": "BarSegTab",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20001,
+    "position": {
+      "height": 64,
+      "left": 16,
+      "top": 58,
+      "width": 448
+    },
+    "touchable": false,
+    "picTab": {
+      "pic0": "images/ios_seg.9.png",
+      "pic1": "images/ios_seg.9.png"
+    },
+    "text": ""
+  },
+  "button__2": {
+    "alignment": 37,
+    "caption": "BtnTab0",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "id": 20002,
+    "position": {
+      "height": 56,
+      "left": 20,
+      "top": 62,
+      "width": 141
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 3621975
+    },
+    "fontSize": 16,
+    "text": "游戏",
+    "picTab": {}
+  },
+  "button__3": {
+    "alignment": 37,
+    "caption": "BtnTab1",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "id": 20003,
+    "position": {
+      "height": 56,
+      "left": 169,
+      "top": 62,
+      "width": 141
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 3621975
+    },
+    "fontSize": 16,
+    "text": "工具",
+    "picTab": {}
+  },
+  "button__4": {
+    "alignment": 37,
+    "caption": "BtnTab2",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "id": 20004,
+    "position": {
+      "height": 56,
+      "left": 318,
+      "top": 62,
+      "width": 141
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 3621975
+    },
+    "fontSize": 16,
+    "text": "系统",
+    "picTab": {}
+  },
+  "listview__5": {
+    "autoRollback": false,
+    "backgroundColor": -1,
+    "caption": "ListGames",
+    "cols": 4,
+    "cycleEnable": false,
+    "dragMaxDis": 0,
+    "edgeEffect": 1,
+    "hasScrollbar": false,
+    "id": 80001,
+    "rows": 5,
+    "position": {
+      "height": 559,
+      "left": 16,
+      "top": 136,
+      "width": 448
+    },
+    "colSpacing": 0,
+    "rowSpacing": 6,
+    "orientation": 1,
+    "touchable": true,
+    "visible": true,
+    "item": {
+      "alignment": 37,
+      "backgroundColor": -1,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "bold": false,
+      "caption": "item",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 16,
+      "italic": false,
+      "longClickIntervalTime": -1,
+      "longClickTimeOut": -1,
+      "picTab": {},
+      "text": "",
+      "touchable": true,
+      "visible": true,
+      "subItem": [
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "GridCard",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24001,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 107,
+            "left": 0,
+            "top": 0,
+            "width": 112
+          },
+          "backgroundPic": "images/grid_cell.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon0",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24002,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_0.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon1",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24003,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_1.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon2",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24004,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_2.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon3",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24005,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_3.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon4",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24006,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_4.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon5",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24007,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_5.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon6",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24008,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_6.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon7",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24009,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_7.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon8",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24010,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_8.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon9",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24011,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_9.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon10",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24012,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_10.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon11",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24013,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_11.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon12",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24014,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_12.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon13",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24015,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_13.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon14",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24016,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_14.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon15",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24017,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_15.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon16",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24018,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_16.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon17",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24019,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_17.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon18",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24020,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_18.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon19",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24021,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_19.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon20",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24022,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_20.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon21",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24023,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_21.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon22",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24024,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_22.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon23",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24025,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_23.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon24",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24026,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_24.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon25",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24027,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_25.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon26",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24028,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_26.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon27",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24029,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_27.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon28",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24030,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_28.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon29",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24031,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_29.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon30",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24032,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_30.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon31",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24033,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_31.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon32",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24034,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_32.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon33",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24035,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_33.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon34",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24036,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_34.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon35",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24037,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_35.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon36",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24038,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_36.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "Icon37",
+          "colorTab": {
+            "color0": 15659766
+          },
+          "fontFamily": 0,
+          "fontSize": 16,
+          "id": 24039,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": false,
+          "position": {
+            "height": 72,
+            "left": 20,
+            "top": 2,
+            "width": 72
+          },
+          "backgroundPic": "images/app_icon_37.png"
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubGameName",
+          "colorTab": {
+            "color0": 15921911
+          },
+          "fontFamily": 0,
+          "fontSize": 14,
+          "id": 24040,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 16,
+            "left": 0,
+            "top": 76,
+            "width": 112
+          }
+        },
+        {
+          "alignment": 37,
+          "backgroundColor": -1,
+          "bgColorTab": {
+            "color0": -1
+          },
+          "bold": false,
+          "caption": "SubGameBest",
+          "colorTab": {
+            "color0": 10132128
+          },
+          "fontFamily": 0,
+          "fontSize": 11,
+          "id": 24041,
+          "italic": false,
+          "longClickIntervalTime": -1,
+          "longClickTimeOut": -1,
+          "picTab": {},
+          "text": "",
+          "touchable": true,
+          "visible": true,
+          "position": {
+            "height": 15,
+            "left": 0,
+            "top": 92,
+            "width": 112
+          }
+        }
+      ],
+      "position": {
+        "left": 0,
+        "top": 0,
+        "width": 448,
+        "height": 105
+      }
+    }
+  },
+  "textview__6": {
+    "alignment": 37,
+    "caption": "TextKeyHint",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 14,
+    "id": 50001,
+    "position": {
+      "height": 28,
+      "left": 0,
+      "top": 708,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "点卡片进入 · 音量键调音量"
+  },
+  "textview__7": {
+    "alignment": 37,
+    "caption": "TextTip",
+    "colorTab": {
+      "color0": 6513510
+    },
+    "fontSize": 12,
+    "id": 50002,
+    "position": {
+      "height": 24,
+      "left": 0,
+      "top": 736,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "点卡片进入应用 · 列表可上下滑动"
+  },
+  "textview__8": {
+    "alignment": 37,
+    "caption": "TextVersion",
+    "colorTab": {
+      "color0": 4737098
+    },
+    "fontSize": 11,
+    "id": 50003,
+    "position": {
+      "height": 26,
+      "left": 0,
+      "top": 762,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "PocketGame v1.32.3"
+  },
+  "window__9": {
+    "backgroundColor": 0,
+    "caption": "WinGame",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__10": {
+      "alignment": 37,
+      "caption": "TextGameTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50004,
+      "position": {
+        "height": 52,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "游戏"
+    },
+    "textview__11": {
+      "alignment": 36,
+      "caption": "TextScoreLabel",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50005,
+      "position": {
+        "height": 24,
+        "left": 20,
+        "top": 60,
+        "width": 120
+      },
+      "touchable": false,
+      "text": "得分"
+    },
+    "textview__12": {
+      "alignment": 36,
+      "caption": "TextScoreValue",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "fontSize": 32,
+      "id": 50006,
+      "position": {
+        "height": 42,
+        "left": 20,
+        "top": 82,
+        "width": 200
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "textview__13": {
+      "alignment": 38,
+      "caption": "TextBestLabel",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50007,
+      "position": {
+        "height": 24,
+        "left": 244,
+        "top": 60,
+        "width": 216
+      },
+      "touchable": false,
+      "text": "最高分"
+    },
+    "textview__14": {
+      "alignment": 38,
+      "caption": "TextBestValue",
+      "colorTab": {
+        "color0": 6607615
+      },
+      "fontSize": 24,
+      "id": 50008,
+      "position": {
+        "height": 36,
+        "left": 244,
+        "top": 86,
+        "width": 216
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "textview__15": {
+      "alignment": 36,
+      "caption": "TextInfo1Label",
+      "colorTab": {
+        "color0": 6513510
+      },
+      "fontSize": 12,
+      "id": 50009,
+      "position": {
+        "height": 22,
+        "left": 20,
+        "top": 130,
+        "width": 80
+      },
+      "touchable": false,
+      "text": "等级"
+    },
+    "textview__16": {
+      "alignment": 36,
+      "caption": "TextInfo1Value",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "id": 50010,
+      "position": {
+        "height": 28,
+        "left": 100,
+        "top": 126,
+        "width": 120
+      },
+      "touchable": false,
+      "text": "1"
+    },
+    "textview__17": {
+      "alignment": 36,
+      "caption": "TextInfo2Label",
+      "colorTab": {
+        "color0": 6513510
+      },
+      "fontSize": 12,
+      "id": 50011,
+      "position": {
+        "height": 22,
+        "left": 228,
+        "top": 130,
+        "width": 80
+      },
+      "touchable": false,
+      "text": "状态"
+    },
+    "textview__18": {
+      "alignment": 36,
+      "caption": "TextInfo2Value",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "id": 50012,
+      "position": {
+        "height": 28,
+        "left": 308,
+        "top": 126,
+        "width": 152
+      },
+      "touchable": false,
+      "text": "-"
+    },
+    "textview__19": {
+      "alignment": 36,
+      "caption": "GameCanvas",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50013,
+      "position": {
+        "height": 540,
+        "left": 0,
+        "top": 160,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "textview__20": {
+      "alignment": 37,
+      "caption": "TextGameHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50014,
+      "position": {
+        "height": 30,
+        "left": 0,
+        "top": 704,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "textview__21": {
+      "alignment": 37,
+      "caption": "TextGameKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50015,
+      "position": {
+        "height": 60,
+        "left": 0,
+        "top": 740,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "暂停键 暂停/继续 · 长按 返回列表 · 音量键 调音量"
+    },
+    "window__22": {
+      "backgroundColor": -1,
+      "caption": "WinPause",
+      "hideTimeOut": -1,
+      "id": 110002,
+      "modal": true,
+      "position": {
+        "height": 300,
+        "left": 72,
+        "top": 250,
+        "width": 336
+      },
+      "touchable": false,
+      "visible": false,
+      "textview__23": {
+        "alignment": 37,
+        "caption": "TextPauseTitle",
+        "colorTab": {
+          "color0": 15921911
+        },
+        "fontSize": 22,
+        "id": 50016,
+        "position": {
+          "height": 40,
+          "left": 0,
+          "top": 22,
+          "width": 336
+        },
+        "touchable": false,
+        "text": "已暂停"
+      },
+      "textview__24": {
+        "alignment": 37,
+        "caption": "TextPauseInfo",
+        "colorTab": {
+          "color0": 10132128
+        },
+        "fontSize": 14,
+        "id": 50017,
+        "position": {
+          "height": 26,
+          "left": 0,
+          "top": 66,
+          "width": 336
+        },
+        "touchable": false
+      },
+      "button__25": {
+        "alignment": 37,
+        "caption": "BtnResume",
+        "colorTab": {
+          "color0": 15659766
+        },
+        "id": 20005,
+        "position": {
+          "height": 56,
+          "left": 28,
+          "top": 106,
+          "width": 280
+        },
+        "touchable": true,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "fontSize": 18,
+        "text": "继续游戏",
+        "picTab": {
+          "pic0": "images/ios_btn_green_r14.9.png",
+          "pic1": "images/ios_btn_green_r14_p.9.png"
+        },
+        "backgroundColor": -1
+      },
+      "button__26": {
+        "alignment": 37,
+        "caption": "BtnRestart",
+        "colorTab": {
+          "color0": 15921911
+        },
+        "id": 20006,
+        "position": {
+          "height": 56,
+          "left": 28,
+          "top": 174,
+          "width": 280
+        },
+        "touchable": true,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "fontSize": 18,
+        "text": "重新开始",
+        "picTab": {
+          "pic0": "images/ios_btn_gray_r14.9.png",
+          "pic1": "images/ios_btn_gray_r14_p.9.png"
+        },
+        "backgroundColor": -1
+      },
+      "button__27": {
+        "alignment": 37,
+        "caption": "BtnBackList",
+        "colorTab": {
+          "color0": 16729402
+        },
+        "id": 20007,
+        "position": {
+          "height": 48,
+          "left": 28,
+          "top": 242,
+          "width": 280
+        },
+        "touchable": true,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "fontSize": 17,
+        "text": "返回游戏列表",
+        "picTab": {
+          "pic0": "images/ios_btn_redsoft_r14.9.png",
+          "pic1": "images/ios_btn_redsoft_r14_p.9.png"
+        },
+        "backgroundColor": -1
+      },
+      "backgroundPic": "images/ios_panel.9.png"
+    }
+  },
+  "window__28": {
+    "backgroundColor": 0,
+    "caption": "WinClock",
+    "hideTimeOut": -1,
+    "id": 110003,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__29": {
+      "alignment": 36,
+      "caption": "BarClock",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50018,
+      "position": {
+        "height": 8,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16729402
+      }
+    },
+    "textview__30": {
+      "alignment": 37,
+      "caption": "TextClockTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50019,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 8,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "番茄时钟"
+    },
+    "textview__31": {
+      "alignment": 37,
+      "caption": "TextClockPhase",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 20,
+      "id": 50020,
+      "position": {
+        "height": 38,
+        "left": 0,
+        "top": 76,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "状态"
+    },
+    "textview__32": {
+      "alignment": 37,
+      "caption": "TextClockMain",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 88,
+      "id": 50021,
+      "position": {
+        "height": 152,
+        "left": 0,
+        "top": 122,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "00:00"
+    },
+    "textview__33": {
+      "alignment": 37,
+      "caption": "TextClockSub",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50022,
+      "position": {
+        "height": 32,
+        "left": 0,
+        "top": 280,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "说明"
+    },
+    "textview__34": {
+      "alignment": 37,
+      "caption": "TextClockHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50023,
+      "position": {
+        "height": 32,
+        "left": 16,
+        "top": 440,
+        "width": 448
+      },
+      "touchable": false
+    },
+    "button__35": {
+      "alignment": 37,
+      "caption": "BtnU0",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20008,
+      "position": {
+        "height": 80,
+        "left": 12,
+        "top": 512,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3199320
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__36": {
+      "alignment": 37,
+      "caption": "BtnU1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20009,
+      "position": {
+        "height": 80,
+        "left": 128,
+        "top": 512,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__37": {
+      "alignment": 37,
+      "caption": "BtnU2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20010,
+      "position": {
+        "height": 80,
+        "left": 244,
+        "top": 512,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__38": {
+      "alignment": 37,
+      "caption": "BtnU3",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20011,
+      "position": {
+        "height": 80,
+        "left": 360,
+        "top": 512,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__39": {
+      "alignment": 37,
+      "caption": "BtnU4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20012,
+      "position": {
+        "height": 80,
+        "left": 12,
+        "top": 608,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__40": {
+      "alignment": 37,
+      "caption": "BtnU5",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20013,
+      "position": {
+        "height": 80,
+        "left": 128,
+        "top": 608,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__41": {
+      "alignment": 37,
+      "caption": "BtnU6",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20014,
+      "position": {
+        "height": 80,
+        "left": 244,
+        "top": 608,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "button__42": {
+      "alignment": 37,
+      "caption": "BtnU7",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20015,
+      "position": {
+        "height": 80,
+        "left": 360,
+        "top": 608,
+        "width": 108
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 18,
+      "picTab": {},
+      "text": ""
+    },
+    "textview__43": {
+      "alignment": 37,
+      "caption": "TextClockKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50024,
+      "position": {
+        "height": 100,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "暂停键 开始/暂停 · 长按 返回列表"
+    }
+  },
+  "window__44": {
+    "backgroundColor": 0,
+    "caption": "WinCalc",
+    "hideTimeOut": -1,
+    "id": 110004,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__45": {
+      "alignment": 36,
+      "caption": "BarCalc",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50025,
+      "position": {
+        "height": 8,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 6607615
+      }
+    },
+    "textview__46": {
+      "alignment": 37,
+      "caption": "TextCalcTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50026,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 8,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "计算器"
+    },
+    "textview__47": {
+      "alignment": 38,
+      "caption": "TextCalcStatus",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 17,
+      "id": 50027,
+      "position": {
+        "height": 34,
+        "left": 16,
+        "top": 78,
+        "width": 448
+      },
+      "touchable": false
+    },
+    "textview__48": {
+      "alignment": 38,
+      "caption": "TextCalcMain",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 64,
+      "id": 50028,
+      "position": {
+        "height": 112,
+        "left": 16,
+        "top": 118,
+        "width": 448
+      },
+      "touchable": false,
+      "text": "0"
+    },
+    "button__49": {
+      "alignment": 37,
+      "caption": "BtnK0",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20016,
+      "position": {
+        "height": 68,
+        "left": 12,
+        "top": 250,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__50": {
+      "alignment": 37,
+      "caption": "BtnK1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20017,
+      "position": {
+        "height": 68,
+        "left": 126,
+        "top": 250,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__51": {
+      "alignment": 37,
+      "caption": "BtnK2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20018,
+      "position": {
+        "height": 68,
+        "left": 240,
+        "top": 250,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__52": {
+      "alignment": 37,
+      "caption": "BtnK3",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20019,
+      "position": {
+        "height": 68,
+        "left": 354,
+        "top": 250,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__53": {
+      "alignment": 37,
+      "caption": "BtnK4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20020,
+      "position": {
+        "height": 68,
+        "left": 12,
+        "top": 330,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__54": {
+      "alignment": 37,
+      "caption": "BtnK5",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20021,
+      "position": {
+        "height": 68,
+        "left": 126,
+        "top": 330,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__55": {
+      "alignment": 37,
+      "caption": "BtnK6",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20022,
+      "position": {
+        "height": 68,
+        "left": 240,
+        "top": 330,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__56": {
+      "alignment": 37,
+      "caption": "BtnK7",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20023,
+      "position": {
+        "height": 68,
+        "left": 354,
+        "top": 330,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__57": {
+      "alignment": 37,
+      "caption": "BtnK8",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20024,
+      "position": {
+        "height": 68,
+        "left": 12,
+        "top": 410,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__58": {
+      "alignment": 37,
+      "caption": "BtnK9",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20025,
+      "position": {
+        "height": 68,
+        "left": 126,
+        "top": 410,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__59": {
+      "alignment": 37,
+      "caption": "BtnK10",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20026,
+      "position": {
+        "height": 68,
+        "left": 240,
+        "top": 410,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__60": {
+      "alignment": 37,
+      "caption": "BtnK11",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20027,
+      "position": {
+        "height": 68,
+        "left": 354,
+        "top": 410,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__61": {
+      "alignment": 37,
+      "caption": "BtnK12",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20028,
+      "position": {
+        "height": 68,
+        "left": 12,
+        "top": 490,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__62": {
+      "alignment": 37,
+      "caption": "BtnK13",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20029,
+      "position": {
+        "height": 68,
+        "left": 126,
+        "top": 490,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__63": {
+      "alignment": 37,
+      "caption": "BtnK14",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20030,
+      "position": {
+        "height": 68,
+        "left": 240,
+        "top": 490,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__64": {
+      "alignment": 37,
+      "caption": "BtnK15",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20031,
+      "position": {
+        "height": 68,
+        "left": 354,
+        "top": 490,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__65": {
+      "alignment": 37,
+      "caption": "BtnK16",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20032,
+      "position": {
+        "height": 68,
+        "left": 12,
+        "top": 570,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__66": {
+      "alignment": 37,
+      "caption": "BtnK17",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20033,
+      "position": {
+        "height": 68,
+        "left": 126,
+        "top": 570,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__67": {
+      "alignment": 37,
+      "caption": "BtnK18",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20034,
+      "position": {
+        "height": 68,
+        "left": 240,
+        "top": 570,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 2894894
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "button__68": {
+      "alignment": 37,
+      "caption": "BtnK19",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20035,
+      "position": {
+        "height": 68,
+        "left": 354,
+        "top": 570,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 689407
+      },
+      "fontSize": 20,
+      "picTab": {},
+      "text": ""
+    },
+    "textview__69": {
+      "alignment": 37,
+      "caption": "TextCalcHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50029,
+      "position": {
+        "height": 30,
+        "left": 0,
+        "top": 656,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "textview__70": {
+      "alignment": 37,
+      "caption": "TextCalcKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50030,
+      "position": {
+        "height": 56,
+        "left": 0,
+        "top": 744,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "点键盘输入 · 长按 返回列表"
+    }
+  },
+  "window__71": {
+    "backgroundColor": 0,
+    "caption": "WinReact",
+    "hideTimeOut": -1,
+    "id": 110005,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__72": {
+      "alignment": 36,
+      "caption": "BarReact",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50031,
+      "position": {
+        "height": 8,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 6607615
+      }
+    },
+    "textview__73": {
+      "alignment": 37,
+      "caption": "TextReactTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50032,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 8,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "反应计时"
+    },
+    "textview__74": {
+      "alignment": 37,
+      "caption": "TextReactPhase",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 22,
+      "id": 50033,
+      "position": {
+        "height": 40,
+        "left": 0,
+        "top": 86,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "点击下方按钮开始"
+    },
+    "textview__75": {
+      "alignment": 37,
+      "caption": "TextReactMain",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 96,
+      "id": 50034,
+      "position": {
+        "height": 160,
+        "left": 0,
+        "top": 146,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "--"
+    },
+    "textview__76": {
+      "alignment": 37,
+      "caption": "TextReactSub",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50035,
+      "position": {
+        "height": 34,
+        "left": 0,
+        "top": 316,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "共测 5 轮，取平均更准"
+    },
+    "button__77": {
+      "alignment": 37,
+      "caption": "BtnReact",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20036,
+      "position": {
+        "height": 308,
+        "left": 24,
+        "top": 376,
+        "width": 432
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 3199320
+      },
+      "fontSize": 40,
+      "text": "开始",
+      "picTab": {}
+    },
+    "textview__78": {
+      "alignment": 37,
+      "caption": "TextReactHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50036,
+      "position": {
+        "height": 32,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "textview__79": {
+      "alignment": 37,
+      "caption": "TextReactKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50037,
+      "position": {
+        "height": 56,
+        "left": 0,
+        "top": 744,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "暂停键 开始/下一轮 · 长按 返回列表"
+    }
+  },
+  "window__80": {
+    "backgroundColor": 0,
+    "caption": "WinAlarmRing",
+    "hideTimeOut": -1,
+    "id": 110006,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__81": {
+      "alignment": 36,
+      "caption": "BarRing",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50038,
+      "position": {
+        "height": 10,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 16752394
+      }
+    },
+    "textview__82": {
+      "alignment": 37,
+      "caption": "TextRingLabel",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 22,
+      "id": 50039,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 96,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "闹钟"
+    },
+    "textview__83": {
+      "alignment": 37,
+      "caption": "TextRingTime",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 96,
+      "id": 50040,
+      "position": {
+        "height": 140,
+        "left": 0,
+        "top": 150,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "--:--"
+    },
+    "textview__84": {
+      "alignment": 37,
+      "caption": "TextRingDate",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50041,
+      "position": {
+        "height": 32,
+        "left": 0,
+        "top": 300,
+        "width": 480
+      },
+      "touchable": false
+    },
+    "button__85": {
+      "alignment": 37,
+      "caption": "BtnRingStop",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20037,
+      "position": {
+        "height": 110,
+        "left": 40,
+        "top": 420,
+        "width": 400
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 28,
+      "text": "停止",
+      "picTab": {
+        "pic0": "images/ios_btn_red_r20.9.png",
+        "pic1": "images/ios_btn_red_r20_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__86": {
+      "alignment": 37,
+      "caption": "BtnRingSnooze",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20038,
+      "position": {
+        "height": 110,
+        "left": 40,
+        "top": 560,
+        "width": 400
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 28,
+      "text": "贪睡 5 分钟",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r20.9.png",
+        "pic1": "images/ios_btn_gray_r20_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__87": {
+      "alignment": 37,
+      "caption": "TextRingHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50042,
+      "position": {
+        "height": 32,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "按任意键或触摸屏幕也会停止"
+    }
+  },
+  "window__88": {
+    "backgroundColor": 0,
+    "caption": "WinCast",
+    "hideTimeOut": -1,
+    "id": 110007,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "videoview__89": {
+      "backgroundColor": 0,
+      "caption": "Caster",
+      "defaultVolume": 8,
+      "id": 95001,
+      "loopPlayback": false,
+      "rotation": 0,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": true,
+      "visible": true
+    },
+    "textview__90": {
+      "alignment": 36,
+      "caption": "ImgCastCover",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50043,
+      "position": {
+        "height": 700,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "backgroundPic": "images/video_cover.png",
+      "visible": false
+    },
+    "textview__91": {
+      "alignment": 36,
+      "caption": "TextCastMsg",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 14,
+      "id": 50044,
+      "position": {
+        "height": 36,
+        "left": 12,
+        "top": 52,
+        "width": 456
+      },
+      "touchable": false
+    },
+    "textview__92": {
+      "alignment": 36,
+      "caption": "BarCastBottom",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50045,
+      "position": {
+        "height": 100,
+        "left": 0,
+        "top": 700,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      }
+    },
+    "button__93": {
+      "alignment": 37,
+      "caption": "BtnCastStop",
+      "colorTab": {
+        "color0": 16729402
+      },
+      "id": 20039,
+      "position": {
+        "height": 64,
+        "left": 140,
+        "top": 718,
+        "width": 200
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "fontSize": 18,
+      "text": "停止播放",
+      "picTab": {
+        "pic0": "images/ios_btn_redsoft_r14.9.png",
+        "pic1": "images/ios_btn_redsoft_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  }
+}

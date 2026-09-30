@@ -1,0 +1,1444 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "window__1": {
+    "backgroundColor": -1,
+    "caption": "KbPanel",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 428,
+      "left": 0,
+      "top": 372,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": true,
+    "button__2": {
+      "alignment": 37,
+      "caption": "BtnCand0",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20001,
+      "position": {
+        "height": 44,
+        "left": 8,
+        "top": 4,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 22,
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__3": {
+      "alignment": 37,
+      "caption": "BtnCand1",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 44,
+        "left": 102,
+        "top": 4,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 22,
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__4": {
+      "alignment": 37,
+      "caption": "BtnCand2",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20003,
+      "position": {
+        "height": 44,
+        "left": 196,
+        "top": 4,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 22,
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnCand3",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20004,
+      "position": {
+        "height": 44,
+        "left": 290,
+        "top": 4,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 22,
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "button__6": {
+      "alignment": 37,
+      "caption": "BtnCand4",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20005,
+      "position": {
+        "height": 44,
+        "left": 384,
+        "top": 4,
+        "width": 92
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 22,
+      "picTab": {
+        "pic0": "images/ios_btn_select_r10.9.png",
+        "pic1": "images/ios_btn_select_r10_p.9.png"
+      },
+      "text": "",
+      "backgroundColor": -1
+    },
+    "textview__7": {
+      "alignment": 36,
+      "caption": "TextKbInput",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50001,
+      "position": {
+        "height": 38,
+        "left": 12,
+        "top": 54,
+        "width": 228
+      },
+      "touchable": false,
+      "backgroundPic": "images/ios_panel2.9.png",
+      "backgroundColor": -1
+    },
+    "button__8": {
+      "alignment": 37,
+      "caption": "BtnKbMode",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20006,
+      "position": {
+        "height": 38,
+        "left": 246,
+        "top": 54,
+        "width": 72
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "英文",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__9": {
+      "alignment": 37,
+      "caption": "BtnKbClear",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20007,
+      "position": {
+        "height": 38,
+        "left": 324,
+        "top": 54,
+        "width": 72
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "清空",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__10": {
+      "alignment": 37,
+      "caption": "BtnKbHide",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20008,
+      "position": {
+        "height": 38,
+        "left": 402,
+        "top": 54,
+        "width": 70
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "收起",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__11": {
+      "alignment": 36,
+      "caption": "TextKbHint",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 16,
+      "id": 50002,
+      "position": {
+        "height": 38,
+        "left": 12,
+        "top": 98,
+        "width": 240
+      },
+      "touchable": false,
+      "text": "拼音"
+    },
+    "button__12": {
+      "alignment": 37,
+      "caption": "BtnKbPageUp",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20009,
+      "position": {
+        "height": 38,
+        "left": 258,
+        "top": 98,
+        "width": 104
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "上页",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__13": {
+      "alignment": 37,
+      "caption": "BtnKbPageDown",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20010,
+      "position": {
+        "height": 38,
+        "left": 366,
+        "top": 98,
+        "width": 106
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "下页",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r10.9.png",
+        "pic1": "images/ios_btn_gray_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__14": {
+      "alignment": 37,
+      "caption": "BtnK01",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20011,
+      "position": {
+        "height": 52,
+        "left": 8,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "1",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__15": {
+      "alignment": 37,
+      "caption": "BtnK02",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20012,
+      "position": {
+        "height": 52,
+        "left": 55,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "2",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__16": {
+      "alignment": 37,
+      "caption": "BtnK03",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20013,
+      "position": {
+        "height": 52,
+        "left": 102,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "3",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__17": {
+      "alignment": 37,
+      "caption": "BtnK04",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20014,
+      "position": {
+        "height": 52,
+        "left": 149,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "4",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__18": {
+      "alignment": 37,
+      "caption": "BtnK05",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20015,
+      "position": {
+        "height": 52,
+        "left": 196,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "5",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__19": {
+      "alignment": 37,
+      "caption": "BtnK06",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20016,
+      "position": {
+        "height": 52,
+        "left": 243,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "6",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__20": {
+      "alignment": 37,
+      "caption": "BtnK07",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20017,
+      "position": {
+        "height": 52,
+        "left": 290,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "7",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__21": {
+      "alignment": 37,
+      "caption": "BtnK08",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20018,
+      "position": {
+        "height": 52,
+        "left": 337,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "8",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__22": {
+      "alignment": 37,
+      "caption": "BtnK09",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20019,
+      "position": {
+        "height": 52,
+        "left": 384,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "9",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__23": {
+      "alignment": 37,
+      "caption": "BtnK10",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20020,
+      "position": {
+        "height": 52,
+        "left": 431,
+        "top": 142,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "0",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__24": {
+      "alignment": 37,
+      "caption": "BtnK11",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20021,
+      "position": {
+        "height": 52,
+        "left": 8,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "q",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__25": {
+      "alignment": 37,
+      "caption": "BtnK12",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20022,
+      "position": {
+        "height": 52,
+        "left": 55,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "w",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__26": {
+      "alignment": 37,
+      "caption": "BtnK13",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20023,
+      "position": {
+        "height": 52,
+        "left": 102,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "e",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__27": {
+      "alignment": 37,
+      "caption": "BtnK14",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20024,
+      "position": {
+        "height": 52,
+        "left": 149,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "r",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__28": {
+      "alignment": 37,
+      "caption": "BtnK15",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20025,
+      "position": {
+        "height": 52,
+        "left": 196,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "t",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__29": {
+      "alignment": 37,
+      "caption": "BtnK16",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20026,
+      "position": {
+        "height": 52,
+        "left": 243,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "y",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__30": {
+      "alignment": 37,
+      "caption": "BtnK17",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20027,
+      "position": {
+        "height": 52,
+        "left": 290,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "u",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__31": {
+      "alignment": 37,
+      "caption": "BtnK18",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20028,
+      "position": {
+        "height": 52,
+        "left": 337,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "i",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__32": {
+      "alignment": 37,
+      "caption": "BtnK19",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20029,
+      "position": {
+        "height": 52,
+        "left": 384,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "o",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__33": {
+      "alignment": 37,
+      "caption": "BtnK20",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20030,
+      "position": {
+        "height": 52,
+        "left": 431,
+        "top": 200,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "p",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__34": {
+      "alignment": 37,
+      "caption": "BtnK21",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20031,
+      "position": {
+        "height": 52,
+        "left": 8,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "a",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__35": {
+      "alignment": 37,
+      "caption": "BtnK22",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20032,
+      "position": {
+        "height": 52,
+        "left": 55,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "s",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__36": {
+      "alignment": 37,
+      "caption": "BtnK23",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20033,
+      "position": {
+        "height": 52,
+        "left": 102,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "d",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__37": {
+      "alignment": 37,
+      "caption": "BtnK24",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20034,
+      "position": {
+        "height": 52,
+        "left": 149,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "f",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__38": {
+      "alignment": 37,
+      "caption": "BtnK25",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20035,
+      "position": {
+        "height": 52,
+        "left": 196,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "g",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__39": {
+      "alignment": 37,
+      "caption": "BtnK26",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20036,
+      "position": {
+        "height": 52,
+        "left": 243,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "h",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__40": {
+      "alignment": 37,
+      "caption": "BtnK27",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20037,
+      "position": {
+        "height": 52,
+        "left": 290,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "j",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__41": {
+      "alignment": 37,
+      "caption": "BtnK28",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20038,
+      "position": {
+        "height": 52,
+        "left": 337,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "k",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__42": {
+      "alignment": 37,
+      "caption": "BtnK29",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20039,
+      "position": {
+        "height": 52,
+        "left": 384,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "l",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__43": {
+      "alignment": 37,
+      "caption": "BtnK30",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20040,
+      "position": {
+        "height": 52,
+        "left": 431,
+        "top": 258,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "-",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__44": {
+      "alignment": 37,
+      "caption": "BtnK31",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20041,
+      "position": {
+        "height": 52,
+        "left": 8,
+        "top": 316,
+        "width": 57
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 15,
+      "text": "大写",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__45": {
+      "alignment": 37,
+      "caption": "BtnK32",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20042,
+      "position": {
+        "height": 52,
+        "left": 55,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "z",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__46": {
+      "alignment": 37,
+      "caption": "BtnK33",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20043,
+      "position": {
+        "height": 52,
+        "left": 102,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "x",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__47": {
+      "alignment": 37,
+      "caption": "BtnK34",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20044,
+      "position": {
+        "height": 52,
+        "left": 149,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "c",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__48": {
+      "alignment": 37,
+      "caption": "BtnK35",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20045,
+      "position": {
+        "height": 52,
+        "left": 196,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "v",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__49": {
+      "alignment": 37,
+      "caption": "BtnK36",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20046,
+      "position": {
+        "height": 52,
+        "left": 243,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "b",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__50": {
+      "alignment": 37,
+      "caption": "BtnK37",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20047,
+      "position": {
+        "height": 52,
+        "left": 290,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "n",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__51": {
+      "alignment": 37,
+      "caption": "BtnK38",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20048,
+      "position": {
+        "height": 52,
+        "left": 337,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "m",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__52": {
+      "alignment": 37,
+      "caption": "BtnK39",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20049,
+      "position": {
+        "height": 52,
+        "left": 384,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": ".",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__53": {
+      "alignment": 37,
+      "caption": "BtnK40",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20050,
+      "position": {
+        "height": 52,
+        "left": 431,
+        "top": 316,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "@",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__54": {
+      "alignment": 37,
+      "caption": "BtnK41",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20051,
+      "position": {
+        "height": 52,
+        "left": 8,
+        "top": 374,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "_",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__55": {
+      "alignment": 37,
+      "caption": "BtnK42",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20052,
+      "position": {
+        "height": 52,
+        "left": 55,
+        "top": 374,
+        "width": 41
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 20,
+      "text": "#",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__56": {
+      "alignment": 37,
+      "caption": "BtnK43",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20053,
+      "position": {
+        "height": 52,
+        "left": 102,
+        "top": 374,
+        "width": 229
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "空格",
+      "picTab": {
+        "pic0": "images/ios_btn_select_r14.9.png",
+        "pic1": "images/ios_btn_select_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__57": {
+      "alignment": 37,
+      "caption": "BtnK44",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20054,
+      "position": {
+        "height": 52,
+        "left": 337,
+        "top": 374,
+        "width": 54
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 14,
+      "text": "退格",
+      "picTab": {
+        "pic0": "images/ios_btn_gray_r14.9.png",
+        "pic1": "images/ios_btn_gray_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__58": {
+      "alignment": 37,
+      "caption": "BtnK45",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20055,
+      "position": {
+        "height": 52,
+        "left": 384,
+        "top": 374,
+        "width": 88
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 17,
+      "text": "完成",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r14.9.png",
+        "pic1": "images/ios_btn_green_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    }
+  },
+  "modal": false,
+  "touchable": false,
+  "visible": true,
+  "hideTimeOut": -1
+}

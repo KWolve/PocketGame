@@ -1,0 +1,90 @@
+<!--
+  PocketGame - 网络电视 IPTV（独立 ftu：iptv.ftu -> iptvActivity）
+  源稿: html2json.py -> ui/iptv.json -> fui pack -> ui/iptv.ftu
+
+  两个窗口：
+    WinIptv     —— 选台页（8 个频道槽 + 滚动 + 刷新加载）
+    WinIptvPlay —— 播放页（videoview 透明窗口 + 三行加载提示 + 底部三键），初始隐藏
+
+  ⚠️ WinIptvPlay 必须留在 gen_ui.py 的 HIDDEN_PAGE_WINDOWS（进页先看到选台页）；
+     WinIptv **不能**列在那里（它建了进页就是一片空白）。
+  ⚠️ 本文档只给最终看：预览请开 iptv.preview.html。
+-->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+    <!-- ==================== IPTV 网络电视（见 docs/iptv.md） ====================
+         链路：PgHls 把 m3u8 分片 → 本地中继 → StreamPlayer(ffmpeg mpegts + 自带解码)。
+         ⚠️ 本板解码上限 960x544，720p 直接播放会 OOM —— 只放选台页菜单里的
+            "标清"流是 PgHls 自己挑的最低码率流，频道表优先取 ≤480p 的源。 -->
+
+    <!-- ★ 选台页：一屏 8 个频道槽 + 上下滚动 -->
+    <div class="window" data-caption="WinIptv" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+      <div class="text" data-caption="BarIptv" data-x="0" data-y="0" data-w="480" data-h="8" data-bg="#BF5AF2"></div>
+      <div class="text" data-caption="TextIptvStatus" data-x="16" data-y="54" data-w="448" data-h="26"
+           data-fs="13" data-color="#9A9AA0" data-align="left">正在加载频道表...</div>
+
+      <!-- ★ 频道列表（2026-09-14 用户要求：原来是 8 个槽 + 翻页，一屏只能看 8 个、
+           还得翻页，体验差）。改成列表控件：可滚动、每行带中文名 + 分组 + 实测清晰度。
+           ⚠️ 行数由 logic 的 getListItemCount_ListIptv 决定，行内容由
+              obtainListItemData_ListIptv 填；点击走 onListItemClick_ListIptv。 -->
+      <div class="list" data-caption="ListIptv" data-x="12" data-y="108" data-w="456" data-h="588"
+           data-cols="1" data-rows="7" data-row-spacing="6" data-scrollbar="1"
+           data-drag-max="67" data-edge-effect="1" data-bg="#000000">
+        <div class="item">
+      <div class="btn" data-caption="RowCard" data-x="0" data-y="0" data-w="456" data-h="82" data-bgpic="ios_card_row.9.png"></div>
+          <!-- ⚠️ data-align="left" 必须显式写：不写时框架按**居中**排（实测墨迹中心
+               落在控件区中心，看起来像"缩进乱"）。列表行要像列表：左对齐。 -->
+          <div class="text" data-caption="SubChName" data-x="14" data-y="6" data-w="316" data-h="34"
+               data-fs="20" data-color="#F2F2F7" data-align="left"></div>
+          <div class="text" data-caption="SubChInfo" data-x="14" data-y="42" data-w="420" data-h="24"
+               data-fs="13" data-color="#9A9AA0" data-align="left"></div>
+          <div class="text" data-caption="SubChNote" data-x="334" data-y="8" data-w="100" data-h="26"
+               data-fs="12" data-color="#FF9F0A" data-align="right"></div>
+        </div>
+      </div>
+
+      <div class="btn" data-caption="BtnIptvReload" data-x="12" data-y="702" data-w="456" data-h="48"
+           data-bg="#30D158" data-fs="17">重新加载频道表</div>
+
+      <div class="text" data-caption="TextIptvKeyBar" data-x="0" data-y="756" data-w="480" data-h="44"
+           data-fs="13" data-color="#9A9AA0" data-align="center" data-bg="#1C1C1E">B 键返回列表 · 点列表里的频道即播放</div>
+    </div>
+
+    <!-- ② 播放页：videoview 就是 UI 层的"透明窗口"，下层 disp 视频层从这儿透出来 -->
+    <div class="window" data-caption="WinIptvPlay" data-x="0" data-y="0" data-w="480" data-h="800" data-bg="#000000">
+      <div class="videoview" data-caption="IptvVideo" data-x="0" data-y="0" data-w="480" data-h="700" data-volume="8"></div>
+      <!-- ★ 缓冲底图（2026-09-14 用户报"缓冲时视频区透明配黑底，字发虚"）：
+           videoview 是 UI 层给下层 disp 视频层开的**透明窗口** —— 视频层还没数据
+           （拉清单/等首帧）时那块就"透出最底层的黑"，黑底上的字看着发虚。
+           这里铺一张**不透明**底图（480x700 = 视频区），缓冲期就是一张正常画面。
+           ⚠️ 显隐由 logic 控制：`iptvLoadText()` 时显示、出画（`iptvHideLoad()`）立刻隐藏
+              —— **必须及时隐藏**：UI 层在视频层之上，留着就把视频挡死了。
+           ⚠️ 必须在 IptvVideo **之后**（json 顺序 = 层叠顺序，后写的在上面），
+              在 loading 文字**之前**（文字压在图上）。 -->
+      <div class="icon" data-caption="ImgIptvCover" data-pic="images/video_cover.png"
+           data-x="0" data-y="0" data-w="480" data-h="700"></div>
+      <div class="text" data-caption="TextIptvPlayMsg" data-x="8" data-y="54" data-w="464" data-h="34"
+           data-fs="15" data-color="#F2F2F7" data-align="left"></div>
+      <!-- ==================== 加载 / 超时提示（2026-09-14）====================
+           为什么要有它：拉清单（Hls::start）和等首帧都是**秒级**动作，用户点了频道
+           过去只能看到一块黑，像卡死。这里给三行居中提示：
+             标题（正在连接/正在切换/超时原因）+ 一行"移动的进度条" + 一行提示。
+           ⚠️ 进度条用 ASCII（[ ] = -）拼，不引图片资源、也不怕字库缺字。
+           ⚠️ 这三行必须在 IptvVideo **之后**（json 顺序 = 层叠顺序，后写的在上面），
+              否则会被视频层盖住看不见。出画后把文字清空即等于隐藏。 -->
+      <div class="text" data-caption="TextIptvLoad" data-x="30" data-y="290" data-w="420" data-h="46"
+           data-fs="26" data-color="#F2F2F7" data-align="center"></div>
+      <div class="text" data-caption="TextIptvLoadBar" data-x="30" data-y="344" data-w="420" data-h="26"
+           data-fs="18" data-color="#64D2FF" data-align="center"></div>
+      <div class="text" data-caption="TextIptvLoadHint" data-x="30" data-y="380" data-w="420" data-h="24"
+           data-fs="13" data-color="#9A9AA0" data-align="center"></div>
+      <div class="text" data-caption="BarIptvBottom" data-x="0" data-y="700" data-w="480" data-h="100" data-bg="#000000"></div>
+      <div class="btn" data-caption="BtnIptvPrev" data-x="12"  data-y="718" data-w="140" data-h="64"
+           data-bg="#2C2C2E" data-fs="17">上一个</div>
+      <div class="btn" data-caption="BtnIptvStop" data-x="170" data-y="718" data-w="140" data-h="64"
+           data-bg="#3A1F1F" data-fs="18" data-color="#FFFFFF">停止</div>
+      <div class="btn" data-caption="BtnIptvNext" data-x="328" data-y="718" data-w="140" data-h="64"
+           data-bg="#2C2C2E" data-fs="17">下一个</div>
+    </div>
+
+</div>

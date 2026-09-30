@@ -1,0 +1,110 @@
+<!-- ============================================================================
+  屏保页（APP_TYPE_SYS_SCREENSAVER 的 SysApp，见 src/logic/screensaver.cc）
+  2026-09-18 改成「超级玛丽砖块钟」：需求原文见 tools/gen_marioclock.py 的文件头。
+
+  布局总览（480x800）：
+     y   0.. 56  顶部黑条 HUD（SMB 计分板风）—— 日期 / 星期白字直接写在上面
+     y 180..320  4 位数字砖块 + 冒号（砖块是底板，数字是另一层，能独立飞出去）
+     y 320..540  天空（**金币飞行走廊**：云/月亮一律不许放进来，见 gen_marioclock.py）
+     y 540..600  悬空砖台：马里奥走在这上面，从左边走进来
+     y 690..800  地面砖
+   动画（纯绝对时钟推导，不累加 dt —— 见 screensaver.cc 顶部注释）：
+     T-3.0s 马里奥从屏幕左外走进来 → T-0.7s 到第 4 块砖正下方起跳
+     T-0.0s 头撞到砖块 → 旧数字当金币飞出（横向压扁=旋转）+ 砖块上顶一下
+     T+0.4s 新数字落下 → T+1.9s 马里奥走出屏幕右边
+
+  ⚠️ 本页所有控件都用 class="icon"（= textview + 背景图，touchable=false）：
+     ① 不需要任何点击回调 ⇒ 生成代码里不会出现 onButtonClick_*（少 46 个空函数）；
+     ② touchable=false ⇒ 不会吃掉"任意触摸唤醒屏保"的那一下（原来 82 个按钮全是 true）。
+     ⚠️ 数字/马里奥**必须能改位置与尺寸**（金币压扁靠改宽度），textview 的 backgroundPic
+        同样按控件盒缩放 —— 与翻页钟原来用 btn + setPosition 是同一个机制。
+
+  ⚠️ 初始可见性不写在 html 里（转换器不支持 data-visible）：由 tools/gen_ui.py 的
+     patch_flipcards()（只留数字 0 与 ColonOn）与本文件的 HIDDEN_CONTROLS 决定。
+============================================================================ -->
+<div class="screen" data-res="480x800" data-bg="#000000">
+
+  <!-- ==================== 背景：白天 / 夜空两套，按小时切（logic 里切可见性） ====================
+       两张都是 480x800 不透明整图（含顶部黑条 HUD、山丘、砖台、地面），
+       所以页面底色 data-bg 只在两套图都还没上屏的那一瞬间可见。 -->
+  <div class="icon" data-caption="SaverBgNight" data-x="0" data-y="0" data-w="480" data-h="800"
+       data-pic="images/saver_bg_night.png"></div>
+  <div class="icon" data-caption="SaverBgDay" data-x="0" data-y="0" data-w="480" data-h="800"
+       data-pic="images/saver_bg_day.png"></div>
+
+  <!-- ==================== 数字底板：4 块砖（静态） ====================
+       砖块与数字**分成两层**：砖块被顶到时会单独上移 10px，数字则飞出去当金币。 -->
+  <div class="icon" data-caption="Brick0" data-x="35"  data-y="180" data-w="88" data-h="140" data-pic="images/mc_brick.png"></div>
+  <div class="icon" data-caption="Brick1" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_brick.png"></div>
+  <div class="icon" data-caption="Brick2" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_brick.png"></div>
+  <div class="icon" data-caption="Brick3" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_brick.png"></div>
+
+  <!-- ==================== 数字：每位 10 张同位置重叠，只显示当前值 ====================
+       ★ 命名 Dig<位>_<数字>（位 0=时十 1=时个 2=分十 3=分个）；
+         patch_flipcards 只让 _0 初始可见，运行首帧由 logic 立刻改成真实时间。 -->
+  <!-- 位 0（时十）x=35 -->
+  <div class="icon" data-caption="Dig0_0" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig0.png"></div>
+  <div class="icon" data-caption="Dig0_1" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig1.png"></div>
+  <div class="icon" data-caption="Dig0_2" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig2.png"></div>
+  <div class="icon" data-caption="Dig0_3" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig3.png"></div>
+  <div class="icon" data-caption="Dig0_4" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig4.png"></div>
+  <div class="icon" data-caption="Dig0_5" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig5.png"></div>
+  <div class="icon" data-caption="Dig0_6" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig6.png"></div>
+  <div class="icon" data-caption="Dig0_7" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig7.png"></div>
+  <div class="icon" data-caption="Dig0_8" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig8.png"></div>
+  <div class="icon" data-caption="Dig0_9" data-x="35" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig9.png"></div>
+  <!-- 位 1（时个）x=131 -->
+  <div class="icon" data-caption="Dig1_0" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig0.png"></div>
+  <div class="icon" data-caption="Dig1_1" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig1.png"></div>
+  <div class="icon" data-caption="Dig1_2" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig2.png"></div>
+  <div class="icon" data-caption="Dig1_3" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig3.png"></div>
+  <div class="icon" data-caption="Dig1_4" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig4.png"></div>
+  <div class="icon" data-caption="Dig1_5" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig5.png"></div>
+  <div class="icon" data-caption="Dig1_6" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig6.png"></div>
+  <div class="icon" data-caption="Dig1_7" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig7.png"></div>
+  <div class="icon" data-caption="Dig1_8" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig8.png"></div>
+  <div class="icon" data-caption="Dig1_9" data-x="131" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig9.png"></div>
+  <!-- 位 2（分十）x=261 -->
+  <div class="icon" data-caption="Dig2_0" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig0.png"></div>
+  <div class="icon" data-caption="Dig2_1" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig1.png"></div>
+  <div class="icon" data-caption="Dig2_2" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig2.png"></div>
+  <div class="icon" data-caption="Dig2_3" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig3.png"></div>
+  <div class="icon" data-caption="Dig2_4" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig4.png"></div>
+  <div class="icon" data-caption="Dig2_5" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig5.png"></div>
+  <div class="icon" data-caption="Dig2_6" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig6.png"></div>
+  <div class="icon" data-caption="Dig2_7" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig7.png"></div>
+  <div class="icon" data-caption="Dig2_8" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig8.png"></div>
+  <div class="icon" data-caption="Dig2_9" data-x="261" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig9.png"></div>
+  <!-- 位 3（分个）x=357 —— ★ 马里奥就是走到这一块下面顶它的 -->
+  <div class="icon" data-caption="Dig3_0" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig0.png"></div>
+  <div class="icon" data-caption="Dig3_1" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig1.png"></div>
+  <div class="icon" data-caption="Dig3_2" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig2.png"></div>
+  <div class="icon" data-caption="Dig3_3" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig3.png"></div>
+  <div class="icon" data-caption="Dig3_4" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig4.png"></div>
+  <div class="icon" data-caption="Dig3_5" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig5.png"></div>
+  <div class="icon" data-caption="Dig3_6" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig6.png"></div>
+  <div class="icon" data-caption="Dig3_7" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig7.png"></div>
+  <div class="icon" data-caption="Dig3_8" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig8.png"></div>
+  <div class="icon" data-caption="Dig3_9" data-x="357" data-y="180" data-w="88" data-h="140" data-pic="images/mc_dig9.png"></div>
+
+  <!-- 冒号：两态重叠，logic 里按秒切换（闪烁） -->
+  <div class="icon" data-caption="ColonOn"  data-x="227" data-y="180" data-w="26" data-h="140" data-pic="images/mc_colon_on.png"></div>
+  <div class="icon" data-caption="ColonOff" data-x="227" data-y="180" data-w="26" data-h="140" data-pic="images/mc_colon_off.png"></div>
+
+  <!-- ==================== 马里奥：4 帧同位置重叠，logic 按相位显隐一帧 + setPosition 走/跳 ====================
+       初始坐标故意放在屏幕左外（x=-80）：从左边"走进来"就是把它一路往右挪。
+       ⚠️ 4 帧的脚底必须同一行（gen_marioclock.py 有自检），否则走/跳之间会上下跳一下。 -->
+  <div class="icon" data-caption="MarioW0"   data-x="-80" data-y="472" data-w="68" data-h="68" data-pic="images/mc_mario_w0.png"></div>
+  <div class="icon" data-caption="MarioW1"   data-x="-80" data-y="472" data-w="68" data-h="68" data-pic="images/mc_mario_w1.png"></div>
+  <div class="icon" data-caption="MarioW2"   data-x="-80" data-y="472" data-w="68" data-h="68" data-pic="images/mc_mario_w2.png"></div>
+  <div class="icon" data-caption="MarioJump" data-x="-80" data-y="472" data-w="68" data-h="68" data-pic="images/mc_mario_jump.png"></div>
+
+  <!-- ==================== 顶部 HUD 文字（黑条已烘在背景图里） ====================
+       普通 text + logic 自己格式化（ZKDigitalClock 不支持居中对齐/中文星期，见 docs/screensaver.md）。 -->
+  <div class="text" data-caption="TextSaverDate" data-x="16" data-y="10" data-w="250" data-h="36"
+       data-fs="22" data-color="#FFFFFF" data-align="left">--</div>
+  <div class="text" data-caption="TextSaverWeek" data-x="214" data-y="10" data-w="250" data-h="36"
+       data-fs="22" data-color="#FFFFFF" data-align="right">--</div>
+  <div class="text" data-caption="TextSaverHint" data-x="0" data-y="752" data-w="480" data-h="28"
+       data-fs="13" data-color="#FFE9A0" data-align="center">轻触屏幕唤醒</div>
+</div>

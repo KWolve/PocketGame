@@ -1,0 +1,309 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "BarSw",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 8,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 16729402
+    }
+  },
+  "textview__2": {
+    "alignment": 37,
+    "caption": "TextSwTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50002,
+    "position": {
+      "height": 44,
+      "left": 0,
+      "top": 8,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "秒表"
+  },
+  "textview__3": {
+    "alignment": 37,
+    "caption": "TextSwMain",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 88,
+    "id": 50003,
+    "position": {
+      "height": 152,
+      "left": 0,
+      "top": 130,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "00:00.00"
+  },
+  "textview__4": {
+    "alignment": 37,
+    "caption": "TextSwPhase",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 20,
+    "id": 50004,
+    "position": {
+      "height": 38,
+      "left": 0,
+      "top": 292,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "就绪"
+  },
+  "textview__5": {
+    "alignment": 37,
+    "caption": "TextSwSub",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50005,
+    "position": {
+      "height": 32,
+      "left": 16,
+      "top": 334,
+      "width": 448
+    },
+    "touchable": false
+  },
+  "textview__6": {
+    "alignment": 37,
+    "caption": "TextSwHint",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50006,
+    "position": {
+      "height": 32,
+      "left": 16,
+      "top": 440,
+      "width": 448
+    },
+    "touchable": false
+  },
+  "button__7": {
+    "alignment": 37,
+    "caption": "BtnSw0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20001,
+    "position": {
+      "height": 80,
+      "left": 12,
+      "top": 512,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 3199320
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__8": {
+    "alignment": 37,
+    "caption": "BtnSw1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20002,
+    "position": {
+      "height": 80,
+      "left": 128,
+      "top": 512,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__9": {
+    "alignment": 37,
+    "caption": "BtnSw2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20003,
+    "position": {
+      "height": 80,
+      "left": 244,
+      "top": 512,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__10": {
+    "alignment": 37,
+    "caption": "BtnSw3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20004,
+    "position": {
+      "height": 80,
+      "left": 360,
+      "top": 512,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__11": {
+    "alignment": 37,
+    "caption": "BtnSw4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20005,
+    "position": {
+      "height": 80,
+      "left": 12,
+      "top": 608,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__12": {
+    "alignment": 37,
+    "caption": "BtnSw5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20006,
+    "position": {
+      "height": 80,
+      "left": 128,
+      "top": 608,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__13": {
+    "alignment": 37,
+    "caption": "BtnSw6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20007,
+    "position": {
+      "height": 80,
+      "left": 244,
+      "top": 608,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "button__14": {
+    "alignment": 37,
+    "caption": "BtnSw7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20008,
+    "position": {
+      "height": 80,
+      "left": 360,
+      "top": 608,
+      "width": 108
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 18,
+    "picTab": {},
+    "text": ""
+  },
+  "textview__15": {
+    "alignment": 37,
+    "caption": "TextSwKeyBar",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50007,
+    "position": {
+      "height": 100,
+      "left": 0,
+      "top": 700,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "暂停键 开始/暂停 · 长按 返回列表"
+  }
+}

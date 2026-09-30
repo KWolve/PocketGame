@@ -1,0 +1,1049 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 800,
+    "width": 480
+  },
+  "topmost": false,
+  "backgroundColor": 0,
+  "position": {
+    "height": 800,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "BarRemote",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50001,
+    "position": {
+      "height": 8,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 3199320
+    }
+  },
+  "textview__2": {
+    "alignment": 37,
+    "caption": "TextRemoteTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 22,
+    "id": 50002,
+    "position": {
+      "height": 44,
+      "left": 0,
+      "top": 8,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "蓝牙遥控"
+  },
+  "button__3": {
+    "alignment": 37,
+    "caption": "BtnRemoteModeS",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20001,
+    "position": {
+      "height": 36,
+      "left": 336,
+      "top": 54,
+      "width": 132
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 16,
+    "text": "遥控中",
+    "picTab": {}
+  },
+  "textview__4": {
+    "alignment": 36,
+    "caption": "CardRemoteState",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50003,
+    "position": {
+      "height": 240,
+      "left": 16,
+      "top": 94,
+      "width": 448
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    }
+  },
+  "textview__5": {
+    "alignment": 36,
+    "caption": "TextRemoteStateLabel",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50004,
+    "position": {
+      "height": 34,
+      "left": 34,
+      "top": 86,
+      "width": 120
+    },
+    "touchable": false,
+    "text": "状态"
+  },
+  "textview__6": {
+    "alignment": 38,
+    "caption": "TextRemoteStateValue",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50005,
+    "position": {
+      "height": 34,
+      "left": 160,
+      "top": 108,
+      "width": 288
+    },
+    "touchable": false,
+    "text": "未启动"
+  },
+  "textview__7": {
+    "alignment": 36,
+    "caption": "TextRemoteDevLabel",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50006,
+    "position": {
+      "height": 34,
+      "left": 34,
+      "top": 138,
+      "width": 120
+    },
+    "touchable": false,
+    "text": "设备名"
+  },
+  "textview__8": {
+    "alignment": 38,
+    "caption": "TextRemoteDevValue",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50007,
+    "position": {
+      "height": 34,
+      "left": 160,
+      "top": 138,
+      "width": 288
+    },
+    "touchable": false,
+    "text": "-"
+  },
+  "textview__9": {
+    "alignment": 36,
+    "caption": "TextRemotePairLabel",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50008,
+    "position": {
+      "height": 34,
+      "left": 34,
+      "top": 190,
+      "width": 120
+    },
+    "touchable": false,
+    "text": "配对"
+  },
+  "textview__10": {
+    "alignment": 38,
+    "caption": "TextRemotePairValue",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50009,
+    "position": {
+      "height": 34,
+      "left": 160,
+      "top": 190,
+      "width": 288
+    },
+    "touchable": false,
+    "text": "未配对"
+  },
+  "textview__11": {
+    "alignment": 36,
+    "caption": "TextRemoteScanLabel",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 16,
+    "id": 50010,
+    "position": {
+      "height": 34,
+      "left": 34,
+      "top": 242,
+      "width": 120
+    },
+    "touchable": false,
+    "text": "扫描"
+  },
+  "textview__12": {
+    "alignment": 38,
+    "caption": "TextRemoteScanValue",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 18,
+    "id": 50011,
+    "position": {
+      "height": 34,
+      "left": 160,
+      "top": 242,
+      "width": 288
+    },
+    "touchable": false,
+    "text": "0 条广播"
+  },
+  "textview__13": {
+    "alignment": 37,
+    "caption": "TextRemoteTip",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50012,
+    "position": {
+      "height": 36,
+      "left": 16,
+      "top": 322,
+      "width": 448
+    },
+    "touchable": false,
+    "text": "正在初始化蓝牙（约需 20~40 秒）..."
+  },
+  "button__14": {
+    "alignment": 37,
+    "caption": "BtnR0",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20002,
+    "position": {
+      "height": 76,
+      "left": 16,
+      "top": 372,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__15": {
+    "alignment": 37,
+    "caption": "BtnR1",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20003,
+    "position": {
+      "height": 76,
+      "left": 168,
+      "top": 372,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__16": {
+    "alignment": 37,
+    "caption": "BtnR2",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20004,
+    "position": {
+      "height": 76,
+      "left": 320,
+      "top": 372,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__17": {
+    "alignment": 37,
+    "caption": "BtnR3",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20005,
+    "position": {
+      "height": 76,
+      "left": 16,
+      "top": 460,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__18": {
+    "alignment": 37,
+    "caption": "BtnR4",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20006,
+    "position": {
+      "height": 76,
+      "left": 168,
+      "top": 460,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__19": {
+    "alignment": 37,
+    "caption": "BtnR5",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20007,
+    "position": {
+      "height": 76,
+      "left": 320,
+      "top": 460,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__20": {
+    "alignment": 37,
+    "caption": "BtnR6",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20008,
+    "position": {
+      "height": 76,
+      "left": 16,
+      "top": 548,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__21": {
+    "alignment": 37,
+    "caption": "BtnR7",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20009,
+    "position": {
+      "height": 76,
+      "left": 168,
+      "top": 548,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "button__22": {
+    "alignment": 37,
+    "caption": "BtnR8",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "id": 20010,
+    "position": {
+      "height": 76,
+      "left": 320,
+      "top": 548,
+      "width": 140
+    },
+    "touchable": true,
+    "bgColorTab": {
+      "color0": 2894894
+    },
+    "fontSize": 19,
+    "picTab": {},
+    "text": ""
+  },
+  "textview__23": {
+    "alignment": 37,
+    "caption": "TextRemoteSent",
+    "colorTab": {
+      "color0": 3199320
+    },
+    "fontSize": 18,
+    "id": 50013,
+    "position": {
+      "height": 34,
+      "left": 0,
+      "top": 636,
+      "width": 480
+    },
+    "touchable": false
+  },
+  "textview__24": {
+    "alignment": 37,
+    "caption": "TextRemoteHint",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50014,
+    "position": {
+      "height": 32,
+      "left": 0,
+      "top": 676,
+      "width": 480
+    },
+    "touchable": false,
+    "text": "手机连上后，按键即遥控"
+  },
+  "textview__25": {
+    "alignment": 37,
+    "caption": "TextRemoteKeyBar",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50015,
+    "position": {
+      "height": 56,
+      "left": 0,
+      "top": 744,
+      "width": 480
+    },
+    "touchable": false,
+    "bgColorTab": {
+      "color0": 1842206
+    },
+    "text": "[A] 播放/暂停 · [B] 音量+ · [C] 音量- · 长按 返回"
+  },
+  "window__26": {
+    "backgroundColor": 0,
+    "caption": "WinRemoteLearn",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 800,
+      "left": 0,
+      "top": 0,
+      "width": 480
+    },
+    "touchable": false,
+    "visible": false,
+    "textview__27": {
+      "alignment": 36,
+      "caption": "BarRemoteLearn",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50016,
+      "position": {
+        "height": 8,
+        "left": 0,
+        "top": 0,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 3199320
+      }
+    },
+    "textview__28": {
+      "alignment": 37,
+      "caption": "TextRemoteLearnTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 22,
+      "id": 50017,
+      "position": {
+        "height": 44,
+        "left": 0,
+        "top": 8,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "蓝牙遥控 · 学习"
+    },
+    "button__29": {
+      "alignment": 37,
+      "caption": "BtnRemoteModeL",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20011,
+      "position": {
+        "height": 36,
+        "left": 336,
+        "top": 54,
+        "width": 132
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 16,
+      "text": "学习中",
+      "picTab": {
+        "pic0": "images/ios_btn_green_r10.9.png",
+        "pic1": "images/ios_btn_green_r10_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__30": {
+      "alignment": 36,
+      "caption": "CardRemoteHost",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "fontSize": 16,
+      "id": 50018,
+      "position": {
+        "height": 96,
+        "left": 16,
+        "top": 94,
+        "width": 448
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      }
+    },
+    "textview__31": {
+      "alignment": 36,
+      "caption": "TextHostStateLabel",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50019,
+      "position": {
+        "height": 32,
+        "left": 34,
+        "top": 84,
+        "width": 120
+      },
+      "touchable": false,
+      "text": "主机状态"
+    },
+    "textview__32": {
+      "alignment": 38,
+      "caption": "TextHostStateValue",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 18,
+      "id": 50020,
+      "position": {
+        "height": 32,
+        "left": 160,
+        "top": 106,
+        "width": 288
+      },
+      "touchable": false,
+      "text": "空闲"
+    },
+    "textview__33": {
+      "alignment": 36,
+      "caption": "TextHostPeerLabel",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 16,
+      "id": 50021,
+      "position": {
+        "height": 32,
+        "left": 34,
+        "top": 124,
+        "width": 120
+      },
+      "touchable": false,
+      "text": "对端"
+    },
+    "textview__34": {
+      "alignment": 38,
+      "caption": "TextHostPeerValue",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 16,
+      "id": 50022,
+      "position": {
+        "height": 32,
+        "left": 160,
+        "top": 124,
+        "width": 288
+      },
+      "touchable": false,
+      "text": "-"
+    },
+    "textview__35": {
+      "alignment": 36,
+      "caption": "TextRemoteDevHdr",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50023,
+      "position": {
+        "height": 28,
+        "left": 20,
+        "top": 178,
+        "width": 440
+      },
+      "touchable": false,
+      "text": "周边设备 0 个（点一行连接）"
+    },
+    "listview__36": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListRemoteDev",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 67,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80001,
+      "rows": 6,
+      "position": {
+        "height": 212,
+        "left": 16,
+        "top": 230,
+        "width": 448
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24001,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 34,
+              "left": 0,
+              "top": 0,
+              "width": 448
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubDevAddr",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24002,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 30,
+              "left": 12,
+              "top": 4,
+              "width": 240
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubDevName",
+            "colorTab": {
+              "color0": 10132128
+            },
+            "fontFamily": 0,
+            "fontSize": 13,
+            "id": 24003,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 30,
+              "left": 256,
+              "top": 4,
+              "width": 130
+            }
+          },
+          {
+            "alignment": 38,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubDevRssi",
+            "colorTab": {
+              "color0": 6607615
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24004,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 30,
+              "left": 390,
+              "top": 4,
+              "width": 48
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 448,
+          "height": 29
+        }
+      }
+    },
+    "textview__37": {
+      "alignment": 36,
+      "caption": "TextRemoteLearnHdr",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 14,
+      "id": 50024,
+      "position": {
+        "height": 28,
+        "left": 20,
+        "top": 448,
+        "width": 440
+      },
+      "touchable": false,
+      "text": "已学到 0 条（按对方遥控器）"
+    },
+    "listview__38": {
+      "autoRollback": false,
+      "backgroundColor": -1,
+      "caption": "ListRemoteLearned",
+      "cols": 1,
+      "cycleEnable": false,
+      "dragMaxDis": 36,
+      "edgeEffect": 1,
+      "hasScrollbar": true,
+      "id": 80002,
+      "rows": 3,
+      "position": {
+        "height": 86,
+        "left": 16,
+        "top": 500,
+        "width": 448
+      },
+      "colSpacing": 0,
+      "rowSpacing": 6,
+      "orientation": 1,
+      "touchable": true,
+      "visible": true,
+      "item": {
+        "alignment": 37,
+        "backgroundColor": -1,
+        "bgColorTab": {
+          "color0": -1
+        },
+        "bold": false,
+        "caption": "item",
+        "colorTab": {
+          "color0": 16777215
+        },
+        "fontSize": 16,
+        "italic": false,
+        "longClickIntervalTime": -1,
+        "longClickTimeOut": -1,
+        "picTab": {},
+        "text": "",
+        "touchable": true,
+        "visible": true,
+        "subItem": [
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "RowCard",
+            "colorTab": {
+              "color0": 15659766
+            },
+            "fontFamily": 0,
+            "fontSize": 16,
+            "id": 24005,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 32,
+              "left": 0,
+              "top": 0,
+              "width": 448
+            },
+            "backgroundPic": "images/ios_card_row.9.png"
+          },
+          {
+            "alignment": 37,
+            "backgroundColor": -1,
+            "bgColorTab": {
+              "color0": -1
+            },
+            "bold": false,
+            "caption": "SubLrnText",
+            "colorTab": {
+              "color0": 15921911
+            },
+            "fontFamily": 0,
+            "fontSize": 15,
+            "id": 24006,
+            "italic": false,
+            "longClickIntervalTime": -1,
+            "longClickTimeOut": -1,
+            "picTab": {},
+            "text": "",
+            "touchable": true,
+            "visible": true,
+            "position": {
+              "height": 26,
+              "left": 12,
+              "top": 4,
+              "width": 424
+            }
+          }
+        ],
+        "position": {
+          "left": 0,
+          "top": 0,
+          "width": 448,
+          "height": 22
+        }
+      }
+    },
+    "button__39": {
+      "alignment": 37,
+      "caption": "BtnRemoteRescan",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20012,
+      "position": {
+        "height": 64,
+        "left": 16,
+        "top": 600,
+        "width": 218
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 18,
+      "text": "重新扫描",
+      "picTab": {
+        "pic0": "images/ios_btn_blue_r14.9.png",
+        "pic1": "images/ios_btn_blue_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "button__40": {
+      "alignment": 37,
+      "caption": "BtnRemoteDisc",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "id": 20013,
+      "position": {
+        "height": 64,
+        "left": 246,
+        "top": 600,
+        "width": 218
+      },
+      "touchable": true,
+      "bgColorTab": {
+        "color0": -1
+      },
+      "fontSize": 18,
+      "text": "断开",
+      "picTab": {
+        "pic0": "images/ios_btn_redsoft_r14.9.png",
+        "pic1": "images/ios_btn_redsoft_r14_p.9.png"
+      },
+      "backgroundColor": -1
+    },
+    "textview__41": {
+      "alignment": 37,
+      "caption": "TextRemoteLearnHint",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50025,
+      "position": {
+        "height": 32,
+        "left": 0,
+        "top": 678,
+        "width": 480
+      },
+      "touchable": false,
+      "text": "连上后按对方遥控器按键即可学到"
+    },
+    "textview__42": {
+      "alignment": 37,
+      "caption": "TextRemoteLearnKeyBar",
+      "colorTab": {
+        "color0": 10132128
+      },
+      "fontSize": 13,
+      "id": 50026,
+      "position": {
+        "height": 56,
+        "left": 0,
+        "top": 744,
+        "width": 480
+      },
+      "touchable": false,
+      "bgColorTab": {
+        "color0": 1842206
+      },
+      "text": "点设备连接 · 长按 返回"
+    }
+  }
+}

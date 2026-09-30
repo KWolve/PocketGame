@@ -1,0 +1,122 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 52,
+    "width": 480
+  },
+  "topmost": true,
+  "backgroundColor": 723725,
+  "position": {
+    "height": 52,
+    "left": 0,
+    "top": 0,
+    "width": 480
+  },
+  "textview__1": {
+    "alignment": 36,
+    "caption": "TextNbTitle",
+    "colorTab": {
+      "color0": 15921911
+    },
+    "fontSize": 20,
+    "id": 50001,
+    "position": {
+      "height": 38,
+      "left": 8,
+      "top": 13,
+      "width": 190
+    },
+    "touchable": false,
+    "text": "口袋游戏机"
+  },
+  "textview__2": {
+    "alignment": 38,
+    "caption": "TextNbBatt",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 15,
+    "id": 50002,
+    "position": {
+      "height": 24,
+      "left": 330,
+      "top": 14,
+      "width": 45
+    },
+    "touchable": false,
+    "text": "--%"
+  },
+  "textview__3": {
+    "alignment": 36,
+    "caption": "ImgNbBatt",
+    "colorTab": {
+      "color0": 15659766
+    },
+    "fontSize": 16,
+    "id": 50003,
+    "position": {
+      "height": 26,
+      "left": 378,
+      "top": 13,
+      "width": 52
+    },
+    "touchable": false,
+    "backgroundPic": "images/batt_blue_100.png"
+  },
+  "textview__4": {
+    "alignment": 36,
+    "caption": "ImgNbWifiOn",
+    "colorTab": {
+      "color0": 6607615
+    },
+    "fontSize": 16,
+    "id": 50004,
+    "position": {
+      "height": 18,
+      "left": 438,
+      "top": 17,
+      "width": 20
+    },
+    "touchable": false,
+    "backgroundPic": "images/icon_wifi_20x18_64D2FF.png"
+  },
+  "textview__5": {
+    "alignment": 36,
+    "caption": "ImgNbWifiOff",
+    "colorTab": {
+      "color0": 5921374
+    },
+    "fontSize": 16,
+    "id": 50005,
+    "position": {
+      "height": 18,
+      "left": 438,
+      "top": 17,
+      "width": 20
+    },
+    "touchable": false,
+    "backgroundPic": "images/icon_wifi_20x18_5A5A5E.png"
+  },
+  "textview__6": {
+    "alignment": 38,
+    "caption": "TextNbSsid",
+    "colorTab": {
+      "color0": 10132128
+    },
+    "fontSize": 13,
+    "id": 50006,
+    "position": {
+      "height": 22,
+      "left": 196,
+      "top": 15,
+      "width": 128
+    },
+    "touchable": false,
+    "text": "未连接"
+  },
+  "touchable": false,
+  "modal": false,
+  "visible": true,
+  "hideTimeOut": -1
+}

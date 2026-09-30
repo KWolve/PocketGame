@@ -1,0 +1,170 @@
+{
+  "beepEnable": true,
+  "id": 0,
+  "resolution": {
+    "height": 112,
+    "width": 240
+  },
+  "topmost": true,
+  "position": {
+    "left": 120,
+    "top": 544,
+    "width": 240,
+    "height": 112
+  },
+  "window__1": {
+    "backgroundColor": -1,
+    "caption": "WinSbVolume",
+    "hideTimeOut": -1,
+    "id": 110001,
+    "modal": false,
+    "position": {
+      "height": 112,
+      "left": 0,
+      "top": 0,
+      "width": 240
+    },
+    "touchable": true,
+    "visible": false,
+    "button__2": {
+      "alignment": 37,
+      "caption": "BtnSbPanelBg",
+      "colorTab": {
+        "color0": 15659766
+      },
+      "id": 20001,
+      "position": {
+        "height": 112,
+        "left": 0,
+        "top": 0,
+        "width": 240
+      },
+      "touchable": false,
+      "picTab": {
+        "pic0": "images/osd_panel.png"
+      },
+      "text": ""
+    },
+    "textview__3": {
+      "alignment": 36,
+      "caption": "TextSbVolTitle",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "fontSize": 15,
+      "id": 50001,
+      "position": {
+        "height": 28,
+        "left": 16,
+        "top": 12,
+        "width": 100
+      },
+      "touchable": false,
+      "text": "音量"
+    },
+    "textview__4": {
+      "alignment": 38,
+      "caption": "TextSbVolPct",
+      "colorTab": {
+        "color0": 16777215
+      },
+      "fontSize": 18,
+      "id": 50002,
+      "position": {
+        "height": 30,
+        "left": 140,
+        "top": 10,
+        "width": 84
+      },
+      "touchable": false,
+      "text": "50%"
+    },
+    "button__5": {
+      "alignment": 37,
+      "caption": "BtnSbVolIcon",
+      "colorTab": {
+        "color0": 15921911
+      },
+      "id": 20002,
+      "position": {
+        "height": 32,
+        "left": 16,
+        "top": 46,
+        "width": 32
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_volume_32x32_F2F2F7.png",
+        "pic1": "images/icon_volume_32x32_F2F2F7_p.png"
+      },
+      "text": "",
+      "visible": false
+    },
+    "button__6": {
+      "alignment": 37,
+      "caption": "BtnSbVolIconMute",
+      "colorTab": {
+        "color0": 16752394
+      },
+      "id": 20003,
+      "position": {
+        "height": 32,
+        "left": 16,
+        "top": 46,
+        "width": 32
+      },
+      "touchable": true,
+      "picTab": {
+        "pic0": "images/icon_mute_32x32_FF9F0A.png",
+        "pic1": "images/icon_mute_32x32_FF9F0A_p.png"
+      },
+      "text": "",
+      "visible": false
+    },
+    "seekbar__7": {
+      "backgroundColor": -1,
+      "caption": "BarSbVol",
+      "defProgress": 50,
+      "id": 91001,
+      "max": 100,
+      "orientation": 0,
+      "position": {
+        "height": 10,
+        "left": 60,
+        "top": 57,
+        "width": 164
+      },
+      "touchable": false,
+      "visible": true,
+      "backgroundPic": "images/vol_track.png",
+      "progressPic": "images/vol_fill.png",
+      "thumb": {
+        "size": {
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    "textview__8": {
+      "alignment": 36,
+      "caption": "TextSbVolHint",
+      "colorTab": {
+        "color0": 9342611
+      },
+      "fontSize": 11,
+      "id": 50003,
+      "position": {
+        "height": 22,
+        "left": 16,
+        "top": 84,
+        "width": 208
+      },
+      "touchable": false,
+      "text": "点图标静音 · 音量键调节（自动解除静音）"
+    }
+  },
+  "touchable": true,
+  "modal": false,
+  "visible": true,
+  "hideTimeOut": -1
+}
