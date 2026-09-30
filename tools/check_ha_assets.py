@@ -40,8 +40,11 @@ HTML = os.path.join(ROOT, "ui", "ha.html")
 JSON = os.path.join(ROOT, "ui", "ha.json")
 IMGDIR = os.path.join(ROOT, "resources", "images")
 
-# 容器是"窗口"（黑底）还是"卡片/行"（#1C1C1E）——由控件在控件树里的位置判断：
-# 这里手写一张"哪些控件坐在卡片/行上"的清单（改动 ui/ha.html 时要同步）。
+# 哪些控件坐在"卡片/行"（#1C1C1E）上、哪些直接坐在窗口（黑底）上。
+# ⚠️ 判"坐在谁上面"**不能**靠控件树位置：控件在 JSON 里的父节点永远是容器
+#    （window / listview / radiogroup），卡片只是一枚画在下面的兄弟控件，
+#    "卡片包着按钮"不是父子关系（详见 tools/gen_ui.py 的 inject_rounded 注释）。
+# 这里手写一张清单绕过这件事 —— 代价是**改动 ui/ha.html 时必须同步**。
 ON_CARD = {                      # caption -> 所在容器底色
     "SubMyDic": (28, 28, 30),    # 我的设备行内（listview item）
     "SubPickDic": (28, 28, 30),  # 选择页行内
