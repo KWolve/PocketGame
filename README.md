@@ -6,12 +6,12 @@
 整个工程 —— 界面、游戏逻辑、美术素材生成器、真机验收工具链 —— 都在这个仓库里，**零外部美术资源**：
 绝大多数图标和贴图是用 Python 脚本（Canvas/PIL 程序化绘制、headless Chrome + three.js 渲染）**生成**出来的。
 
-![启动器](docs/screenshots/01-launcher-home.png)
-![网络收音机 · 双指针 VU 表](docs/screenshots/51-radio-vu.png)
-![智能家居](docs/screenshots/10-ha-home.png)
-![消消乐](docs/screenshots/70-game-match3.png)
+![启动器 · 游戏页](docs/screenshots/01-launcher-games.png)
+![消消乐](docs/screenshots/18-game-match3.png)
+![网络收音机](docs/screenshots/20-radio.png)
+![智能家居](docs/screenshots/22-ha.png)
 
-> 更多截图见 [`docs/screenshots/`](docs/screenshots/)（20 张，每个应用一张主界面，全部是真机抓屏）。
+> 更多截图见 [`docs/screenshots/`](docs/screenshots/)（15 张，每个应用一张主界面，全部是真机抓屏）。
 
 ---
 
@@ -167,7 +167,7 @@ Git Bash 路径转换、固化后设备会自己重启导致分区挂不上）�
 | [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md) | 依赖获取 |
 | [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) | 二次开发指南 |
 | [`docs/README.md`](docs/README.md) | **全部 79 篇文档的索引** |
-| [`docs/screenshots/`](docs/screenshots/) | 20 张真机截图（每个应用一张主界面） |
+| [`docs/screenshots/`](docs/screenshots/) | 15 张真机截图（启动器三页 + 各应用主界面） |
 | [`CHANGELOG.md`](CHANGELOG.md) | 逐版本开发日志（每个版本都带实测数据与结论） |
 
 ---
